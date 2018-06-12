@@ -1,0 +1,7 @@
+{
+    "name": "press-start/press-start-project",
+    "license": "MIT",
+    "require": {
+        "symfony/routing": "^4.1"
+    }
+}
