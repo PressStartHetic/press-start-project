@@ -9,23 +9,23 @@ use Controller;
 $routes = new RouteCollection();
 
 $routes->add('home', new Route('/', array(
-    '_controller' => array(new Controller\FrontController(), 'homeAction'),
+    '_controller' => 'Controller\FrontController::homeAction',
 )));
 
 $routes->add('login', new Route('/login', array(
-    '_controller' => array(new Controller\UsersController(), 'loginAction'),
+    '_controller' => 'Controller\UsersController::loginAction',
 )));
 
 $routes->add('register', new Route('/register', array(
-    '_controller' => array(new Controller\UsersController(), 'registerAction'),
+    '_controller' => 'Controller\UsersController::registerAction',
 )));
 
 $routes->add('profile', new Route('/profile', array(
-    '_controller' => array(new Controller\UsersController(), 'profileAction'),
+    '_controller' => 'Controller\UsersController::profileAction',
 )));
 
 $routes->add('reset_password', new Route('/reset-password', array(
-    '_controller' => array(new Controller\UsersController(), 'resetPasswordAction'),
+    '_controller' => 'Controller\UsersController::resetPasswordAction',
 )));
 
 return $routes;
