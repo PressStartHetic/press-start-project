@@ -2,6 +2,7 @@
 
 namespace Helper;
 use \PDO;
+use \Delight\Db\PdoDsn;
 
 /**
  * Class Connect
@@ -19,26 +20,24 @@ class Connect
     const DB_NAME = 'press_start';
 
     /**
-     * @var on attribue null à $pdo afin de ne faire qu'une seule connexion par la suite
+     * @var on attribue null à $db afin de ne faire qu'une seule connexion par la suite
      */
-    private static $pdo = null;
+    private static $db = null;
 
     /**
-     * @return \PDO $pdo
+     * @return \Delight\Db\PdoDsn $db
      */
     public static function getPDO()
     {
         // si $pdo est null alors on instancie une connexion
-        if(is_null(self::$pdo)) {
+        if(is_null(self::$db)) {
             try{
-                self::$pdo = new PDO('mysql:dbname=' . self::DB_NAME . ';host=' . self::DB_HOST , self::DB_USER , self::DB_PASS);
-                self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                self::$pdo->exec("SET NAMES UTF8");
+                self::$db = new PdoDsn('mysql:dbname=' . self::DB_NAME . ';host=' . self::DB_HOST , self::DB_USER , self::DB_PASS);
             } catch(\Exception $exception)  {
                 die('Erreur :' . $exception->getMessage());
             }
         }
 
-        return self::$pdo;
+        return self::$db;
     }
 }

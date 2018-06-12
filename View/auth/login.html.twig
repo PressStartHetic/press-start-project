@@ -2,4 +2,16 @@
 
 {% block body %}
   <h1>Login</h1>
+  <form method="post" action="#">
+    <p>
+      <label for="numero">username</label>
+      <input type="text" name="username" id="username">
+    </p>
+    <p>
+      <label for="datepub">password</label>
+      <input type="password" name="password" id="password">
+    </p>
+
+    <input type="submit" value="login">
+  </form>
 {% endblock %}
