@@ -67,6 +67,20 @@ CREATE TABLE IF NOT EXISTS `users_throttling` (
   KEY `expires_at` (`expires_at`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS `clients` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` bigint(20) unsigned NOT NULL,
+  `firstname` varchar(44),
+  `lastname` varchar(44),
+  `pseudonyme` varchar(44) NOT NULL,
+  `email` varchar(44) NOT NULL,
+  `facebook` varchar(44) NOT NULL,
+  `youtube` varchar(44) NOT NULL,
+  `twitch` varchar(44) NOT NULL,
+  `twitter` varchar(44) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
