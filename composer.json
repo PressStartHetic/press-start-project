@@ -2,6 +2,7 @@
     "name": "press-start/press-start-project",
     "license": "MIT",
     "require": {
-        "symfony/routing": "^4.1"
+        "symfony/routing": "^4.1",
+        "delight-im/auth": "^8.0"
     }
 }
