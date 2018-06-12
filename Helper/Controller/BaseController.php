@@ -1,16 +1,21 @@
 <?php
 
 namespace Helper\Controller;
+use Helper\Connect;
+use \Delight\Auth\Auth;
 
 /**
  * Class Controller
  * Permet de loader nos templates Twig pour tous nos controllers
+ * et de rendre disponible l'auth partout
  * (les classes contenues dans controller en héritant)
  * @package Helper
  */
 class BaseController
 {
     protected static $twig;
+    protected static $auth;
+
 
     public function __construct()
     {
@@ -22,5 +27,7 @@ class BaseController
         ));
 
         self::$twig->addExtension(new \Twig_Extension_Debug());
+
+        self::$auth = new Auth(Connect::getPDO(),null ,null , false);
     }
 }
