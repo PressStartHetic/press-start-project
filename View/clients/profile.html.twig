@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>Client profil</h1>
+        <div>
+            <ul>
+                <li>id: {{ client.id }}</li>
+                <li>pseudo: {{ client.pseudonyme }}</li>
+                <li>prénom: {{ client.firstname }}</li>
+                <li>nom: {{ client.lastname }}</li>
+                <li>mail: {{ client.email }}</li>
+                <li>facebook: {{ client.facebook }}</li>
+                <li>youtube: {{ client.youtube }}</li>
+                <li>twitter: {{ client.twitter }}</li>
+                <li>twitch: {{ client.twitch }}</li>
+            </ul>
+        </div>
+{% endblock %}

@@ -28,4 +28,12 @@ $routes->add('reset_password', new Route('/reset-password', array(
     '_controller' => 'Controller\UsersController::resetPasswordAction',
 )));
 
+$routes->add('clients_list', new Route('/clients-list', array(
+    '_controller' => 'Controller\ClientsController::listAction',
+)));
+
+$routes->add('client_profile', new Route('/clients-list/{id}', array(
+    '_controller' => 'Controller\ClientsController::profileAction',
+)));
+
 return $routes;

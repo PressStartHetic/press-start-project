@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>Clients</h1>
+    {% for item in list %}
+        <div>
+            <ul>
+                <li>id: {{ item.id }}</li>
+                <li>pseudo: {{ item.pseudonyme }}</li>
+                <li>prénom: {{ item.firstname }}</li>
+                <li>nom: {{ item.lastname }}</li>
+                <li>mail: {{ item.email }}</li>
+                <li>facebook: {{ item.facebook }}</li>
+                <li>youtube: {{ item.youtube }}</li>
+                <li>twitter: {{ item.twitter }}</li>
+                <li>twitch: {{ item.twitch }}</li>
+                <li><a href="clients-list/{{item.id }}">Profil</a></li>
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}
