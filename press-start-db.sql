@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS press_start;
+CREATE DATABASE press_start;
