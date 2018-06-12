@@ -2,7 +2,23 @@
     "name": "press-start/press-start-project",
     "license": "MIT",
     "require": {
+        "delight-im/auth": "^8.0",
         "symfony/routing": "^4.1",
-        "delight-im/auth": "^8.0"
+        "symfony/http-foundation": "^4.1",
+        "symfony/dependency-injection": "^4.1",
+        "symfony/debug": "^4.1",
+        "symfony/http-kernel": "^4.1",
+        "twig/twig": "^2.4",
+        "symfony/var-dumper": "^4.1"
+    },
+    "scripts": {
+      "run": "php -S 127.0.0.1:4321 index.php"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controller\\": "Controller/",
+            "Helper\\": "Helper/",
+            "Model\\": "Model/"
+        }
     }
 }
