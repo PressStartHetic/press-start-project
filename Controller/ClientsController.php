@@ -5,8 +5,11 @@ namespace Controller;
 use Symfony\Component\Routing;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Model\ClientsModel;
+use Controller\UsersController;
 use Helper\Controller\BaseController as BaseController;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 
 class ClientsController extends BaseController
@@ -36,5 +39,30 @@ class ClientsController extends BaseController
             return new Response('Error');
         }
 
+    }
+
+    public function editAction(Request $request)
+    {
+      if (self::$auth->isLoggedIn() && UsersController::checkAdmin()) {
+        $model = new ClientsModel();
+        if (count($_POST) > 0) {
+          $client = $request->request->all();
+          $id     = $request->get('id');
+
+          $model->updateClient($client, $id);
+          
+          $router = $request->get('_router');
+          $res    = $router->generate('client_profile', array('id' => $id));
+
+          return new RedirectResponse($res);
+        } else {
+          $id   = $request->get('id');
+          $data = $model->getClients($id);
+
+          return self::$twig->render('clients/edit.html.twig',[
+            'client' => $data
+          ]);
+        }
+      }
     }
 }

@@ -12,14 +12,16 @@ $routes = include __DIR__.'/../Helper/Routing/Routes.php';
 
 $context = new Routing\RequestContext();
 $context->fromRequest($request);
-$matcher = new Routing\Matcher\UrlMatcher($routes, $context);
+$matcher   = new Routing\Matcher\UrlMatcher($routes, $context);
+$generator = new Routing\Generator\UrlGenerator($routes, $context);
 
 $controllerResolver = new HttpKernel\Controller\ControllerResolver();
 $argumentResolver = new HttpKernel\Controller\ArgumentResolver();
 
 try {
     $request->attributes->add($matcher->match($request->getPathInfo()));
-
+    $request->attributes->add(['_router' => $generator]);
+    
     $controller = $controllerResolver->getController($request);
     $arguments = $argumentResolver->getArguments($request, $controller);
 

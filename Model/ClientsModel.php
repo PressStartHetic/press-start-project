@@ -133,14 +133,14 @@ class ClientsModel extends Model
                     WHERE id = :id';
         $requete = self::$db->prepare($sql);
         $requete->bindValue(':id', $id, PDO::PARAM_INT);
-        $requete->bindValue(':firstname', $statement['firstname'], PDO::PARAM_STR);
-        $requete->bindValue(':lastname', $statement['lastname'], PDO::PARAM_STR);
-        $requete->bindValue(':pseudonyme', $statement['pseudonyme'], PDO::PARAM_STR);
-        $requete->bindValue(':email', $statement['email'], PDO::PARAM_STR);
-        $requete->bindValue(':facebook', $statement['facebook'], PDO::PARAM_STR);
-        $requete->bindValue(':youtube', $statement['youtube'], PDO::PARAM_STR);
-        $requete->bindValue(':twitch', $statement['twitch'], PDO::PARAM_STR);
-        $requete->bindValue(':twitter', $statement['twitter'], PDO::PARAM_STR);
+        $requete->bindValue(':firstname', (isset($statement['firstname']))? $statement['firstname'] : "" , PDO::PARAM_STR);
+        $requete->bindValue(':lastname', (isset($statement['lastname']))? $statement['lastname'] : "" , PDO::PARAM_STR);
+        $requete->bindValue(':pseudonyme', (isset($statement['pseudonyme']))? $statement['pseudonyme'] : $statement['username'] , PDO::PARAM_STR);
+        $requete->bindValue(':email', (isset($statement['email']))? $statement['email'] : "" , PDO::PARAM_STR);
+        $requete->bindValue(':facebook', (isset($statement['facebook']))? $statement['facebook'] : "" , PDO::PARAM_STR);
+        $requete->bindValue(':youtube', (isset($statement['youtube']))? $statement['youtube'] : "" , PDO::PARAM_STR);
+        $requete->bindValue(':twitch', (isset($statement['twitch']))? $statement['twitch'] : "" , PDO::PARAM_STR);
+        $requete->bindValue(':twitter', (isset($statement['twitter']))? $statement['twitter'] : "" , PDO::PARAM_STR);
         $requete->execute();
 
         if ($requete->errorCode() !== "00000") {
