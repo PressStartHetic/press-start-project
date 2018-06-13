@@ -15,6 +15,7 @@ use \Delight\Auth\DuplicateUsernameException;
 use \Delight\Auth\InvalidSelectorTokenPairException;
 use \Delight\Auth\TokenExpiredException;
 use \Delight\Auth\ResetDisabledException;
+use \Delight\Auth\UnknownIdException;
 use \Delight\Auth\Role;
 use Controller\MailController;
 use Model\UsersModel;
@@ -269,11 +270,13 @@ class UsersController extends BaseController
 
     public function usersListAction()
     {
+
         $model = new UsersModel();
         $data = $model->getUsers();
 
         return self::$twig->render('auth/users-list.html.twig',[
-            'list' => $data
+            'list' => $data,
+            'isAdmin' => $this->checkAdmin(),
         ]);
 
     }
@@ -293,5 +296,22 @@ class UsersController extends BaseController
             return new Response('Error');
         }
 
+    }
+
+    public function deleteUserAction(Request $request){
+        if ($request->get('id')) {
+            $id = $request->get('id');
+
+            try {
+                self::$auth->admin()->deleteUserById($id);
+            }
+            catch (UnknownIdException $e) {
+               dump($e);
+            }
+
+            return new RedirectResponse('/users/list');
+        } else {
+            return new Response('Error');
+        }
     }
 }
