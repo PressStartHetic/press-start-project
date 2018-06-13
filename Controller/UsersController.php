@@ -2,8 +2,8 @@
 
 namespace Controller;
 
-use Delight\Db\Throwable\Exception;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Model\ClientsModel;
 use Helper\Controller\BaseController as BaseController;
@@ -17,6 +17,7 @@ use \Delight\Auth\TokenExpiredException;
 use \Delight\Auth\ResetDisabledException;
 use \Delight\Auth\Role;
 use Controller\MailController;
+use Model\UsersModel;
 
 class UsersController extends BaseController
 {
@@ -264,5 +265,33 @@ class UsersController extends BaseController
       $password = implode($pass);
 
       return $password;
+    }
+
+    public function usersListAction()
+    {
+        $model = new UsersModel();
+        $data = $model->getUsers();
+
+        return self::$twig->render('auth/users-list.html.twig',[
+            'list' => $data
+        ]);
+
+    }
+
+    public function detailAction(Request $request)
+    {
+        if ($request->get('id')) {
+            $id = $request->get('id');
+            $model = new UsersModel();
+            $data = $model->getUsers($id);
+
+            return self::$twig->render('auth/user-detail.html.twig',[
+                'user' => $data['user'],
+                'client' => $data['client'],
+            ]);
+        } else {
+            return new Response('Error');
+        }
+
     }
 }
