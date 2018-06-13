@@ -197,8 +197,8 @@ class UsersController extends BaseController
      * Route("/reset-password", name="reset_password")
      * @Method({"GET", "POST"})
      */
-    public static function updatePasswordAction() {
-
+    public static function updatePasswordAction()
+    {
         if(count($_POST) > 0){
             try {
                 self::$auth->resetPassword($_POST['selector'], $_POST['token'], $_POST['password']);
@@ -246,15 +246,16 @@ class UsersController extends BaseController
         }
     }
 
-    public function checkAdmin() {
-
+    public function checkAdmin()
+    {
       return self::$auth->hasAnyRole(
         Role::ADMIN,
         Role::SUPER_ADMIN
       );
     }
 
-    public function passwordGenerator() {
+    public function passwordGenerator()
+    {
       $char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
       $pass = array();
       $charLength = strlen($char) - 1;
