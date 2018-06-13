@@ -2,6 +2,7 @@
 
 namespace Helper\Controller;
 use Helper\Connect;
+use Helper\Model;
 use \Delight\Auth\Auth;
 
 /**
@@ -14,6 +15,7 @@ use \Delight\Auth\Auth;
 class BaseController
 {
     protected static $twig;
+    protected static $db;
     protected static $auth;
 
 
@@ -27,7 +29,6 @@ class BaseController
         ));
 
         self::$twig->addExtension(new \Twig_Extension_Debug());
-
         self::$auth = new Auth(Connect::getPDO(),null ,null , false);
     }
 }
