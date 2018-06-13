@@ -16,16 +16,12 @@ $routes->add('login', new Route('/login', array(
     '_controller' => 'Controller\UsersController::loginAction',
 )));
 
-$routes->add('register', new Route('/register', array(
-    '_controller' => 'Controller\UsersController::registerAction',
+$routes->add('add_user', new Route('/users/add', array(
+    '_controller' => 'Controller\UsersController::addUserAction',
 )));
 
 $routes->add('profile', new Route('/profile', array(
     '_controller' => 'Controller\UsersController::profileAction',
-)));
-
-$routes->add('reset_password', new Route('/reset-password', array(
-    '_controller' => 'Controller\UsersController::resetPasswordAction',
 )));
 
 $routes->add('clients_list', new Route('/clients-list', array(
@@ -34,6 +30,9 @@ $routes->add('clients_list', new Route('/clients-list', array(
 
 $routes->add('client_profile', new Route('/clients-list/{id}', array(
     '_controller' => 'Controller\ClientsController::profileAction',
+)));
+$routes->add('update_password', new Route('/new-user-password', array(
+    '_controller' => 'Controller\UsersController::updatePasswordAction',
 )));
 
 return $routes;

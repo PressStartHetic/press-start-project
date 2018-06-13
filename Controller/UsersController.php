@@ -2,8 +2,7 @@
 
 namespace Controller;
 
-use Symfony\Component\Routing;
-use Symfony\Component\HttpFoundation\Response;
+use Delight\Db\Throwable\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Helper\Controller\BaseController as BaseController;
@@ -12,6 +11,9 @@ use \Delight\Auth\InvalidPasswordException;
 use \Delight\Auth\UserAlreadyExistsException;
 use \Delight\Auth\TooManyRequestsException;
 use \Delight\Auth\DuplicateUsernameException;
+use \Delight\Auth\InvalidSelectorTokenPairException;
+use \Delight\Auth\TokenExpiredException;
+use \Delight\Auth\ResetDisabledException;
 use \Delight\Auth\Role;
 
 class UsersController extends BaseController
@@ -19,7 +21,7 @@ class UsersController extends BaseController
     /**
      * Login page & action
      *
-     * @Route("/login", name="login")
+     * Route("/login", name="login")
      * @Method({"GET", "POST"})
      */
     public function loginAction(Request $request)
@@ -50,18 +52,19 @@ class UsersController extends BaseController
     /**
      * Register page & action
      *
-     * @Route("/register", name="register")
+     * Route("/users/add", name="add_user")
      * @Method({"GET", "POST"})
      */
-    public function registerAction(Request $request)
+    public function addUserAction(Request $request)
     {
-        if (self::$auth->isLoggedIn()) {
+        if (self::$auth->isLoggedIn() && self::$auth->hasRole(Role::ADMIN)) {
           if(count($_POST) > 0){
               try {
-                  $userid = self::$auth->registerWithUniqueUsername($_POST['email'], $_POST['password'], $_POST['username']);
-                  self::$auth->loginWithUsername($_POST['username'], $_POST['password']);
+                 $userId = self::$auth->admin()->createUser($_POST['email'], $_POST['password'], $_POST['username']);
+                 self::$auth->admin()->addRoleForUserById($userId, Role::ADMIN);
+                 $this->resetPasswordAction();
 
-                  return new RedirectResponse('/');
+                 return new RedirectResponse('/');
               }
               catch (InvalidEmailException $e) {
                   // invalid email address
@@ -79,20 +82,20 @@ class UsersController extends BaseController
                   // duplicate username
               }
           } else {
-              // afficher le formulaire (si y'a rien dans POST)
-              return self::$twig->render('auth/register.html.twig');
-          }
-          return self::$twig->render('auth/register.html.twig');
-      } else {
+              $randomPassword = $this->passwordGenerator();
 
-        return new RedirectResponse('/');
+              return self::$twig->render('auth/add-user.html.twig', array(
+                  'randomPassword' => $randomPassword,
+              ));
+          }
       }
+        return new RedirectResponse('/');
     }
 
     /**
      * Profile page
      *
-     * @Route("/profile", name="profile")
+     * Route("/profile", name="profile")
      * @Method({"GET"})
      */
     public function profileAction(Request $request)
@@ -110,20 +113,84 @@ class UsersController extends BaseController
     /**
      * Reset Password page & action
      *
-     * @Route("/reset-password", name="reset_password")
+     * Route("/reset-password", name="reset_password")
      * @Method({"GET", "POST"})
      */
-    public function resetPasswordAction(Request $request)
+    public function resetPasswordAction()
     {
+        try {
+            self::$auth->forgotPassword($_POST['email'], function ($selector, $token) {
+                $mail = new MailController();
+                $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+                $url = $actual_link . '/new-user-password?selector=' . \urlencode($selector) . '&token=' . \urlencode($token);
 
-      return self::$twig->render('auth/reset.html.twig');
+                $body = self::$twig->render('mail/change-password.html.twig', array(
+                    'link' => $url,
+                ));
+                $mail->sendMail($body);
+            });
+
+            // request has been generated
+        } catch(Exception $e) {
+            dump('Erreur !');
+            die;
+        }
+    }
+
+    public static function updatePasswordAction() {
+
+        if(count($_POST) > 0){
+            try {
+                self::$auth->resetPassword($_POST['selector'], $_POST['token'], $_POST['password']);
+
+                return new RedirectResponse('/');
+            }
+            catch (InvalidSelectorTokenPairException $e) {
+                // invalid token
+            }
+            catch (TokenExpiredException $e) {
+                // token expired
+            }
+            catch (ResetDisabledException $e) {
+                // password reset is disabled
+            }
+            catch (InvalidPasswordException $e) {
+                // invalid password
+            }
+            catch (TooManyRequestsException $e) {
+                // too many requests
+            }
+        } else {
+            try {
+                self::$auth->canResetPasswordOrThrow($_GET['selector'], $_GET['token']);
+                $token = $_GET['token'];
+                $selector = $_GET['selector'];
+
+                return self::$twig->render('auth/reset.html.twig', array(
+                    'token' => $token,
+                    'selector' => $selector,
+                ));
+            }
+            catch (InvalidSelectorTokenPairException $e) {
+                // invalid token
+            }
+            catch (TokenExpiredException $e) {
+                // token expired
+            }
+            catch (ResetDisabledException $e) {
+                // password reset is disabled
+            }
+            catch (TooManyRequestsException $e) {
+                // too many requests
+            }
+        }
     }
 
     public function passwordGenerator() {
       $char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
       $pass = array();
       $charLength = strlen($char) - 1;
-      for ($i = 0; $i < 8; $i++) {
+      for ($i = 0; $i < 10; $i++) {
          $n = rand(0, $charLength);
          $pass[] = $char[$n];
       }

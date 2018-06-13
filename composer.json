@@ -9,7 +9,8 @@
         "symfony/debug": "^4.1",
         "symfony/http-kernel": "^4.1",
         "twig/twig": "^2.4",
-        "symfony/var-dumper": "^4.1"
+        "symfony/var-dumper": "^4.1",
+        "swiftmailer/swiftmailer": "^6.0"
     },
     "scripts": {
       "run": "php -S 127.0.0.1:4321 index.php"
