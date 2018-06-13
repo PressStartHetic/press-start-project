@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+  <h1>Add Client</h1>
+  <form method="post" action="#">
+    <p>
+      <label for="numero">username</label>
+      <input type="text" name="username" id="username" required>
+    </p>
+    <p>
+      <label for="email">email</label>
+      <input type="email" name="email" id="email" required>
+    </p>
+    <input type="submit" value="register">
+  </form>
+{% endblock %}

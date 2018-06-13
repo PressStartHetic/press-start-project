@@ -31,8 +31,16 @@ $routes->add('clients_list', new Route('/clients-list', array(
 $routes->add('client_profile', new Route('/clients-list/{id}', array(
     '_controller' => 'Controller\ClientsController::profileAction',
 )));
-$routes->add('update_password', new Route('/new-user-password', array(
+$routes->add('update_password', new Route('/password', array(
     '_controller' => 'Controller\UsersController::updatePasswordAction',
 )));
+
+$routes->add('client_add', new Route('/clients/add', array(
+    '_controller' => 'Controller\UsersController::addClientAction',
+)));
+
+// $routes->add('client_reset', new Route('/reset/client', array(
+//     '_controller' => 'Controller\UsersController::setPasswordAction',
+// )));
 
 return $routes;

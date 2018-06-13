@@ -4,7 +4,7 @@ namespace Controller;
 
 use Helper\Controller\BaseController as BaseController;
 
-class MailController extends BaseController
+class MailController
 {
 
     public function sendMail($body, $to = 'press.start.dummy@gmail.com')
