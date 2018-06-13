@@ -17,7 +17,7 @@ class FrontController extends BaseController
      */
     public function homeAction(Request $request)
     {
-
+      
       return self::$twig->render('default/home.html.twig');
     }
 }
