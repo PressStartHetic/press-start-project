@@ -65,7 +65,7 @@ class UsersController extends BaseController
                  $userId = self::$auth->admin()->createUser($_POST['email'], $_POST['password'], $_POST['username']);
                  self::$auth->admin()->addRoleForUserById($userId, Role::ADMIN);
                  $this->resetPasswordAction();
-                 
+
                  return new RedirectResponse('/');
               }
               catch (InvalidEmailException $e) {
@@ -243,42 +243,6 @@ class UsersController extends BaseController
             }
         }
     }
-
-    // public function setPasswordAction(Request $request)
-    // {
-    //   if (self::$auth->canResetPassword($_GET['selector'], $_GET['token'])) {
-    //     if (count($_POST) > 0) {
-    //       try {
-    //         self::$auth->resetPassword($_POST['selector'], $_POST['token'], $_POST['password']);
-    //       }
-    //       catch (\Delight\Auth\InvalidSelectorTokenPairException $e) {
-    //         // invalid token
-    //       }
-    //       catch (\Delight\Auth\TokenExpiredException $e) {
-    //         // token expired
-    //       }
-    //       catch (\Delight\Auth\ResetDisabledException $e) {
-    //         // password reset is disabled
-    //       }
-    //       catch (\Delight\Auth\InvalidPasswordException $e) {
-    //         // invalid password
-    //       }
-    //       catch (\Delight\Auth\TooManyRequestsException $e) {
-    //         // too many requests
-    //       }
-    //     } else {
-    //
-    //       return self::$twig->render('auth/reset.html.twig', array(
-    //         'selector' => $_GET['selector'],
-    //         'token'    => $_GET['token']
-    //       ));
-    //     }
-    //   } else {
-    //     return new RedirectResponse('/login');
-    //   }
-    // }
-
-
 
     public function checkAdmin() {
 
