@@ -12,6 +12,7 @@ use \Delight\Auth\InvalidPasswordException;
 use \Delight\Auth\UserAlreadyExistsException;
 use \Delight\Auth\TooManyRequestsException;
 use \Delight\Auth\DuplicateUsernameException;
+use \Delight\Auth\Role;
 
 class UsersController extends BaseController
 {
@@ -36,8 +37,6 @@ class UsersController extends BaseController
               }
               catch (InvalidPasswordException $e) {
                   // wrong password
-                  dump('caca');
-                  die();
               }
               catch (TooManyRequestsException $e) {
                   // too many requests
@@ -61,7 +60,7 @@ class UsersController extends BaseController
               try {
                   $userid = self::$auth->registerWithUniqueUsername($_POST['email'], $_POST['password'], $_POST['username']);
                   self::$auth->loginWithUsername($_POST['username'], $_POST['password']);
-                  // REVIEW: Check without login
+
                   return new RedirectResponse('/');
               }
               catch (InvalidEmailException $e) {
@@ -118,5 +117,19 @@ class UsersController extends BaseController
     {
 
       return self::$twig->render('auth/reset.html.twig');
+    }
+
+    public function passwordGenerator() {
+      $char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+      $pass = array();
+      $charLength = strlen($char) - 1;
+      for ($i = 0; $i < 8; $i++) {
+         $n = rand(0, $charLength);
+         $pass[] = $char[$n];
+      }
+
+      $password = implode($pass);
+
+      return $password;
     }
 }
