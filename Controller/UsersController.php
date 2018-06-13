@@ -54,7 +54,7 @@ class UsersController extends BaseController
     /**
      * Register page & action
      *
-     * Route("/users/add", name="add_user")
+     * Route("/users/add", name="users_add")
      * @Method({"GET", "POST"})
      */
     public function addUserAction(Request $request)
