@@ -5,6 +5,7 @@ namespace Controller;
 use Delight\Db\Throwable\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Model\ClientsModel;
 use Helper\Controller\BaseController as BaseController;
 use \Delight\Auth\InvalidEmailException;
 use \Delight\Auth\InvalidPasswordException;
@@ -15,6 +16,7 @@ use \Delight\Auth\InvalidSelectorTokenPairException;
 use \Delight\Auth\TokenExpiredException;
 use \Delight\Auth\ResetDisabledException;
 use \Delight\Auth\Role;
+use Controller\MailController;
 
 class UsersController extends BaseController
 {
@@ -57,13 +59,13 @@ class UsersController extends BaseController
      */
     public function addUserAction(Request $request)
     {
-        if (self::$auth->isLoggedIn() && self::$auth->hasRole(Role::ADMIN)) {
+        if (self::$auth->isLoggedIn() && $this->checkAdmin()) {
           if(count($_POST) > 0){
               try {
                  $userId = self::$auth->admin()->createUser($_POST['email'], $_POST['password'], $_POST['username']);
                  self::$auth->admin()->addRoleForUserById($userId, Role::ADMIN);
                  $this->resetPasswordAction();
-
+                 
                  return new RedirectResponse('/');
               }
               catch (InvalidEmailException $e) {
@@ -111,32 +113,88 @@ class UsersController extends BaseController
     }
 
     /**
+     * Admin Add Clients
+     *
+     * @Route("/clients/add", name="client_add")
+     * @Method({"GET", "POST"})
+     */
+    public function addClientAction(Request $request)
+    {
+      if (self::$auth->isLoggedIn() && $this->checkAdmin()) {
+        if (count($_POST) > 0) {
+          try {
+            $pass = $this->passwordGenerator();
+            $userId = self::$auth->admin()->createUser($_POST['email'], $pass, $_POST['username']);
+
+            $client = $request->request->all();
+            $client['userId'] = $userId;
+
+            $this->resetPasswordAction();
+
+            $clientRepository = new ClientsModel();
+            $clientRepository->addClient($client);
+
+            return new RedirectResponse('/');
+          }
+          catch (\Delight\Auth\InvalidEmailException $e) {
+            // invalid email address
+          }
+          catch (\Delight\Auth\InvalidPasswordException $e) {
+            // invalid password
+          }
+          catch (\Delight\Auth\UserAlreadyExistsException $e) {
+            // user already exists
+          }
+        } else {
+
+          return self::$twig->render('clients/add.html.twig');
+        }
+
+        return self::$twig->render('clients/add.html.twig');
+      } else {
+
+        return new RedirectResponse('/login');
+      }
+    }
+
+    public function resetPasswordAction()
+    {
+        try {
+            self::$auth->forgotPassword($_POST['email'], function ($selector, $token) {
+                $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+                $url = $actual_link . '/password?selector=' . \urlencode($selector) . '&token=' . \urlencode($token);
+
+                $body = self::$twig->render('mail/reset.html.twig', array(
+                    'link' => $url,
+                ));
+
+                $mail = new MailController();
+                $mail->sendMail($body, $_POST['email']);
+            });
+
+            // request has been generated
+        }
+        catch (\Delight\Auth\InvalidEmailException $e) {
+          // invalid email address
+        }
+        catch (\Delight\Auth\EmailNotVerifiedException $e) {
+          // email not verified
+        }
+        catch (\Delight\Auth\ResetDisabledException $e) {
+          // password reset is disabled
+        }
+        catch (\Delight\Auth\TooManyRequestsException $e) {
+          // too many requests
+        }
+    }
+
+
+    /**
      * Reset Password page & action
      *
      * Route("/reset-password", name="reset_password")
      * @Method({"GET", "POST"})
      */
-    public function resetPasswordAction()
-    {
-        try {
-            self::$auth->forgotPassword($_POST['email'], function ($selector, $token) {
-                $mail = new MailController();
-                $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-                $url = $actual_link . '/new-user-password?selector=' . \urlencode($selector) . '&token=' . \urlencode($token);
-
-                $body = self::$twig->render('mail/change-password.html.twig', array(
-                    'link' => $url,
-                ));
-                $mail->sendMail($body);
-            });
-
-            // request has been generated
-        } catch(Exception $e) {
-            dump('Erreur !');
-            die;
-        }
-    }
-
     public static function updatePasswordAction() {
 
         if(count($_POST) > 0){
@@ -184,6 +242,50 @@ class UsersController extends BaseController
                 // too many requests
             }
         }
+    }
+
+    // public function setPasswordAction(Request $request)
+    // {
+    //   if (self::$auth->canResetPassword($_GET['selector'], $_GET['token'])) {
+    //     if (count($_POST) > 0) {
+    //       try {
+    //         self::$auth->resetPassword($_POST['selector'], $_POST['token'], $_POST['password']);
+    //       }
+    //       catch (\Delight\Auth\InvalidSelectorTokenPairException $e) {
+    //         // invalid token
+    //       }
+    //       catch (\Delight\Auth\TokenExpiredException $e) {
+    //         // token expired
+    //       }
+    //       catch (\Delight\Auth\ResetDisabledException $e) {
+    //         // password reset is disabled
+    //       }
+    //       catch (\Delight\Auth\InvalidPasswordException $e) {
+    //         // invalid password
+    //       }
+    //       catch (\Delight\Auth\TooManyRequestsException $e) {
+    //         // too many requests
+    //       }
+    //     } else {
+    //
+    //       return self::$twig->render('auth/reset.html.twig', array(
+    //         'selector' => $_GET['selector'],
+    //         'token'    => $_GET['token']
+    //       ));
+    //     }
+    //   } else {
+    //     return new RedirectResponse('/login');
+    //   }
+    // }
+
+
+
+    public function checkAdmin() {
+
+      return self::$auth->hasAnyRole(
+        Role::ADMIN,
+        Role::SUPER_ADMIN
+      );
     }
 
     public function passwordGenerator() {
