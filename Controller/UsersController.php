@@ -5,6 +5,7 @@ namespace Controller;
 use Symfony\Component\Routing;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Helper\Controller\BaseController as BaseController;
 use \Delight\Auth\InvalidEmailException;
 use \Delight\Auth\InvalidPasswordException;
@@ -22,25 +23,29 @@ class UsersController extends BaseController
      */
     public function loginAction(Request $request)
     {
-        if(count($_POST) > 0){
-            try {
-                self::$auth->loginWithUsername($_POST['username'], $_POST['password']);
+        if (self::$auth->isLoggedIn()) {
 
-                // user is logged in
-            }
-            catch (InvalidPasswordException $e) {
-                // wrong password
-                dump('caca');
-                die();
-            }
-            catch (TooManyRequestsException $e) {
-                // too many requests
-            }
+          return new RedirectResponse('/');
         } else {
-            return self::$twig->render('auth/login.html.twig');
+          if(count($_POST) > 0){
+              try {
+                  self::$auth->loginWithUsername($_POST['username'], $_POST['password']);
+
+                  // user is logged in
+                  return new RedirectResponse('/');
+              }
+              catch (InvalidPasswordException $e) {
+                  // wrong password
+                  dump('caca');
+                  die();
+              }
+              catch (TooManyRequestsException $e) {
+                  // too many requests
+              }
+          } else {
+              return self::$twig->render('auth/login.html.twig');
+          }
         }
-
-
     }
 
     /**
@@ -49,37 +54,40 @@ class UsersController extends BaseController
      * @Route("/register", name="register")
      * @Method({"GET", "POST"})
      */
-    public function registerAction()
+    public function registerAction(Request $request)
     {
-        if(count($_POST) > 0){
-            try {
-                $userid = self::$auth->registerWithUniqueUsername($_POST['email'], $_POST['password'], $_POST['username']);
+        if (self::$auth->isLoggedIn()) {
+          if(count($_POST) > 0){
+              try {
+                  $userid = self::$auth->registerWithUniqueUsername($_POST['email'], $_POST['password'], $_POST['username']);
+                  self::$auth->loginWithUsername($_POST['username'], $_POST['password']);
+                  // REVIEW: Check without login
+                  return new RedirectResponse('/');
+              }
+              catch (InvalidEmailException $e) {
+                  // invalid email address
+              }
+              catch (InvalidPasswordException $e) {
+                  // invalid password
+              }
+              catch (UserAlreadyExistsException $e) {
+                  // user already exists
+              }
+              catch (TooManyRequestsException $e) {
+                  // too many requests
+              }
+              catch (DuplicateUsernameException $e) {
+                  // duplicate username
+              }
+          } else {
+              // afficher le formulaire (si y'a rien dans POST)
+              return self::$twig->render('auth/register.html.twig');
+          }
+          return self::$twig->render('auth/register.html.twig');
+      } else {
 
-                // we have signed up a new user with the ID `$userId`
-                // TODO: faire le redirect avec le routeur: SAMY !
-                header("location: /home");
-            }
-            catch (InvalidEmailException $e) {
-                // invalid email address
-            }
-            catch (InvalidPasswordException $e) {
-                // invalid password
-            }
-            catch (UserAlreadyExistsException $e) {
-                // user already exists
-            }
-            catch (TooManyRequestsException $e) {
-                // too many requests
-            }
-            catch (DuplicateUsernameException $e) {
-                // duplicate username
-            }
-        } else {
-            // afficher le formulaire (si y'a rien dans POST)
-            return self::$twig->render('auth/register.html.twig');
-        }
-
-      return self::$twig->render('auth/register.html.twig');
+        return new RedirectResponse('/');
+      }
     }
 
     /**
@@ -90,8 +98,14 @@ class UsersController extends BaseController
      */
     public function profileAction(Request $request)
     {
+      if (self::$auth->isLoggedIn()) {
+        return self::$twig->render('auth/profile.html.twig', array(
+          'user' => self::$auth,
+        ));
+      } else {
 
-      return self::$twig->render('auth/profile.html.twig');
+        return new RedirectResponse('/login');
+      }
     }
 
     /**
