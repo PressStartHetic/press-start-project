@@ -4,7 +4,6 @@ use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel;
-use Controller;
 
 $routes = new RouteCollection();
 
@@ -14,10 +13,6 @@ $routes->add('home', new Route('/', array(
 
 $routes->add('login', new Route('/login', array(
     '_controller' => 'Controller\UsersController::loginAction',
-)));
-
-$routes->add('users_add', new Route('/users/add', array(
-    '_controller' => 'Controller\UsersController::addUserAction',
 )));
 
 $routes->add('profile', new Route('/profile', array(
@@ -37,6 +32,18 @@ $routes->add('update_password', new Route('/password', array(
 
 $routes->add('client_add', new Route('/clients/add', array(
     '_controller' => 'Controller\UsersController::addClientAction',
+)));
+
+$routes->add('users_list', new Route('/users/list', array(
+    '_controller' => 'Controller\UsersController::usersListAction',
+)));
+
+$routes->add('users_profile', new Route('/users/list/{id}', array(
+    '_controller' => 'Controller\UsersController::detailAction',
+)));
+
+$routes->add('users_add', new Route('/users/add', array(
+    '_controller' => 'Controller\UsersController::addUserAction',
 )));
 
 return $routes;

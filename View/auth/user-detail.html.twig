@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>Users authentication info</h1>
+        <div>
+            <ul>
+                <li>id: {{ user.id }}</li>
+                <li>pseudo: {{ user.username }}</li>
+                <li>email: {{ user.email }}</li>
+            </ul>
+        </div>
+    <p>item role : {{ user.role }}</p>
+
+{% if client %}
+    <h1>Users profile info</h1>
+        <div>
+            <ul>
+                <li>pseudo: {{ client.pseudonyme }}</li>
+                <li>firstname: {{ client.firstname }}</li>
+                <li>lastname: {{ client.lastname }}</li>
+                <li>email de réception de contact : {{ client.clientMail }}</li>
+                <li>facebook: {{ client.facebook }}</li>
+                <li>twitter: {{ client.twitter }}</li>
+                <li>youtube: {{ client.youtube }}</li>
+                <li>twitch: {{ client.twitch }}</li>
+            </ul>
+        </div>
+{% endif %}
+{% endblock %}

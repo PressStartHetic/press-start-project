@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>Users</h1>
+    {% for item in list %}
+        <div>
+            <ul>
+                <li>id: {{ item.id }}</li>
+                <li>pseudo: {{ item.username }}</li>
+                <li>email: {{ item.email }}</li>
+                <li><a href="/users/list/{{item.id }}">détail</a></li>
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}

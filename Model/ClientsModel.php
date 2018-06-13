@@ -95,13 +95,6 @@ class ClientsModel extends Model
                       :twitter
                       )';
 
-                /*        BEGIN;
-                        INSERT INTO users (username, email, password)
-                  VALUES('testee', 'test@testfr', 'lol');
-                INSERT INTO clients (userId, firstname, pseudonyme)
-                  VALUES(LAST_INSERT_ID(),'le nom', 'testeee');
-                COMMIT;*/
-
         $requete = self::$db->prepare($sql);
         $requete->bindValue(':userId', (isset($statement['userId']))? $statement['userId'] : 0 , PDO::PARAM_INT);
         $requete->bindValue(':firstname', (isset($statement['firstname']))? $statement['firstname'] : "" , PDO::PARAM_STR);
