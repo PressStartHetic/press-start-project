@@ -12,6 +12,9 @@ Clone project and :
 
 Do not forget to use **press-start-db.sql** and **press-start-tables.sql** to set up the database properly.
 
+Then run
+`php -S localhost:<any port>`
+
 # Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
