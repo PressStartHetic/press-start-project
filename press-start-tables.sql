@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 14, 2018 at 03:49 PM
+-- Generation Time: Jun 14, 2018 at 05:55 PM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -97,16 +97,17 @@ INSERT INTO `clients_tags` (`id`, `client_id`, `tag_id`) VALUES
 
 CREATE TABLE `tags` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `detail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tags`
 --
 
-INSERT INTO `tags` (`id`, `name`) VALUES
-(1, 'journaliste'),
-(2, 'blog');
+INSERT INTO `tags` (`id`, `name`, `detail`) VALUES
+(1, 'journaliste', 'Personnes reliées au site Gameblog'),
+(2, 'blog', 'Youtubeur / Bloggeur');
 
 -- --------------------------------------------------------
 
@@ -134,7 +135,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `username`, `status`, `verified`, `resettable`, `roles_mask`, `registered`, `last_login`, `force_logout`) VALUES
 (35, 'pika@pika.chu', '$2y$10$QfqHtxpw2cWPy5GOtZnfYe5qFNEVh/vaovrrnHX.hGNtCNKxoi3Je', 'pikachu', 0, 1, 1, 0, 1528971627, NULL, 0),
-(3, 'admin@admin.fr', '$2y$10$oSUnklW4ioA/8qeiKR.K4exp/ckfhegSN9zyPyhSrr0S7FM7eXZDW', 'admin', 0, 1, 1, 262145, 1528874700, 1528989957, 1),
+(3, 'admin@admin.fr', '$2y$10$oSUnklW4ioA/8qeiKR.K4exp/ckfhegSN9zyPyhSrr0S7FM7eXZDW', 'admin', 0, 1, 1, 262145, 1528874700, 1528996493, 1),
 (36, 'julie@manhes.fr', '$2y$10$XemagyUS4cEH2mvM1gYy0.bnaHcawUvUh0tr7m.o9wlVLjgKNtZ7y', 'Julie', 0, 1, 1, 0, 1528971731, NULL, 0),
 (9, 'pitch@pitch.fr', '$2y$10$.r4G.Ok3AwSlAiuUFNYIh.CX1MRB7cQ5EJ0I/uEvzh/CVvQOG57gm', 'pitch', 0, 1, 1, 1, 1528892269, 1528892505, 0),
 (38, 'legendofzelda@hyrule.fr', '$2y$10$NJA78hnSIdqh29cu0KM8V.pb2sg57P8D4jkz0QJ/Tmjno7JwHyO0i', 'zelda', 0, 1, 1, 0, 1528972065, NULL, 0),
@@ -308,7 +309,7 @@ ALTER TABLE `clients_tags`
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
