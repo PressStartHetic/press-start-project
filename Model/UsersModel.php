@@ -78,4 +78,23 @@ class UsersModel extends Model
         }
     }
 
+    public function updateUser($statement, $id){
+        if(is_array($statement)){
+            $sql = 'UPDATE users 
+                    SET 
+                      username = :username, 
+                      email = :email
+                    WHERE id = :id';
+            $requete = self::$db->prepare($sql);
+            $requete->bindValue(':id', $id, PDO::PARAM_INT);
+            $requete->bindValue(':username', $statement['username'], PDO::PARAM_STR);
+            $requete->bindValue(':email', $statement['email'], PDO::PARAM_STR);
+            $requete->execute();
+
+            if ($requete->errorCode() !== "00000") {
+                throw new \Exception('Argh database');
+            }
+        }
+    }
+
 }
