@@ -31,6 +31,14 @@ class ClientsController extends BaseController
 
     }
 
+    public function getLastAction()
+    {
+        $model    = new ClientsModel();
+        $data     = $model->getLast();
+
+        return $data;
+    }
+
     public function profileAction(Request $request)
     {
         if ($request->get('id')) {

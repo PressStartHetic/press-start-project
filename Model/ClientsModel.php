@@ -81,6 +81,35 @@ class ClientsModel extends Model
         }
     }
 
+    public function getLast(){
+        $sql = 'SELECT
+                      id,
+                      userId,
+                      firstname,
+                      lastname,
+                      pseudonyme,
+                      email,
+                      mobile_phone,
+                      pro_phone,
+                      city,
+                      postcode,
+                      adress,
+                      consoles,
+                      website,
+                      notes,
+                      facebook,
+                      youtube,
+                      twitch,
+                      twitter,
+                      job
+                    FROM clients
+                    LIMIT 5';
+
+        $requete = self::$db->query($sql);
+
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
     /**
      * @param $statement
      * @return string
