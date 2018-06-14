@@ -10,7 +10,6 @@ const minifyCSS   = require('gulp-csso');
 const sass        = require('gulp-sass');
 const source      = require('vinyl-source-stream');
 const sourcemaps  = require('gulp-sourcemaps');
-const sync        = require('browser-sync').create();
 const uglify      = require('gulp-uglify');
 const autoprefixer= require('gulp-autoprefixer');
 const pxtorem     = require('gulp-pxtorem');
@@ -70,8 +69,7 @@ function scss() {
     .pipe(autoprefixer({browsers: ['last 2 versions'], cascade: false }))
     .pipe(pxtorem())
     .pipe(minifyCSS())
-    .pipe(gulp.dest(paths.css.dist))
-    .pipe(sync.stream());
+    .pipe(gulp.dest(paths.css.dist));
 }
 
 /**
@@ -93,8 +91,7 @@ function js() {
         .pipe(gulp.dest(paths.js.dist.path))
         .on('end', function() {
           gulp.src(paths.js.dist.clean)
-          .pipe(cleaner({force: true}))
-          .pipe(sync.stream());
+          .pipe(cleaner({force: true}));
         });
     });
 };

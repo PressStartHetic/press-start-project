@@ -43,7 +43,7 @@
 		.left-box {
 			position: relative;
 			margin-right: 20px;
-			width: calc(65% - 10px);
+			width: 100%;
 
 			.profile-actions {
 				position: absolute;
@@ -173,19 +173,19 @@
 			}
 
 			.play {
-				background-image: url('../../../img/playstation4.png');
+				background-image: url('../img/playstation4.png');
 			}
 
 			.switch {
-				background-image: url('../../../img/playstation4.png');
+				background-image: url('../img/playstation4.png');
 			}
 
 			.xbox {
-				background-image: url('../../../img/playstation4.png');
+				background-image: url('../img/playstation4.png');
 			}
 
 			.pc {
-				background-image: url('../../../img/pc.png');
+				background-image: url('../img/pc.png');
 			}
 		}
 
@@ -255,6 +255,8 @@
 		}
 
 		&__footer {
+			margin-bottom: 50px;
+
 			.input-ctn .input-wrapper {
 				display: -webkit-box;
 				display: -ms-flexbox;

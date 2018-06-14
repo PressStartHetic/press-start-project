@@ -1,39 +1,8 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <nav class="sidenav">
-        <div class="sidenav__logo-container">
-            <img src="../web/img/logo-white.png" alt="Logo Press Start">
-        </div>
-        <ul class="sidenav__list">
-            <li class="sidenav__list-item">
-                <a href="/" title="">
-                    <img src="../web/img/Icons/Regular/dashboard.svg">Dashboard
-                </a>
-            </li>
-            <li class="sidenav__list-item">
-                <a href="/clients/list" title="">
-                    <img src="../web/img/Icons/Regular/address-book.svg">Contacts
-                </a>
-            </li>
-            <li class="sidenav__list-item">
-                <a href="" title="">
-                    <img src="../web/img/Icons/Solid/clipboard.svg">Tâches
-                </a>
-            </li>
-            <li class="sidenav__list-item">
-                <a href="" title="">
-                    <img src="../web/img/Icons/Solid/user-circle.svg">Mon profil
-                </a>
-            </li>
-        </ul>
-        <!-- DÉCONNEXION -->
-        <div class="sidenav__log-out">
-            <img src="../web/img/Icons/Solid/toggle-off.png">
-            <a href="/logout">Déconnexion</a>
-        </div>
-    </nav>
-    <!-- fin nav -->
+    <!-- NAV CÔTÉ -->
+    {% include 'partials/nav.html.twig' %}
 <!--SECTION PAGE LISTE CONTACTS-->
 <section class="contacts">
     <!-- HEAD PAGE CONTACTS -->
@@ -93,7 +62,9 @@
                     <a href="/clients/list/{{item.id }}">
                         <img src="../web/img/edit.svg" alt="éditer"/>
                     </a>
-                    <img class="delete-account" src="../web/img/trash-alt.svg" alt="supprimer le contact"/>
+                    <a href="/clients/delete/{{ item.id }}">
+                        <img class="delete-account" src="../web/img/trash-alt.svg" alt="supprimer le contact"/>
+                    </a>
                 </div>
         </article>
         {% endfor %}

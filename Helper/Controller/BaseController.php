@@ -21,7 +21,7 @@ class BaseController
 
     public function __construct()
     {
-        $loader = new \Twig_Loader_Filesystem(dirname(_DIR_). '/View/');
+        $loader = new \Twig_Loader_Filesystem('View/');
         self::$twig = new \Twig_Environment(
             $loader, array(
             'cache' => false,
