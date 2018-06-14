@@ -11,17 +11,21 @@ use Controller\UsersController;
 use Helper\Controller\BaseController as BaseController;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Model\UsersModel;
-
+use Model\TagsModel;
 
 class ClientsController extends BaseController
 {
     public function listAction(Request $request)
     {
-        $model = new ClientsModel();
-        $data = $model->getClients();
+        $model    = new ClientsModel();
+        $data     = $model->getClients();
+
+        $TagModel = new TagsModel();
+        $tags     = $TagModel->getTagsByClient();
 
         return self::$twig->render('clients/list.html.twig',[
-            'list' => $data
+            'list' => $data,
+            'tags' => $tags
         ]);
 
     }
@@ -33,8 +37,12 @@ class ClientsController extends BaseController
             $model = new ClientsModel();
             $data = $model->getClients($id);
 
+            $TagModel = new TagsModel();
+            $tags     = $TagModel->getTagsByClient($id);
+
             return self::$twig->render('clients/profile.html.twig',[
-                'client' => $data
+                'client' => $data,
+                'tags'   => $tags
             ]);
         } else {
             return new Response('Error');

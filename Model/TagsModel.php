@@ -47,6 +47,46 @@ class TagsModel extends Model
         }
     }
 
+    public function getTagsByClient($id = null){
+        if($id === null){
+            $sql = 'SELECT
+                      client_id,
+                      tags.id,
+                      tags.name
+                    FROM
+                      clients_tags
+                    INNER JOIN
+                      tags
+                      ON clients_tags.tag_id = tags.id
+                    GROUP BY client_id, tag_id';
+
+            $requete = self::$db->query($sql);
+
+            return $requete->fetchAll(PDO::FETCH_OBJ);
+        } else{
+            $sql = 'SELECT
+                      client_id,
+                      tags.id,
+                      tags.name
+                    FROM
+                      clients_tags
+                    INNER JOIN
+                      tags
+                      ON clients_tags.tag_id = tags.id
+                    WHERE
+                      client_id = :id
+                    GROUP BY client_id, tag_id';
+
+            $requete = self::$db->prepare($sql);
+
+            $requete->bindValue(':id', $id, PDO::PARAM_INT);
+            $requete->execute();
+
+
+            return $requete->fetchAll(PDO::FETCH_OBJ);
+        }
+    }
+
     public function addTag($statement) {
       $sql = 'INSERT INTO
                   tags(
