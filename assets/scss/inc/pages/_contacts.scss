@@ -90,4 +90,11 @@
             -webkit-transform: translateY(-50%);
                     transform: translateY(-50%);
     }
+
+    &--users {
+        .contactCard__edit {
+            width: calc(100% / 5 * 3);
+            text-align: right;
+        }
+    }
 }
