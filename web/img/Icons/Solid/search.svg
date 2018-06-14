@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons/Solid/search</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-0.5%" y="-6.6%" width="101.0%" height="118.4%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <path d="M21.7272939,19.2912801 L17.8327627,15.3971292 C17.6569814,15.2213651 17.4187002,15.1237184 17.1687002,15.1237184 L16.5319814,15.1237184 C17.6101064,13.7449468 18.2507314,12.0107411 18.2507314,10.1242066 C18.2507314,5.63636364 14.6140127,2 10.1257314,2 C5.63745019,2 2.00073144,5.63636364 2.00073144,10.1242066 C2.00073144,14.6120496 5.63745019,18.2484132 10.1257314,18.2484132 C12.0124502,18.2484132 13.7468252,17.6078508 15.1257314,16.5298311 L15.1257314,17.1664876 C15.1257314,17.4164632 15.2233877,17.6547212 15.3991689,17.8304853 L19.2937002,21.7246363 C19.6608877,22.0917879 20.2546377,22.0917879 20.6179189,21.7246363 L21.7233877,20.6192755 C22.0905752,20.2521238 22.0905752,19.6584318 21.7272939,19.2912801 Z M10.1257314,15.1237184 C7.36401269,15.1237184 5.12573144,12.8895616 5.12573144,10.1242066 C5.12573144,7.36275754 7.36010644,5.12469485 10.1257314,5.12469485 C12.8874502,5.12469485 15.1257314,7.35885167 15.1257314,10.1242066 C15.1257314,12.8856557 12.8913564,15.1237184 10.1257314,15.1237184 Z" id="path-2"></path>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#F7931E" offset="0%"></stop>
+            <stop stop-color="#D4145A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="nav-up" transform="translate(-1146.000000, -27.000000)">
+            <g filter="url(#filter-1)" id="barre-de-recherche">
+                <g transform="translate(904.000000, 21.000000)">
+                    <g id="Icons/Solid/search" transform="translate(244.000000, 6.000000)">
+                        <mask id="mask-3" fill="white">
+                            <use xlink:href="#path-2"></use>
+                        </mask>
+                        <use id="search" fill="#000000" fill-rule="nonzero" xlink:href="#path-2"></use>
+                        <g id="Orange-pink" mask="url(#mask-3)" fill="url(#linearGradient-4)" fill-rule="evenodd">
+                            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
