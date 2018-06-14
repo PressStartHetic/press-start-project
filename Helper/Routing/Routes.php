@@ -83,4 +83,8 @@ $routes->add('tag_delete', new Route('/tags/delete/{id}', array(
     '_controller' => 'Controller\TagsController::deleteAction',
 )));
 
+$routes->add('logout', new Route('/logout', array(
+    '_controller' => 'Controller\UsersController::logout',
+)));
+
 return $routes;

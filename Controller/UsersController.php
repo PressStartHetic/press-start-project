@@ -351,4 +351,9 @@ class UsersController extends BaseController
             return new RedirectResponse('/users/list/'.$id);
         }
     }
+
+    public function logout(){
+        self::$auth->logOut();
+        return new RedirectResponse('/login');
+    }
 }
