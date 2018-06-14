@@ -10,7 +10,7 @@
             <!-- TITRE PAGE -->
             <div class="contacts__intro">
                 <h1 class="contacts__title">Utilisateurs</h1>
-                <h2 class="contacts__introTxt">Tous vos utilisateurs sont organisés sur cette page. Vous pouvez les éditer et les supprimer autant que vous le voulez.</h2>
+                <h2 class="contacts__introTxt">Tous vos utilisateurs sont organisés sur cette page.</h2>
             </div>
             <!-- FORM RECHERCHE DES CONTACTS -->
             <div class="contacts__head__btn">
@@ -49,7 +49,9 @@
                                 <img src="../web/img/edit.svg" alt="éditer"/>
                             </a>
                             {% if isAdmin %}
-                                <img class="delete-account" src="../web/img/trash-alt.svg" alt="supprimer le contact"/>
+                                <a href="/users/delete/{{item.id }}">
+                                    <img class="delete-account" src="../web/img/trash-alt.svg" alt="supprimer le contact"/>
+                                </a>
                             {% endif %}
                         </ul>
                     </div>

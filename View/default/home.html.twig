@@ -79,7 +79,9 @@
   </div>
   <div class="dashboard__contact-list">
     <h3 class="dashboard__contact-title">Les derniers contacts ajoutés</h3>
+      {% set limit = 0 %}
     {% for client in clients %}
+        {% if limit < 5  %}
     <article class="contactCard">
       <!-- PROFILE PICTURE -->
       <div class="contactCard__main-infos">
@@ -121,6 +123,8 @@
           </a>
       </div>
   </article>
+    {% endif %}
+        {% set limit = limit + 1 %}
   {% endfor %}
   </div>
 </section>
