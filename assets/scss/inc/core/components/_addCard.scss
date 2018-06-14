@@ -1,6 +1,6 @@
 .add_card {
 	position: absolute;
-	bottom: -180%;
+	bottom: -113%;
 	right: 30px;
 	background: $dark-bg;
 	border-radius: 5px;
@@ -9,6 +9,13 @@
 	box-shadow: 0 0 6px 0 rgba(0,0,0,0.50);
 	li:hover, li:nth-child(2n):hover {
 		background: $orange;
+	}
+	.add_card-list {
+		flex-direction:column;
+		padding: 0;
+		li {
+			margin: 0;
+		}
 	}
 	a {
 		display: flex;

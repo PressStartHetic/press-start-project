@@ -38,7 +38,8 @@ class ClientsController extends BaseController
             $model = new ClientsModel();
             $data = $model->getClients($id);
             $TagModel = new TagsModel();
-            $tags     = $TagModel->getTagsByClient($id);
+
+            $tags     = $TagModel->getTagsByClient($id, true);
 
             return self::$twig->render('clients/profile.html.twig',[
                 'client' => $data,
@@ -54,12 +55,13 @@ class ClientsController extends BaseController
     public function editAction(Request $request)
     {
       if (self::$auth->isLoggedIn() && UsersController::checkAdmin()) {
-        $model = new ClientsModel();
         if (count($_POST) > 0) {
+          $model = new ClientsModel();
           $client = $request->request->all();
           $id     = $request->get('id');
-
           $model->updateClient($client, $id);
+
+          $model->linkAction((int)$id, $request->get('tags'));
 
           $refer  = $request->getrequestUri();
           $refer  = explode('/',$refer);
@@ -73,13 +75,6 @@ class ClientsController extends BaseController
           }
 
           return new RedirectResponse($res);
-        } else {
-          $id   = $request->get('id');
-          $data = $model->getClients($id);
-
-          return self::$twig->render('clients/edit.html.twig',[
-            'client' => $data
-          ]);
         }
       }
     }
