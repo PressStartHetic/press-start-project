@@ -52,7 +52,7 @@
             <!-- NOM DU CONTACT -->
             <h1 class="contact-single__title">{{ client.pseudonyme }}</h1>
         </div>
-        <form>
+        <form action="/clients/list/{{ client.id }}/edit" method="post">
             <div class="section section-informations">
                 <div class="contact-single__boxes">
                     <!-- FORMULAIRE -->
@@ -85,8 +85,15 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <span class="label label--blog">Blogger</span>
-                                        <span class="label label--journaliste">Indépendant</span>
+                                        <select class="js-choice" name="tags[]" multiple>
+                                          {% for tag in tags %}
+                                            {% if tag.count > 0  %}
+                                              <option value="{{ tag.id }}" selected>{{ tag.name }}</option>
+                                            {% else %}
+                                              <option value="{{ tag.id }}">{{ tag.name }}</option>
+                                            {% endif %}
+                                          {% endfor %}
+                                        </select>
                                         <a href="">
                                             <img class="add-tag" src="/web/img/ajouter-tag.svg" alt="ajouter un tag">
                                         </a>
@@ -183,7 +190,7 @@
                         </div>
                         <!-- NOTES -->
                         <div class="contact-single__boxes__content">
-                            {% spaceless %} 
+                            {% spaceless %}
                                 <textarea name="notes" id="notes" spellcheck="false">
                                     {{ client.notes }}
                                 </textarea>
@@ -337,5 +344,8 @@
                 sections[i].style.display = 'flex'
             });
         }
+    </script>
+    <script type="text/javascript">
+      var choices = new Choices('.js-choice');
     </script>
 {% endblock %}

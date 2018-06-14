@@ -47,7 +47,7 @@ class TagsModel extends Model
         }
     }
 
-    public function getTagsByClient($id = null){
+    public function getTagsByClient($id = null, $full = null){
         if($id === null){
             $sql = 'SELECT
                       client_id,
@@ -64,6 +64,20 @@ class TagsModel extends Model
 
             return $requete->fetchAll(PDO::FETCH_OBJ);
         } else{
+          if ($full) {
+            $sql = 'SELECT
+                      tags.*,
+                      (SELECT COUNT(*) FROM clients_tags WHERE tags.id = clients_tags.tag_id AND clients_tags.client_id = :id) AS count
+                    FROM tags';
+
+            $requete = self::$db->prepare($sql);
+
+            $requete->bindValue(':id', $id, PDO::PARAM_INT);
+            $requete->execute();
+
+
+            return $requete->fetchAll(PDO::FETCH_OBJ);
+          } else {
             $sql = 'SELECT
                       client_id,
                       tags.id,
@@ -84,6 +98,7 @@ class TagsModel extends Model
 
 
             return $requete->fetchAll(PDO::FETCH_OBJ);
+          }
         }
     }
 
