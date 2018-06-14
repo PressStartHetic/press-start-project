@@ -1,72 +1,177 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-  <h1>Add Client</h1>
-  <form method="post" action="#">
-    <p>
-      <label for="username">pseudonyme</label>
-      <input type="text" name="username" id="username" required>
-    </p>
-    <p>
-      <label for="email">email</label>
-      <input type="email" name="email" id="email" required>
-    </p>
-    <p>
-      <label for="firstname">firstname</label>
-      <input type="text" name="firstname" id="firstname">
-    </p>
-    <p>
-      <label for="lastname">lastname</label>
-      <input type="text" name="lastname" id="lastname">
-    </p>
-    <p>
-      <label for="mobilePhone">mobilePhone</label>
-      <input type="tel" name="mobilePhone" id="mobilePhone">
-    </p>
-    <p>
-      <label for="proPhone">proPhone</label>
-      <input type="tel" name="proPhone" id="proPhone">
-    </p>
-    <p>
-      <label for="city">city</label>
-      <input type="text" name="city" id="city">
-    </p>
-    <p>
-      <label for="postcode">postcode</label>
-      <input type="text" name="postcode" id="postcode">
-    </p>
-    <p>
-      <label for="adress">adress</label>
-      <input type="text" name="adress" id="adress">
-    </p>
-    <p>
-      <label for="consoles">consoles</label>
-      <input type="text" name="consoles" id="consoles">
-    </p>
-    <p>
-      <label for="website">website</label>
-      <input type="text" name="website" id="website">
-    </p>
-    <p>
-      <label for="notes">notes</label>
-      <input type="text" name="notes" id="notes">
-    </p>
-    <p>
-      <label for="facebook">facebook</label>
-      <input type="text" name="facebook" id="facebook">
-    </p>
-    <p>
-      <label for="youtube">youtube</label>
-      <input type="text" name="youtube" id="youtube">
-    </p>
-    <p>
-      <label for="twitch">twitch</label>
-      <input type="text" name="twitch" id="twitch">
-    </p>
-    <p>
-      <label for="twitter">twitter</label>
-      <input type="text" name="twitter" id="twitter">
-    </p>
-    <input type="submit" value="add client">
-  </form>
+  <nav class="sidenav">
+    <div class="sidenav__logo-container">
+      <img src="../web/img/logo-white.png" alt="Logo Press Start">
+    </div>
+    <ul class="sidenav__list">
+      <li class="sidenav__list-item">
+        <a href="" title="">
+          <img src="../web/img/Icons/Regular/dashboard.svg">Dashboard
+        </a>
+      </li>
+      <li class="sidenav__list-item">
+        <a href="" title="">
+          <img src="../web/img/Icons/Regular/address-book.svg">Contacts
+        </a>
+      </li>
+      <li class="sidenav__list-item">
+        <a href="" title="">
+          <img src="../web/img/Icons/Solid/clipboard.svg">Tâches
+        </a>
+      </li>
+      <li class="sidenav__list-item">
+        <a href="" title="">
+          <img src="../web/img/Icons/Solid/calendar-alt.svg">Agenda
+        </a>
+      </li>
+      <li class="sidenav__list-item">
+        <a href="" title="">
+          <img src="../web/img/Icons/Solid/user-circle.svg">Mon profil
+        </a>
+      </li>
+    </ul>
+    <!-- DÉCONNEXION -->
+    <div class="sidenav__log-out">
+      <img src="../web/img/Icons/Solid/toggle-off.png">
+      <a href="#">Déconnexion</a>
+    </div>
+  </nav>
+    <!-- fin nav -->
+  <section class="contact-single add-contact-page">
+    <!-- SECTION INFORMATIONS -->
+    <div class="section section-informations">
+      <!-- HEADER -->
+      <div class="contact-single__head">
+        <!-- BACK TO CONTACT LIST -->
+        <a href="/clients/list">
+          <img src="../web/img/back.png" alt="retour arrière">
+        </a>
+        <!-- NOM DU CONTACT -->
+        <h1 class="contact-single__title">Ajouter un contact</h1>
+      </div>
+      <!-- BLOCS -->
+      <form method="post" action="#">
+        <div class="contact-single__boxes">
+          <!-- FORMULAIRE -->
+          <div class="left-box">
+            <div class="contact-single__boxes__banner">
+              <h2>INFORMATIONS</h2>
+            </div>
+            <div class="contact-single__form__content">
+              <div class="contact-single__form__content__head">
+                <!-- PHOTO CONTACT -->
+                <figure>
+                  <img src="../web/img/default-pic.jpg" alt=""/>
+                </figure>
+                <div class="main-infos">
+                  <div>
+                    <!-- NOM CONTACT -->
+                    <div class="input-ctn">
+                      <label for="lastname">NOM</label>
+                      <input class="input" name="lastname" id="lastname" type="text" placeholder="Saisissez le nom…">
+                    </div>
+                    <!-- PRENOM CONTACT -->
+                    <div class="input-ctn">
+                      <label for="firstname">PRENOM</label>
+                      <input class="input" type="text" name="firstname" id="firstname" placeholder="Saisissez le prénom...">
+                    </div>
+                    <!-- POSTE CONTACT -->
+                    <div class="input-ctn">
+                      <label for="">POSTE</label>
+                      <input class="input" type="text" placeholder="Saisissez le poste…">
+                    </div>
+                  </div>
+                  <div>
+                    <span class="label label--blogger">Blogger</span>
+                    <span class="label label--independant">Indépendant</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-single__form__content__main">
+                <!-- NOM CONTACT -->
+                <div class="input-ctn">
+                  <label for="email">ADRESSE MAIL</label>
+                  <input class="input" type="email" name="email" id="email" placeholder="Saisissez le mail...">
+                </div>
+                <!-- PRENOM CONTACT -->
+                <div class="input-ctn">
+                  <label for="city">VILLE</label>
+                  <input class="input" name="city" id="city" type="text" placeholder="Saisissez la ville...">
+                </div>
+                <!-- POSTE CONTACT -->
+                <div class="input-ctn">
+                  <label for="mobilePhone">TELEPHONE MOBILE</label>
+                  <input class="input" type="tel" name="mobilePhone" id="mobilePhone" placeholder="Saisissez le numéro...">
+                </div>
+                <!-- POSTE CONTACT -->
+                <div class="input-ctn">
+                  <label for="postcode">CODE POSTAL</label>
+                  <input class="input" type="text" name="postcode" id="postcode" placeholder="Saisissez le code postal...">
+                </div>
+                <!-- POSTE CONTACT -->
+                <div class="input-ctn">
+                  <label for="proPhone">TELEPHONE PRO</label>
+                  <input class="input" name="proPhone" id="proPhone" type="tel" placeholder="Saisissez le numéro...">
+                </div>
+                <!-- POSTE CONTACT -->
+                <div class="input-ctn">
+                  <label for="adress">ADRESSE</label>
+                  <input class="input" name="adress" id="adress" type="text" placeholder="Saisissez l'adresse...">
+                </div>
+                <div class="input-ctn">
+                  <label for="twitter">TWITTER</label>
+                  <input class="input" type="text" name="twitter" id="twitter" placeholder="Saisissez l'id twitter...">
+                </div>
+                <!-- POSTE CONTACT -->
+                <div class="input-ctn">
+                  <label for="twitch">TWITCH</label>
+                  <input class="input" type="text" name="twitch" id="twitch" placeholder="Saisissez l'id Twitch...">
+                </div>
+              </div>
+
+
+              <div class="contact-single__form__content__consoles">
+                <!-- contact CONSOLE(S) -->
+                <span>CONSOLES</span>
+                <div>
+                  <input type="checkbox" id="play">
+                  <label for="play" class="play"></label>
+                </div>
+                <div>
+                  <input type="checkbox" id="switch">
+                  <label for="switch" class="switch"></label>
+                </div>
+                <div>
+                  <input type="checkbox" id="xbox">
+                  <label for="xbox" class="xbox"></label>
+                </div>
+                <div>
+                  <input type="checkbox" id="pc">
+                  <label for="pc" class="pc"></label>
+                </div>
+              </div>
+
+              <div class="contact-single__form__content__footer">
+                <!-- POSTE SITE(S) -->
+                <div class="input-ctn">
+                  <label for="website">SITE WEB</label>
+                  <div class="inputs">
+                    <div class="input-wrapper">
+                      <input class="input" type="text" name="website" id="website" placeholder="Saisissez le site...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-actions">
+                <input type="submit" class="add-account" value="Ajouter le contact">
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </form>
+  </section>
 {% endblock %}
