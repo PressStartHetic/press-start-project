@@ -23,6 +23,7 @@ class ClientsController extends BaseController
         $TagModel = new TagsModel();
         $tags     = $TagModel->getTagsByClient();
 
+
         return self::$twig->render('clients/list.html.twig',[
             'list' => $data,
             'tags' => $tags
@@ -36,7 +37,6 @@ class ClientsController extends BaseController
             $id = $request->get('id');
             $model = new ClientsModel();
             $data = $model->getClients($id);
-
             $TagModel = new TagsModel();
             $tags     = $TagModel->getTagsByClient($id);
 
