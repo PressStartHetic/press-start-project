@@ -9,6 +9,7 @@ use Helper\Controller\BaseController as BaseController;
 use Model\UsersModel;
 use Model\TagsModel;
 use Model\ClientsModel;
+use Controller\ClientsController;
 
 class FrontController extends BaseController
 {
@@ -25,8 +26,8 @@ class FrontController extends BaseController
      */
     public function homeAction(Request $request)
     {
-      $model    = new ClientsModel();
-      $data     = $model->getClients();
+      $data     = new ClientsController();
+      $data     = $data->getLastAction();
 
       $TagModel = new TagsModel();
       $tags     = $TagModel->getTagsByClient();
