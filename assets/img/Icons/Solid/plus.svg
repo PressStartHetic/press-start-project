@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons/Solid/plus</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-0.5%" y="-6.6%" width="101.0%" height="118.4%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-23.1%" y="-25.7%" width="146.2%" height="151.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <path d="M21,13.4921875 L21,10.5078125 C21,9.98828125 20.5700893,9.5703125 20.0357143,9.5703125 L14.4991071,9.5703125 L14.4991071,4.1875 C14.4991071,3.66796875 14.0691964,3.25 13.5348214,3.25 L10.4651786,3.25 C9.93080357,3.25 9.50089286,3.66796875 9.50089286,4.1875 L9.50089286,9.5703125 L3.96428571,9.5703125 C3.42991071,9.5703125 3,9.98828125 3,10.5078125 L3,13.4921875 C3,14.0117188 3.42991071,14.4296875 3.96428571,14.4296875 L9.50089286,14.4296875 L9.50089286,19.8125 C9.50089286,20.3320312 9.93080357,20.75 10.4651786,20.75 L13.5348214,20.75 C14.0691964,20.75 14.4991071,20.3320312 14.4991071,19.8125 L14.4991071,14.4296875 L20.0357143,14.4296875 C20.5700893,14.4296875 21,14.0117188 21,13.4921875 Z" id="path-3"></path>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#F7931E" offset="0%"></stop>
+            <stop stop-color="#D4145A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="nav-up" transform="translate(-1220.000000, -24.000000)">
+            <g filter="url(#filter-1)" id="ajouter">
+                <g filter="url(#filter-2)" transform="translate(1217.000000, 21.000000)">
+                    <g id="Icons/Solid/plus" transform="translate(8.000000, 6.000000)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <use id="plus" fill="#000000" fill-rule="nonzero" xlink:href="#path-3"></use>
+                        <g id="Orange-pink" mask="url(#mask-4)" fill="url(#linearGradient-5)" fill-rule="evenodd">
+                            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

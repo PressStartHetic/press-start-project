@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons/Solid/user-circle</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-2.8%" y="-0.4%" width="107.8%" height="101.2%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="2" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <path d="M2.3125,12 C2.3125,6.64972656 6.64972656,2.3125 12,2.3125 C17.3502734,2.3125 21.6875,6.64972656 21.6875,12 C21.6875,17.3502734 17.3502734,21.6875 12,21.6875 C6.64972656,21.6875 2.3125,17.3502734 2.3125,12 Z M5.14277344,16.9167187 C6.67410156,19.0486719 9.17472656,20.4375 12,20.4375 C14.8252734,20.4375 17.3258984,19.0486719 18.8572266,16.9167187 C18.7345313,15.8624219 17.9717969,14.9773437 16.9221484,14.7149219 L15.6575391,14.3987891 C14.6392578,15.2730469 13.3563281,15.75 12,15.75 C10.6436719,15.75 9.36074219,15.2730469 8.34242188,14.3987891 L7.0778125,14.7149219 C6.02820313,14.9773437 5.26546875,15.8624219 5.14277344,16.9167187 Z M7.625,10.125 C7.625,12.54125 9.58375,14.5 12,14.5 C14.41625,14.5 16.375,12.54125 16.375,10.125 C16.375,7.70875 14.41625,5.75 12,5.75 C9.58375,5.75 7.625,7.70875 7.625,10.125 Z" id="path-2"></path>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#F7931E" offset="0%"></stop>
+            <stop stop-color="#D4145A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="nav-droite-hover" transform="translate(-15.000000, -405.000000)">
+            <g id="nav-droite" filter="url(#filter-1)">
+                <g id="profil" transform="translate(15.000000, 405.000000)">
+                    <g id="Icons/Solid/user-circle">
+                        <mask id="mask-3" fill="white">
+                            <use xlink:href="#path-2"></use>
+                        </mask>
+                        <use id="user-circle" fill="#000000" fill-rule="nonzero" xlink:href="#path-2"></use>
+                        <g id="Orange-pink" mask="url(#mask-3)" fill="url(#linearGradient-4)" fill-rule="evenodd">
+                            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

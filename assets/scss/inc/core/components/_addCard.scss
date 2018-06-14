@@ -1,0 +1,26 @@
+.add_card {
+	position: absolute;
+	bottom: -180%;
+	right: 30px;
+	background: $dark-bg;
+	border-radius: 5px;
+	z-index: 10;
+	width: 254px;
+	box-shadow: 0 0 6px 0 rgba(0,0,0,0.50);
+	li:hover, li:nth-child(2n):hover {
+		background: $orange;
+	}
+	a {
+		display: flex;
+		padding: 10px 0;
+		align-items:center;
+		font-size: 12px;
+		text-align: left;
+		text-decoration: none;
+		color:#fff;
+		justify-content:center;
+	}
+	li:nth-child(2n) {
+		background: $black;
+	}
+}

@@ -100,13 +100,13 @@ class UsersController extends BaseController
     /**
      * Profile page
      *
-     * Route("/profile", name="profile")
+     * Route("/profil", name="profil")
      * @Method({"GET"})
      */
-    public function profileAction(Request $request)
+    public function profilAction(Request $request)
     {
       if (self::$auth->isLoggedIn()) {
-        return self::$twig->render('auth/profile.html.twig', array(
+        return self::$twig->render('auth/profil.html.twig', array(
           'user' => self::$auth,
         ));
       } else {

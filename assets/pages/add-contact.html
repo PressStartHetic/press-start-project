@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Ajouter un contact</title>
+        <link rel="stylesheet" href="../../css/style.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300i,400,700,900|Orbitron:400,500,700" rel="stylesheet">
+    </head>
+    <body>
+        <section class="contact-single add-contact-page">
+
+            <!-- SECTION INFORMATIONS -->
+            <div class="section section-informations">
+                <!-- HEADER -->
+                <div class="contact-single__head">
+                    <!-- BACK TO CONTACT LIST -->
+                    <a href="/pages/contacts.html">
+                        <img src="../img/back.png" alt="retour arrière">
+                    </a>
+                    <!-- NOM DU CONTACT -->
+                    <h1 class="contact-single__title">Ajouter un contact</h1>
+                </div>
+                <!-- BLOCS -->
+                <form>
+                    <div class="contact-single__boxes">
+                        <!-- FORMULAIRE -->
+                        <div class="left-box">
+                            <div class="contact-single__boxes__banner">
+                                <h2>INFORMATIONS</h2>
+                                <img src="../img/valid.svg" alt="modifier le formulaire">
+                            </div>
+                            <div class="contact-single__form__content">
+                                <div class="contact-single__form__content__head">
+                                    <!-- PHOTO CONTACT -->
+                                    <figure>
+                                        <img src="../img/default-pic.jpg" alt=""/>
+                                    </figure>
+                                    <div class="main-infos">
+                                        <div>
+                                            <!-- NOM CONTACT -->
+                                            <div class="input-ctn">
+                                                <label for="">NOM</label>
+                                                <input class="input" type="text" placeholder="Saisissez le nom…">
+                                            </div>
+                                            <!-- PRENOM CONTACT -->
+                                            <div class="input-ctn">
+                                                <label for="">PRENOM</label>
+                                                <input class="input" type="text" placeholder="Saisissez le prénom...">
+                                            </div>
+                                            <!-- POSTE CONTACT -->
+                                            <div class="input-ctn">
+                                                <label for="">POSTE</label>
+                                                <input class="input" type="text" placeholder="Saisissez le poste…">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span class="label label--blogger">Blogger</span>
+                                            <span class="label label--independant">Indépendant</span>
+                                            <a href="">
+                                                <img class="add-tag" src="../img/ajouter-tag.svg" alt="ajouter un tag">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact-single__form__content__main">
+                                    <!-- NOM CONTACT -->
+                                    <div class="input-ctn">
+                                        <label for="">MOT DE PASSE</label>
+                                        <input class="input" type="password" placeholder="Saisissez le mot de passe...">
+                                    </div>
+
+                                    <!-- NOM CONTACT -->
+                                    <div class="input-ctn">
+                                        <label for="">NOUVEAU MOT DE PASSE</label>
+                                        <input class="input" type="mail" placeholder="Saisissez le nouveau mot de passe...">
+                                    </div>
+
+                                    <!-- NOM CONTACT -->
+                                    <div class="input-ctn">
+                                        <label for="">ADRESSE MAIL</label>
+                                        <input class="input" type="mail" placeholder="Saisissez le mail...">
+                                    </div>
+                                    <!-- PRENOM CONTACT -->
+                                    <div class="input-ctn">
+                                        <label for="">VILLE</label>
+                                        <input class="input" type="text" placeholder="Saisissez la ville...">
+                                    </div>
+                                    <!-- POSTE CONTACT -->
+                                    <div class="input-ctn">
+                                        <label for="">TELEPHONE MOBILE</label>
+                                        <input class="input" type="tel" placeholder="Saisissez le numéro...">
+                                    </div>
+                                    <!-- POSTE CONTACT -->
+                                    <div class="input-ctn">
+                                        <label for="">CODE POSTAL</label>
+                                        <input class="input" type="text" placeholder="Saisissez le code postal...">
+                                    </div>
+                                    <!-- POSTE CONTACT -->
+                                    <div class="input-ctn">
+                                        <label for="">TELEPHONE PRO</label>
+                                        <input class="input" type="tel" placeholder="Saisissez le numéro...">
+                                    </div>
+                                    <!-- POSTE CONTACT -->
+                                    <div class="input-ctn">
+                                        <label for="">ADRESSE</label>
+                                        <input class="input" type="text" placeholder="Saisissez l'adresse...">
+                                    </div>
+                                </div>
+
+                                <div class="contact-single__form__content__consoles">
+                                    <!-- contact CONSOLE(S) -->
+                                    <span>CONSOLES</span>
+                                    <div>
+                                        <input type="checkbox" id="play">
+                                        <label for="play" class="play"></label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="switch">
+                                        <label for="switch" class="switch"></label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="xbox">
+                                        <label for="xbox" class="xbox"></label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="pc">
+                                        <label for="pc" class="pc"></label>
+                                    </div>
+                                </div>
+
+                                <div class="contact-single__form__content__footer">
+                                    <!-- POSTE SITE(S) -->
+                                    <div class="input-ctn">
+                                        <label for="">SITES WEB</label>
+                                        <div class="inputs">
+                                            <div class="input-wrapper">
+                                                <input class="input" type="text" placeholder="Saisissez le site...">
+                                                <a href="">
+                                                    <img src="../img/open-link.svg" alt="ouvrir le lien">
+                                                </a>
+                                                <a href="">
+                                                    <img src="../img/supprimer-lien.svg" alt="supprimer le lien">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <img class="add-site" src="../img/ajouter-tag.svg" alt="ajouter un site">
+                                    </div>
+                                </div>
+                                <div class="profile-actions">
+                                    <input type="button" class="add-account" value="Ajouter ce compte">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ASIDE BLOCS -->
+                        <aside>
+                            <section>
+                                <div class="contact-single__boxes__banner">
+                                    <h2>NOTES</h2>
+                                    <img src="../img/valid.svg" alt="modifier le formulaire">
+                                </div>
+                                <!-- NOTES -->
+                                <div class="contact-single__boxes__content">
+                                    <textarea name="" spellcheck="false"></textarea>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="contact-single__boxes__banner">
+                                    <h2>ROLE</h2>
+                                </div>
+                                <div class="checkbox-choice">
+                                    <div>
+                                        <input type="checkbox" id="admin">
+                                        <label for="admin" class="admin"></label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="client">
+                                        <label for="client" class="client"></label>
+                                    </div>
+                                </div>
+                            </section>
+                        </aside>
+                    </div>
+                </div>
+            </form>
+
+            <!-- MODALES CONTACT -->
+            <div class="modals-ctn">
+                <form class="modals-ctn__item modals-ctn__item--delete">
+                    <h4>Suppression de compte</h4>
+                    <p>Voulez-vous vraiment supprimer votre compte ? Cette action entraînera la suppression définitive de vos informations.</p>
+                    <div>
+                        <input class="btn btn--validate" type="button" value="Confirmer">
+                        <input class="btn btn--warning" type="button" value="Annuler">
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <script>
+            var clonedInput = document.querySelector('.input-wrapper');
+            var newInput = clonedInput.cloneNode(true);
+            var parentDiv = clonedInput.parentNode;
+            console.log(newInput);
+
+            document.querySelector('.add-site').addEventListener('click', function () {
+                parentDiv.appendChild(newInput);
+            })
+        </script>
+    </body>
+</html>
