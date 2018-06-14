@@ -13,6 +13,14 @@
                 <li>youtube: {{ client.youtube }}</li>
                 <li>twitter: {{ client.twitter }}</li>
                 <li>twitch: {{ client.twitch }}</li>
+                <li>Tags:</li>
+                <li>
+                  <ul>
+                    {% for tag in tags %}
+                        <li>{{ tag.name }}</li>
+                    {% endfor %}
+                  </ul>
+                </li>
                 <li><a href="/clients/list/{{ client.id }}/edit">Edit</a></li>
             </ul>
         </div>
