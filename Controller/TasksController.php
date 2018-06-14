@@ -9,6 +9,8 @@ class TasksController extends BaseController
 
     public function listTasks()
     {
-        return self::$twig->render('taches/list.html.twig');
+        return self::$twig->render('taches/list.html.twig', array(
+            'isAdmin' => self::$isAdmin
+        ));
     }
 }

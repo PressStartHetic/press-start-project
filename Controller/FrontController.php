@@ -10,6 +10,7 @@ use Model\UsersModel;
 use Model\TagsModel;
 use Model\ClientsModel;
 use Controller\ClientsController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class FrontController extends BaseController
 {
@@ -32,10 +33,20 @@ class FrontController extends BaseController
       $TagModel = new TagsModel();
       $tags     = $TagModel->getTagsByClient();
 
-      return self::$twig->render('default/home.html.twig',[
-        'clients' => $data,
-        'tags'    => $tags,
-        'user'    => self::$auth
-      ]);
+      $user = self::$auth;
+
+      $userId = $user->getUserId();
+
+      if (!self::$isAdmin) {
+
+          return new RedirectResponse('/users/list/'.$userId);
+      } else {
+          return self::$twig->render('default/home.html.twig',[
+              'clients' => $data,
+              'tags'    => $tags,
+              'user'    => $user,
+              'isAdmin' => self::$isAdmin
+          ]);
+      }
     }
 }
