@@ -26,7 +26,8 @@ class FrontController extends BaseController
      */
     public function homeAction(Request $request)
     {
-      $data     = ClientsController::getLastAction();
+      $data     = new ClientsController();
+      $data     = $data->getLastAction();
 
       $TagModel = new TagsModel();
       $tags     = $TagModel->getTagsByClient();
