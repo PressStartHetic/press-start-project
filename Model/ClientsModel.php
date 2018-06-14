@@ -39,7 +39,8 @@ class ClientsModel extends Model
                       facebook,
                       youtube,
                       twitch,
-                      twitter
+                      twitter,
+                      job
                     FROM clients';
 
             $requete = self::$db->query($sql);
@@ -64,7 +65,8 @@ class ClientsModel extends Model
                       facebook,
                       youtube,
                       twitch,
-                      twitter
+                      twitter,
+                      job
                     FROM clients
                     WHERE id = :id';
             $requete = self::$db->prepare($sql);
@@ -105,7 +107,7 @@ class ClientsModel extends Model
                       youtube,
                       twitch,
                       twitter,
-                      tags
+                      job
                     )
                     VALUES(
                       NULL,
@@ -126,7 +128,7 @@ class ClientsModel extends Model
                       :youtube,
                       :twitch,
                       :twitter,
-                      :tags
+                      :job
                       )';
         $requete = self::$db->prepare($sql);
         $requete->bindValue(':userId', (isset($statement['userId']))? $statement['userId'] : 0 , PDO::PARAM_INT);
@@ -146,7 +148,7 @@ class ClientsModel extends Model
         $requete->bindValue(':youtube', (isset($statement['youtube']))? $statement['youtube'] : "" , PDO::PARAM_STR);
         $requete->bindValue(':twitch', (isset($statement['twitch']))? $statement['twitch'] : "" , PDO::PARAM_STR);
         $requete->bindValue(':twitter', (isset($statement['twitter']))? $statement['twitter'] : "" , PDO::PARAM_STR);
-        $requete->bindValue(':tags', (isset($statement['tags']))? $statement['tags'] : "" , PDO::PARAM_STR);
+        $requete->bindValue(':job', (isset($statement['job']))? $statement['job'] : "" , PDO::PARAM_STR);
         $requete->execute();
 
         if ($requete->errorCode() !== "00000") {
@@ -178,7 +180,7 @@ class ClientsModel extends Model
                       youtube = :youtube,
                       twitch = :twitch,
                       twitter = :twitter,
-                      tags = :tags
+                      job = :job
                     WHERE id = :id';
         $requete = self::$db->prepare($sql);
         $requete->bindValue(':id', $id, PDO::PARAM_INT);
@@ -198,7 +200,7 @@ class ClientsModel extends Model
         $requete->bindValue(':youtube', (isset($statement['youtube']))? $statement['youtube'] : "" , PDO::PARAM_STR);
         $requete->bindValue(':twitch', (isset($statement['twitch']))? $statement['twitch'] : "" , PDO::PARAM_STR);
         $requete->bindValue(':twitter', (isset($statement['twitter']))? $statement['twitter'] : "" , PDO::PARAM_STR);
-        $requete->bindValue(':tags', (isset($statement['tags']))? $statement['tags'] : "" , PDO::PARAM_STR);
+        $requete->bindValue(':job', (isset($statement['job']))? $statement['job'] : "" , PDO::PARAM_STR);
         $requete->execute();
 
         if ($requete->errorCode() !== "00000") {

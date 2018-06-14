@@ -132,11 +132,11 @@ class UsersController extends BaseController
             $client['userId'] = $userId;
 
             $this->resetPasswordAction();
-
             $clientRepository = new ClientsModel();
             $clientRepository->addClient($client);
 
-            return new RedirectResponse('/');
+
+            return new RedirectResponse('/clients/list');
           }
           catch (\Delight\Auth\InvalidEmailException $e) {
             // invalid email address
