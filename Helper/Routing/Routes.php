@@ -63,4 +63,8 @@ $routes->add('users_update', new Route('/users/update/{id}', array(
     '_controller' => 'Controller\UsersController::updateUserAction',
 )));
 
+$routes->add('users_change_password', new Route('/users/update/password/{id}', array(
+    '_controller' => 'Controller\UsersController::changeUserPassword',
+)));
+
 return $routes;

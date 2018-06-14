@@ -21,6 +21,22 @@
             <input type="submit" value="update user">
         </div>
 </form>
+    <form method="post" action="/users/update/password/{{ user.id }}">
+        <h1>Change password</h1>
+        <div>
+            <ul>
+                <li>
+                    <label for="oldPassword">old password:</label>
+                    <input type="password" name="oldPassword" id="oldPassword"/>
+                </li>
+                <li>
+                    <label for="newPassword">new password:</label>
+                    <input type="password" name="newPassword" id="newPassword">
+                </li>
+            </ul>
+            <input type="submit" value="change password">
+        </div>
+    </form>
     <p>item role : {{ user.role }}</p>
 
 {% if client %}
