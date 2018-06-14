@@ -128,7 +128,6 @@ class UsersController extends BaseController
           try {
             $pass = $this->passwordGenerator();
             $userId = self::$auth->admin()->createUser($_POST['email'], $pass, $_POST['username']);
-
             $client = $request->request->all();
             $client['userId'] = $userId;
 
@@ -156,7 +155,7 @@ class UsersController extends BaseController
         return self::$twig->render('clients/add.html.twig');
       } else {
 
-        return new RedirectResponse('/login');
+        return new RedirectResponse('clients/add.html.twig');
       }
     }
 
