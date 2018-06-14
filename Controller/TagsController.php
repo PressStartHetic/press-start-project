@@ -37,9 +37,6 @@ class TagsController extends BaseController
         $res           = $router->generate('tag_list');
 
         return new RedirectResponse($res);
-      } else {
-
-        return self::$twig->render('tags/add.html.twig');
       }
     }
 

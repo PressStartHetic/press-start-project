@@ -22,8 +22,8 @@ class TagsModel extends Model
     public function getTags($id = null){
         if($id === null){
             $sql = 'SELECT
-                      id,
-                      name
+                      tags.*,
+                      (SELECT COUNT(*) FROM clients_tags WHERE tags.id = clients_tags.tag_id) AS count
                     FROM tags';
 
             $requete = self::$db->query($sql);
