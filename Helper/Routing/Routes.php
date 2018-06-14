@@ -59,4 +59,8 @@ $routes->add('users_delete', new Route('/users/delete/{id}', array(
     '_controller' => 'Controller\UsersController::deleteUserAction',
 )));
 
+$routes->add('users_update', new Route('/users/update/{id}', array(
+    '_controller' => 'Controller\UsersController::updateUserAction',
+)));
+
 return $routes;

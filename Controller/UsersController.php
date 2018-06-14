@@ -315,4 +315,17 @@ class UsersController extends BaseController
             return new Response('Error');
         }
     }
+
+    public function updateUserAction(Request $request) {
+
+        if ($request->get('id')) {
+            $id = $request->get('id');
+            $model = new UsersModel();
+            $model->updateUser($_POST, $id);
+
+            return new RedirectResponse('/users/list');
+        } else {
+            return new Response('Error');
+        }
+    }
 }
