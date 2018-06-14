@@ -330,25 +330,12 @@ class UsersController extends BaseController
     }
 
     public function changeUserPassword(Request $request) {
-        $id = $request->get('id');
         try {
             self::$auth->changePassword($_POST['oldPassword'], $_POST['newPassword']);
-            return new RedirectResponse('/users/list/'.$id);
-            // password has been changed
-        }
-        catch (NotLoggedInException $e) {
-            // not logged in
             return new RedirectResponse('/login');
-        }
-        catch (InvalidPasswordException $e) {
-            // invalid password(s)
-            dump('Mauvais password');
-            return new RedirectResponse('/users/list/'.$id);
-        }
-        catch (TooManyRequestsException $e) {
-            // too many requests
-            dump('Trop de requêtes');
-            return new RedirectResponse('/users/list/'.$id);
+            // password has been changed
+        } catch (\Exception $e) {
+            dump($e);
         }
     }
 
