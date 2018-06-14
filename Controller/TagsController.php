@@ -22,7 +22,8 @@ class TagsController extends BaseController
         $data  = $model->getTags();
 
         return self::$twig->render('tags/list.html.twig',[
-            'tags' => $data
+            'tags' => $data,
+            'isAdmin' => self::$isAdmin
         ]);
     }
 
@@ -37,9 +38,6 @@ class TagsController extends BaseController
         $res           = $router->generate('tag_list');
 
         return new RedirectResponse($res);
-      } else {
-
-        return self::$twig->render('tags/add.html.twig');
       }
     }
 

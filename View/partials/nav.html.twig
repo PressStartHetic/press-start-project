@@ -1,6 +1,8 @@
 <nav class="sidenav">
   <div class="sidenav__logo-container">
-    <img src="/web/img/logo-white.png" alt="Logo Press Start">
+    <a href="/">
+      <img src="/web/img/logo-white.png" alt="Logo Press Start">
+    </a>
   </div>
   {% if isAdmin %}
   <ul class="sidenav__list">
@@ -22,6 +24,11 @@
     <li class="sidenav__list-item">
       <a href="/users/list">
         <img src="/web/img/Icons/Solid/user-circle.svg">Utilisateurs
+      </a>
+    </li>
+    <li class="sidenav__list-item">
+      <a href="/tags/list">
+        <img src="/web/img/Icons/Solid/clipboard.svg">Tags
       </a>
     </li>
   </ul>

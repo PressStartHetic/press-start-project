@@ -91,6 +91,7 @@ class UsersController extends BaseController
 
               return self::$twig->render('auth/add-user.html.twig', array(
                   'randomPassword' => $randomPassword,
+                  'isAdmin' => self::$isAdmin
               ));
           }
       }
