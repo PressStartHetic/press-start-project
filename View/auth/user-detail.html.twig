@@ -1,29 +1,84 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
+<form method="post" action="/users/update/{{ user.id }}">
     <h1>Users authentication info</h1>
         <div>
             <ul>
-                <li>id: {{ user.id }}</li>
-                <li>pseudo: {{ user.username }}</li>
-                <li>email: {{ user.email }}</li>
+                <li>
+                    <label for="id">id:</label>
+                    <input type="text" name="id" value="{{ user.id }}">
+                </li>
+                <li>
+                    <label for="username">username:</label>
+                    <input type="text" name="username" value="{{ user.username }}">
+                </li>
+                <li>
+                    <label for="email">email:</label>
+                    <input type="text" name="email" value="{{ user.email }}">
+                </li>
             </ul>
+            <input type="submit" value="update user">
         </div>
+</form>
+    <form method="post" action="/users/update/password/{{ user.id }}">
+        <h1>Change password</h1>
+        <div>
+            <ul>
+                <li>
+                    <label for="oldPassword">old password:</label>
+                    <input type="password" name="oldPassword" id="oldPassword"/>
+                </li>
+                <li>
+                    <label for="newPassword">new password:</label>
+                    <input type="password" name="newPassword" id="newPassword">
+                </li>
+            </ul>
+            <input type="submit" value="change password">
+        </div>
+    </form>
     <p>item role : {{ user.role }}</p>
 
 {% if client %}
+    <form method="post" action="/clients/list/{{ user.id }}/edit">
     <h1>Users profile info</h1>
         <div>
             <ul>
-                <li>pseudo: {{ client.pseudonyme }}</li>
-                <li>firstname: {{ client.firstname }}</li>
-                <li>lastname: {{ client.lastname }}</li>
-                <li>email de réception de contact : {{ client.clientMail }}</li>
-                <li>facebook: {{ client.facebook }}</li>
-                <li>twitter: {{ client.twitter }}</li>
-                <li>youtube: {{ client.youtube }}</li>
-                <li>twitch: {{ client.twitch }}</li>
+                <li>
+                    <label for="pseudo">pseudo:</label>
+                    <input type="text" name="pseudo" value="{{ client.pseudonyme }}">
+                </li>
+                <li>
+                    <label for="firstname">firstname:</label>
+                    <input type="text" name="firstname" value="{{ client.firstname }}">
+                </li>
+                <li>
+                    <label for="lastname">lastname:</label>
+                    <input type="text" name="lastname" value="{{ client.lastname }}">
+                </li>
+                <li>
+                    <label for="clientMail">email de réception de contact:</label>
+                    <input type="text" name="clientMail" value="{{ client.clientMail }}">
+                </li>
+                <li>
+                    <label for="facebook">facebook:</label>
+                    <input type="text" name="facebook" value="{{ client.facebook }}">
+                </li>
+                <li>
+                    <label for="twitter">twitter:</label>
+                    <input type="text" name="twitter" value="{{ client.twitter }}">
+                </li>
+                <li>
+                    <label for="twitch">twitch:</label>
+                    <input type="text" name="twitch" value="{{ client.twitch }}">
+                </li>
+                <li>
+                    <label for="youtube">youtube:</label>
+                    <input type="text" name="youtube" value="{{ client.youtube }}">
+                </li>
             </ul>
+            <input type="submit" value="update clients">
         </div>
+    </form>
 {% endif %}
 {% endblock %}
