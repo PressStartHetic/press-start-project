@@ -171,7 +171,7 @@ class UsersController extends BaseController
                 ));
 
                 $mail = new MailController();
-                $mail->sendMail($body, $_POST['email']);
+                $mail->sendMail($body, 'Nouveau compte créé sur Press Start :)', $_POST['email']);
             });
 
             // request has been generated
