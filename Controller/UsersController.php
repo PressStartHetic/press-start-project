@@ -16,6 +16,7 @@ use \Delight\Auth\InvalidSelectorTokenPairException;
 use \Delight\Auth\TokenExpiredException;
 use \Delight\Auth\ResetDisabledException;
 use \Delight\Auth\UnknownIdException;
+use \Delight\Auth\NotLoggedInException;
 use \Delight\Auth\Role;
 use Controller\MailController;
 use Model\UsersModel;
@@ -323,9 +324,32 @@ class UsersController extends BaseController
             $model = new UsersModel();
             $model->updateUser($_POST, $id);
 
-            return new RedirectResponse('/users/list');
+            return new RedirectResponse('/users/list/'.$id);
         } else {
             return new Response('Error');
+        }
+    }
+
+    public function changeUserPassword(Request $request) {
+        $id = $request->get('id');
+        try {
+            self::$auth->changePassword($_POST['oldPassword'], $_POST['newPassword']);
+            return new RedirectResponse('/users/list/'.$id);
+            // password has been changed
+        }
+        catch (NotLoggedInException $e) {
+            // not logged in
+            return new RedirectResponse('/login');
+        }
+        catch (InvalidPasswordException $e) {
+            // invalid password(s)
+            dump('Mauvais password');
+            return new RedirectResponse('/users/list/'.$id);
+        }
+        catch (TooManyRequestsException $e) {
+            // too many requests
+            dump('Trop de requêtes');
+            return new RedirectResponse('/users/list/'.$id);
         }
     }
 }
