@@ -97,23 +97,6 @@ class UsersController extends BaseController
         return new RedirectResponse('/');
     }
 
-    /**
-     * Profile page
-     *
-     * Route("/profil", name="profil")
-     * @Method({"GET"})
-     */
-    public function profilAction(Request $request)
-    {
-      if (self::$auth->isLoggedIn()) {
-        return self::$twig->render('auth/profil.html.twig', array(
-          'user' => self::$auth,
-        ));
-      } else {
-
-        return new RedirectResponse('/login');
-      }
-    }
 
     /**
      * Admin Add Clients
@@ -149,7 +132,9 @@ class UsersController extends BaseController
           }
         } else {
 
-          return self::$twig->render('clients/add.html.twig');
+          return self::$twig->render('clients/add.html.twig', array(
+              'isAdmin' => self::$isAdmin
+          ));
         }
 
         return self::$twig->render('clients/add.html.twig');
@@ -164,7 +149,7 @@ class UsersController extends BaseController
         try {
             self::$auth->forgotPassword($_POST['email'], function ($selector, $token) {
                 $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-                $url = $actual_link . '/password?selector=' . \urlencode($selector) . '&token=' . \urlencode($token);
+                $url = $actual_link . '/password?selector=' . \urlencode($selector) . '&token=' . \urlencode($token) . '&mail=' . $_POST['email'];
 
                 $body = self::$twig->render('mail/reset.html.twig', array(
                     'link' => $url,
@@ -202,7 +187,8 @@ class UsersController extends BaseController
         if(count($_POST) > 0){
             try {
                 self::$auth->resetPassword($_POST['selector'], $_POST['token'], $_POST['password']);
-
+                $mail = $_GET['mail'];
+                self::$auth->login($mail, $_POST['password']);
                 return new RedirectResponse('/');
             }
             catch (InvalidSelectorTokenPairException $e) {
@@ -289,9 +275,11 @@ class UsersController extends BaseController
             $model = new UsersModel();
             $data = $model->getUsers($id);
 
+
             return self::$twig->render('auth/user-detail.html.twig',[
                 'user' => $data['user'],
                 'client' => $data['client'],
+                'isAdmin' => self::$isAdmin
             ]);
         } else {
             return new Response('Error');

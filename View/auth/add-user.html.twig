@@ -1,17 +1,50 @@
 {% extends 'layout.html.twig' %}
-
 {% block body %}
-  <h1>Add user</h1>
-  <form method="post" action="#">
-    <p>
-      <label for="username">username</label>
-<input type="text" name="username" id="username">
-</p>
-<p>
-  <label for="email">email</label>
-  <input type="email" name="email" id="email">
-</p>
-<input type="hidden" name="password" id="password" value="{{ randomPassword }}">
-<input type="submit" value="add">
-</form>
+{% include 'partials/nav.html.twig' %}
+{% include 'partials/header.html.twig' %}
+
+  <section class="contact-single add-contact-page">
+  <!-- SECTION INFORMATIONS -->
+    <div class="section section-informations">
+    <!-- HEADER -->
+      <div class="contact-single__head">
+      <!-- BACK TO CONTACT LIST -->
+        <a href="/clients/list">
+          <img src="../web/img/back.png" alt="retour arrière">
+        </a>
+      <!-- NOM DU CONTACT -->
+        <h1 class="contact-single__title">Ajouter un utilisateur</h1>
+      </div>
+    <!-- BLOCS -->
+      <form method="post" action="#">
+        <div class="user-single__boxes">
+        <!-- FORMULAIRE -->
+          <div class="left-box">
+            <div class="username-single__boxes__banner">
+              <h2>INFORMATIONS</h2>
+            </div>
+            <div class="user-single__form__content">
+              <div class="user-single__form__content__head">
+                <div class="main-infos">
+                  <!-- PRENOM CONTACT -->
+                  <div class="input-ctn-username">
+                    <label for="username">username</label>
+                    <input type="text" name="username" id="username" placeholder="Saisissez l'username de l'utilisateur">
+                  </div>
+                  <div class="input-ctn-username">
+                    <label for="email">email</label>
+                    <input type="email" name="email" id="email" placeholder="Saisissez l'email de l'utilisateur">
+                  </div>
+                  <input type="hidden" name="password" id="password" value="{{ randomPassword }}">
+                  </div>
+                </div>
+              </div>
+              <div class="profile-actions">
+                <input type="submit" class="add-account" value="Ajouter le contact">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
 {% endblock %}
