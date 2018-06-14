@@ -1,32 +1,102 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1>Clients</h1>
-    {% for item in list %}
-        <div>
-            <ul>
-                <li>id: {{ item.id }}</li>
-                <li>pseudo: {{ item.pseudonyme }}</li>
-                <li>prénom: {{ item.firstname }}</li>
-                <li>nom: {{ item.lastname }}</li>
-                <li>mail: {{ item.email }}</li>
-                <li>facebook: {{ item.facebook }}</li>
-                <li>youtube: {{ item.youtube }}</li>
-                <li>twitter: {{ item.twitter }}</li>
-                <li>twitch: {{ item.twitch }}</li>
-                <li>Tags:</li>
-                <li>
-                  <ul>
-                    {% for tag in tags %}
-                      {% if item.id == tag.client_id %}
-                        <li>{{ tag.name }}</li>
-                      {% endif %}
-                    {% endfor %}
-                  </ul>
-                </li>
-                <li><a href="/clients/list/{{item.id }}">Profile</a></li>
-                <li><a href="/clients/delete/{{item.id }}">Delete</a></li>
-            </ul>
+    <nav class="sidenav">
+        <div class="sidenav__logo-container">
+            <img src="../web/img/logo-white.png" alt="Logo Press Start">
         </div>
-    {% endfor %}
+        <ul class="sidenav__list">
+            <li class="sidenav__list-item">
+                <a href="/" title="">
+                    <img src="../web/img/Icons/Regular/dashboard.svg">Dashboard
+                </a>
+            </li>
+            <li class="sidenav__list-item">
+                <a href="/clients/list" title="">
+                    <img src="../web/img/Icons/Regular/address-book.svg">Contacts
+                </a>
+            </li>
+            <li class="sidenav__list-item">
+                <a href="" title="">
+                    <img src="../web/img/Icons/Solid/clipboard.svg">Tâches
+                </a>
+            </li>
+            <li class="sidenav__list-item">
+                <a href="" title="">
+                    <img src="../web/img/Icons/Solid/user-circle.svg">Mon profil
+                </a>
+            </li>
+        </ul>
+        <!-- DÉCONNEXION -->
+        <div class="sidenav__log-out">
+            <img src="../web/img/Icons/Solid/toggle-off.png">
+            <a href="/logout">Déconnexion</a>
+        </div>
+    </nav>
+    <!-- fin nav -->
+<!--SECTION PAGE LISTE CONTACTS-->
+<section class="contacts">
+    <!-- HEAD PAGE CONTACTS -->
+    <div class="contacts__head">
+        <!-- TITRE PAGE -->
+        <div class="contacts__intro">
+            <h1 class="contacts__title">Contacts</h1>
+            <h2 class="contacts__introTxt">Tous vos contacts sont organisés sur cette page. Vous pouvez les éditer et les supprimer autant que vous le voulez.</h2>
+        </div>
+        <!-- FORM RECHERCHE DES CONTACTS -->
+        <div class="contacts__head__btn">
+            <!-- BOUTON AJOUT -->
+            <a href="/clients/add">
+                <img src="../../web/img/plus.svg" alt="ajouter un contact"/>
+            </a>
+        </div>
+    </div>
+
+    <!-- LISTE DES CONTACTS -->
+    <div class="contacts__list">
+
+        {% for item in list %}
+        <!-- UNE FICHE CONTACT -->
+        <article class="contactCard">
+                <!-- PROFILE PICTURE -->
+                <div class="contactCard__main-infos">
+                    <figure class="contactCard__main-infos__figure">
+                        <a href="/clients/list/{{item.id }}">
+                            <img class="contactCard__main-infos__img" src="../web/img/Maincartoonlink.png" alt="Link">
+                        </a>
+                    </figure>
+                    <div>
+                        <!-- CONTACT NAME -->
+                        <h3 class="contactCard__main-infos__name">
+                            <a href="/clients/list/{{item.id }}">
+                                {{ item.pseudonyme }}
+                            </a>
+                        </h3>
+                        <!-- CONTACT TAGS -->
+                        <span class="contactCard__main-tags">Journaliste Jeuxvidéos.com</span>
+                    </div>
+                </div>
+                <!-- CONTACT MAIL -->
+                <div class="contactCard__mail">{{ item.email }}</div>
+                <!-- CONTACT LOCATION -->
+                <div class="contactCard__location">{{ item.city }}</div>
+                <!-- CONTACT TAGS -->
+                <div class="contactCard__tags">
+                    {% for tag in tags %}
+                        {% if item.id == tag.client_id %}
+                            <span class="label label--{{ tag.name }}">{{ tag.name }}</span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <!-- EDIT PICTO -->
+                <div class="contactCard__edit">
+                    <a href="/clients/list/{{item.id }}">
+                        <img src="../web/img/edit.svg" alt="éditer"/>
+                    </a>
+                    <img class="delete-account" src="../web/img/trash-alt.svg" alt="supprimer le contact"/>
+                </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}

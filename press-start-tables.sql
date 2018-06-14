@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 14, 2018 at 12:24 PM
+-- Generation Time: Jun 14, 2018 at 03:49 PM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -40,6 +40,7 @@ CREATE TABLE `clients` (
   `city` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `postcode` int(11) DEFAULT NULL,
   `adress` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `job` text COLLATE utf8mb4_unicode_ci,
   `consoles` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `website` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `notes` text COLLATE utf8mb4_unicode_ci,
@@ -53,16 +54,15 @@ CREATE TABLE `clients` (
 -- Dumping data for table `clients`
 --
 
-INSERT INTO `clients` (`id`, `userId`, `firstname`, `lastname`, `pseudonyme`, `email`, `mobile_phone`, `pro_phone`, `city`, `postcode`, `adress`, `consoles`, `website`, `notes`, `facebook`, `youtube`, `twitch`, `twitter`) VALUES
-(1, 35, 'Pika', 'Chu', 'pikachu', 'pika@pika.chu', 123456789, 0, 'Bourg Palette', 11111, '12 maison du fond', '', 'www.pikachu.fr', '', 'pikachu', 'pikachu', '', 'pikachu'),
-(2, 36, 'Julie', 'Manhes', 'Julie', 'julie@manhes.fr', 123456789, 0, 'Paris', 75000, '162 avenue de rivoli', '', 'www.jaimlebio.fr', '', 'julie', '', '', 'julie'),
-(3, 37, 'Lara', 'Croft', 'Lara', 'lara@croft.fr', 123456789, 123456789, 'Londres', 55555, 'croft manor', '', 'www.lara.croft', '', '', '', 'crystaldynamics', ''),
-(4, 38, 'Link', '', 'zelda', 'legendofzelda@hyrule.fr', 123455628, 0, 'Cocorico', 0, '5 rue de la triforce', '', 'www.linkzeldalol.fr', '', '', '', 'nintendo', ''),
-(5, 39, 'Ganon', 'Dorf', 'ganondorf', 'mechant@lol.fr', 123456789, 0, 'Cité Gerudo', 1234567, '12 allée du gros nez', '', 'www.geru.do', '', '', '', 'nintendo', ''),
-(6, 40, 'Cayde', '6', 'cassis', 'cayde@tour.com', 668718627, 0, 'La Tour', 123456, '22 rue du hangar', '', 'www.destinythegame.fr', '', '', '', 'bungie', 'bungie'),
-(7, 41, 'Mario', '', 'Mario', 'super@mario.fr', 668718627, 0, 'Peach Castle', 0, 'Chateau de la princesse Peach', '', 'www.nintendo.fr', '', '', '', 'nintendo', 'nintendo'),
-(8, 42, 'Nathan', 'Drake', 'Nate', 'nate@drake.fr', 668718627, 0, 'La Plage', 13486152, 'la jolie plage', '', 'www.naughtydog.fr', '', '', '', 'naughtydog', 'naughtydog'),
-(9, 43, 'Elena', 'Fischer', 'elenazebest', 'elena@fisher.fr', 668718627, 668718627, 'World', 0, '', '', 'www.uncharted.com', '', '', '', 'naughtydog', 'naughtydog');
+INSERT INTO `clients` (`id`, `userId`, `firstname`, `lastname`, `pseudonyme`, `email`, `mobile_phone`, `pro_phone`, `city`, `postcode`, `adress`, `job`, `consoles`, `website`, `notes`, `facebook`, `youtube`, `twitch`, `twitter`) VALUES
+(1, 35, 'Pika', 'Chu', 'pikachu', 'pika@pika.chu', 123456789, 0, 'Bourg Palette', 11111, '12 maison du fond', 'Mercenaire', '', 'www.pikachu.fr', '', 'pikachu', 'pikachu', '', 'pikachu'),
+(2, 36, 'Julie', 'Manhes', 'Julie', 'julie@manhes.fr', 123456789, 0, 'Paris', 75000, '162 avenue de rivoli', NULL, '', 'www.jaimlebio.fr', '', 'julie', '', '', 'julie'),
+(3, 37, 'Lara', 'Croft', 'Lara', 'lara@croft.fr', 123456789, 123456789, 'Londres', 55555, 'croft manor', 'Aventurière', '', 'www.lara.croft', '', '', '', 'crystaldynamics', ''),
+(4, 38, 'Link', '', 'zelda', 'legendofzelda@hyrule.fr', 123455628, 0, 'Cocorico', 0, '5 rue de la triforce', NULL, '', 'www.linkzeldalol.fr', '', '', '', 'nintendo', ''),
+(6, 40, 'Cayde', '6', 'cassis', 'cayde@tour.com', 668718627, 0, 'La Tour', 123456, '22 rue du hangar', 'Chasseur', '', 'www.destinythegame.fr', '', '', '', 'bungie', 'bungie'),
+(7, 41, 'Mario', '', 'Mario', 'super@mario.fr', 668718627, 0, 'Peach Castle', 0, 'Chateau de la princesse Peach', 'Plombier', '', 'www.nintendo.fr', '', '', '', 'nintendo', 'nintendo'),
+(8, 42, 'Nathan', 'Drake', 'Nate', 'nate@drake.fr', 668718627, 0, 'La Plage', 13486152, 'la jolie plage', 'Blogueur MesVoyages.fr', '', 'www.naughtydog.fr', '', '', '', 'naughtydog', 'naughtydog'),
+(9, 43, 'Elena', 'Fischer', 'elenazebest', 'elena@fisher.fr', 668718627, 668718627, 'World', 0, '', 'Journaliste Le Monde', '', 'www.uncharted.com', '', '', '', 'naughtydog', 'naughtydog');
 
 -- --------------------------------------------------------
 
@@ -81,7 +81,13 @@ CREATE TABLE `clients_tags` (
 --
 
 INSERT INTO `clients_tags` (`id`, `client_id`, `tag_id`) VALUES
-(1, 1, 1);
+(1, 1, 1),
+(2, 8, 2),
+(3, 7, 2),
+(4, 4, 2),
+(5, 3, 1),
+(6, 2, 1),
+(7, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -128,12 +134,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `username`, `status`, `verified`, `resettable`, `roles_mask`, `registered`, `last_login`, `force_logout`) VALUES
 (35, 'pika@pika.chu', '$2y$10$QfqHtxpw2cWPy5GOtZnfYe5qFNEVh/vaovrrnHX.hGNtCNKxoi3Je', 'pikachu', 0, 1, 1, 0, 1528971627, NULL, 0),
-(3, 'admin@admin.fr', '$2y$10$oSUnklW4ioA/8qeiKR.K4exp/ckfhegSN9zyPyhSrr0S7FM7eXZDW', 'admin', 0, 1, 1, 262145, 1528874700, 1528978031, 1),
+(3, 'admin@admin.fr', '$2y$10$oSUnklW4ioA/8qeiKR.K4exp/ckfhegSN9zyPyhSrr0S7FM7eXZDW', 'admin', 0, 1, 1, 262145, 1528874700, 1528989957, 1),
 (36, 'julie@manhes.fr', '$2y$10$XemagyUS4cEH2mvM1gYy0.bnaHcawUvUh0tr7m.o9wlVLjgKNtZ7y', 'Julie', 0, 1, 1, 0, 1528971731, NULL, 0),
 (9, 'pitch@pitch.fr', '$2y$10$.r4G.Ok3AwSlAiuUFNYIh.CX1MRB7cQ5EJ0I/uEvzh/CVvQOG57gm', 'pitch', 0, 1, 1, 1, 1528892269, 1528892505, 0),
 (38, 'legendofzelda@hyrule.fr', '$2y$10$NJA78hnSIdqh29cu0KM8V.pb2sg57P8D4jkz0QJ/Tmjno7JwHyO0i', 'zelda', 0, 1, 1, 0, 1528972065, NULL, 0),
 (37, 'lara@croft.fr', '$2y$10$O1RvrcLCL5C0vRgfimkwg.SfjR72RUD9RLFnXvrQlw36KJ9cDocC2', 'Lara', 0, 1, 1, 0, 1528971935, NULL, 0),
-(39, 'mechant@lol.fr', '$2y$10$R8zIM8lG7c3awHfS2pco7.ukjS8dCsEGq7rVAIru5hh8S4ZStqbrK', 'ganondorf', 0, 1, 1, 0, 1528972202, NULL, 0),
+(45, 'splinter@cell.fr', '$2y$10$4dd7Fmj9aqU52d1gTtvUkOTFSZbl239fvBIELl0YrkK/KEcGUasRy', NULL, 0, 1, 1, 0, 1528991193, NULL, 0),
 (40, 'cayde@tour.com', '$2y$10$NoI0Ovo73C/I.u0.TMWFp.MKsA0R6v7EOd5YLcLqJYaDD5YAj7bRe', 'cassis', 0, 1, 1, 0, 1528972258, NULL, 0),
 (41, 'super@mario.fr', '$2y$10$k9ZriHxRnzP6uxuO4fKBkOwanfP/zOtZ0tumW7GVbHzNNK8DNWNES', 'Mario', 0, 1, 1, 0, 1528972319, NULL, 0),
 (42, 'nate@drake.fr', '$2y$10$9EIrOSxh/Bg7lndIOUl5X.28879Typt9HV5bI1FeKhmd4.Tbf25yO', 'Nate', 0, 1, 1, 0, 1528972435, NULL, 0),
@@ -204,7 +210,9 @@ INSERT INTO `users_resets` (`id`, `user`, `selector`, `token`, `expires`) VALUES
 (27, 40, 'p46VQJ27qEi7IK57NTGh', '$2y$10$8VwkvuV6SNP9j8PzGDmPCubF3PFH1VCegLKsB53IMPQe0ZhnXz0he', 1528993858),
 (28, 41, '9FF464G4-S5IH4Lzzokx', '$2y$10$2KnbscS4yc8xADRnQ0Oo5uNkLzQkz3EeRjawicbaJd20YK2TMUBLK', 1528993919),
 (29, 42, 'FQMJ3dbiqufg54j81ocA', '$2y$10$Tfg6Ha4qTYVHLRzONZMCyebclUCU7FLAZ8WQUnPhGuJ6dASBV8KkK', 1528994035),
-(30, 43, 'QBOpvuJL2CK2EKJx6Fpn', '$2y$10$f9O2jdTsP8lFHn4eBpGAjOtjQ7IG2oWz3tJLw/BzUCN7WR8WhJU6W', 1528994104);
+(30, 43, 'QBOpvuJL2CK2EKJx6Fpn', '$2y$10$f9O2jdTsP8lFHn4eBpGAjOtjQ7IG2oWz3tJLw/BzUCN7WR8WhJU6W', 1528994104),
+(31, 44, 'tvtD4rxbtbk3SFFyoscr', '$2y$10$uIFcgqDNgfuVTa7r59pwu.RKT/l6a8Cgsh/X7f1M1xYa9UuZkMDeK', 1529006815),
+(32, 45, '5NmGpRH9h4PkI6Zbl_6Q', '$2y$10$Bk2bQPw/h98Ojq./G9u/qet3HA2iE2ma0fC.LA02HO4j7wdZkNfwi', 1529012793);
 
 -- --------------------------------------------------------
 
@@ -295,7 +303,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `clients_tags`
 --
 ALTER TABLE `clients_tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tags`
 --
@@ -305,7 +313,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `users_confirmations`
 --
@@ -320,7 +328,7 @@ ALTER TABLE `users_remembered`
 -- AUTO_INCREMENT for table `users_resets`
 --
 ALTER TABLE `users_resets`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- Constraints for dumped tables
 --
