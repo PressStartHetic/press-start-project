@@ -10,6 +10,7 @@ use Model\ClientsModel;
 use Controller\UsersController;
 use Helper\Controller\BaseController as BaseController;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Model\UsersModel;
 
 
 class ClientsController extends BaseController
@@ -50,7 +51,7 @@ class ClientsController extends BaseController
           $id     = $request->get('id');
 
           $model->updateClient($client, $id);
-          
+
           $router = $request->get('_router');
           $res    = $router->generate('client_profile', array('id' => $id));
 
@@ -64,5 +65,39 @@ class ClientsController extends BaseController
           ]);
         }
       }
+    }
+
+    public function deleteClientAction(Request $request)
+    {
+
+      $router        = $request->get('_router');
+      $res           = $router->generate('clients_list');
+      $id            = $request->get('id');
+
+      $clientsModel  = new ClientsModel();
+      $client        = $clientsModel->getClients($id);
+
+      $usersModel    = new UsersModel();
+      $userId        = (int) $client->userId;
+      $user          = $usersModel->getUsers($userId);
+
+      if ( $user !== 0 ) {
+        try {
+          self::$auth->admin()->deleteUserById($userId);
+          $mail          = new MailController();
+          $body = self::$twig->render('mail/delete.html.twig', array(
+            'user' => $user['user'],
+          ));
+
+          $mail->sendMail($body, 'Suppression de compte sur Press Start :)', $user['user']->email);
+        }
+        catch (\Delight\Auth\UnknownIdException $e) {
+          // unknown ID
+        }
+      }
+
+      $clientsModel->deleteClient($id);
+
+      return new RedirectResponse($res);
     }
 }

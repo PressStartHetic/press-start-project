@@ -39,6 +39,10 @@ $routes->add('client_add', new Route('/clients/add', array(
     '_controller' => 'Controller\UsersController::addClientAction',
 )));
 
+$routes->add('client_delete', new Route('/clients/delete/{id}', array(
+    '_controller' => 'Controller\ClientsController::deleteClientAction',
+)));
+
 $routes->add('users_list', new Route('/users/list', array(
     '_controller' => 'Controller\UsersController::usersListAction',
 )));
