@@ -62,7 +62,9 @@
                     <a href="/clients/list/{{item.id }}">
                         <img src="../web/img/edit.svg" alt="éditer"/>
                     </a>
-                    <img class="delete-account" src="../web/img/trash-alt.svg" alt="supprimer le contact"/>
+                    <a href="/clients/delete/{{ item.id }}">
+                        <img class="delete-account" src="../web/img/trash-alt.svg" alt="supprimer le contact"/>
+                    </a>
                 </div>
         </article>
         {% endfor %}

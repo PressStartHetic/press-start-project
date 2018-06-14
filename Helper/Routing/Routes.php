@@ -87,4 +87,8 @@ $routes->add('logout', new Route('/logout', array(
     '_controller' => 'Controller\UsersController::logout',
 )));
 
+$routes->add('tasks', new Route('/tasks', array(
+    '_controller' => 'Controller\TasksController::listTasks',
+)));
+
 return $routes;
