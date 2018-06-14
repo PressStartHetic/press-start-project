@@ -22,7 +22,8 @@ class TagsController extends BaseController
         $data  = $model->getTags();
 
         return self::$twig->render('tags/list.html.twig',[
-            'tags' => $data
+            'tags' => $data,
+            'isAdmin' => self::$isAdmin
         ]);
     }
 
