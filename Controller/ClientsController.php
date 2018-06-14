@@ -23,10 +23,10 @@ class ClientsController extends BaseController
         $TagModel = new TagsModel();
         $tags     = $TagModel->getTagsByClient();
 
-
         return self::$twig->render('clients/list.html.twig',[
             'list' => $data,
-            'tags' => $tags
+            'tags' => $tags,
+            'isAdmin' => self::$isAdmin
         ]);
 
     }
@@ -42,7 +42,8 @@ class ClientsController extends BaseController
 
             return self::$twig->render('clients/profile.html.twig',[
                 'client' => $data,
-                'tags'   => $tags
+                'tags'   => $tags,
+                'isAdmin' => self::$isAdmin
             ]);
         } else {
             return new Response('Error');
