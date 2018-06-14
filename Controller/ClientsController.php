@@ -15,7 +15,7 @@ use Model\UsersModel;
 
 class ClientsController extends BaseController
 {
-    public function listAction()
+    public function listAction(Request $request)
     {
         $model = new ClientsModel();
         $data = $model->getClients();
@@ -52,8 +52,16 @@ class ClientsController extends BaseController
 
           $model->updateClient($client, $id);
 
+          $refer  = $request->getrequestUri();
+          $refer  = explode('/',$refer);
+
           $router = $request->get('_router');
-          $res    = $router->generate('client_profile', array('id' => $id));
+
+          if (in_array('clients', $refer)) {
+            $res    = $router->generate('client_profile', array('id' => $id));
+          } else {
+            $res    = $router->generate('users_profile', array('id' => $id));
+          }
 
           return new RedirectResponse($res);
         } else {
@@ -67,7 +75,7 @@ class ClientsController extends BaseController
       }
     }
 
-    public function deleteClientAction(Request $request)
+    public function deleteAction(Request $request)
     {
 
       $router        = $request->get('_router');

@@ -40,7 +40,7 @@ $routes->add('client_add', new Route('/clients/add', array(
 )));
 
 $routes->add('client_delete', new Route('/clients/delete/{id}', array(
-    '_controller' => 'Controller\ClientsController::deleteClientAction',
+    '_controller' => 'Controller\ClientsController::deleteAction',
 )));
 
 $routes->add('users_list', new Route('/users/list', array(
