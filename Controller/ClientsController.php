@@ -104,7 +104,7 @@ class ClientsController extends BaseController
         }
       }
 
-      $clientsModel->deleteClient($id);
+      $clientsModel->deleteClient((int)$id);
 
       return new RedirectResponse($res);
     }

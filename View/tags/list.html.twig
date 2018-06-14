@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+  <h1>Tags</h1>
+  <div>
+      {% for tag in tags %}
+        <ul>
+          <li>id: {{ tag.id }}</li>
+          <li>name: {{ tag.name }}</li>
+          <li><a href="/tags/{{ tag.id }}/edit">Edit</a></li>
+          <li><a href="/tags/delete/{{ tag.id }}">Delete</a></li>
+        </ul>
+      {% endfor %}
+  </div>
+{% endblock %}
