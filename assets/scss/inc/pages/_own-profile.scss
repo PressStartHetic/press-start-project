@@ -1,3 +1,27 @@
+.section {
+	background: $black !important;
+	color: #fff !important;
+}
+
+.contact-single__boxes aside textarea {
+	background: $dark-bg;
+	border-radius: 5px;
+}
+
+.choices__inner {
+	background: $black !important;
+	border: none !important;
+}
+
+.choices__input {
+	border-radius: 20px !important;
+	background: $dark-bg !important;
+	color:$white !important;
+}
+.choices__list--dropdown {
+	color:$dark-bg !important;
+}
+
 .own-profile {
 	padding: 47px 40px 47px 40px;
 	font-family: $ft-content;
