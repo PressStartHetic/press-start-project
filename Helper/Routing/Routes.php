@@ -67,4 +67,20 @@ $routes->add('users_change_password', new Route('/users/update/password/{id}', a
     '_controller' => 'Controller\UsersController::changeUserPassword',
 )));
 
+$routes->add('tag_list', new Route('/tags/list', array(
+    '_controller' => 'Controller\TagsController::listAction',
+)));
+
+$routes->add('tag_add', new Route('/tags/add', array(
+    '_controller' => 'Controller\TagsController::addAction',
+)));
+
+$routes->add('tag_update', new Route('/tags/{id}/edit', array(
+    '_controller' => 'Controller\TagsController::editAction',
+)));
+
+$routes->add('tag_delete', new Route('/tags/delete/{id}', array(
+    '_controller' => 'Controller\TagsController::deleteAction',
+)));
+
 return $routes;

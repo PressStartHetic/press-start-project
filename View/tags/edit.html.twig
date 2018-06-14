@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>Edit Tag</h1>
+        <form method="post">
+            <ul>
+                <li>
+                  <label for="name">name</label>
+                  <input type="text" name="name" value="{{ tag.name }}">
+                </li>
+            </ul>
+            <input type="hidden" name="id" value="{{ tag.id }}">
+            <input type="submit">
+        </form>
+{% endblock %}
