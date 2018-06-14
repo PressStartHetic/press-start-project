@@ -94,7 +94,7 @@
                             <div class="contact-single__form__content__head">
                                 <!-- PHOTO CONTACT -->
                                 <figure>
-                                    <img src="/web/img/king-Benzema.jpg" alt="Karim Deschamps"/>
+                                    <img src="/web/img/Maincartoonlink.png" alt="Link"/>
                                 </figure>
                                 <div class="main-infos">
                                     <div>
@@ -213,9 +213,11 @@
                         </div>
                         <!-- NOTES -->
                         <div class="contact-single__boxes__content">
+                            {% spaceless %} 
                                 <textarea name="notes" id="notes" spellcheck="false">
                                     {{ client.notes }}
                                 </textarea>
+                            {% endspaceless %}
                         </div>
                     </aside>
                 </div>
@@ -224,28 +226,32 @@
 
         <!-- SECTION SOCIALS -->
         <div class="section section-socials">
-            <div class="section-socials__twitter">
-                <div class="head">
-                    <img src="/web/img/twitter.png" alt="twitter">
-                    <h4>Twitter</h4>
-                    <span>
-                        <a href="">@{{ client.twitter }}</a>
-                    </span>
-                </div>
-                <div class="twitter-block content">
-                    <a class="twitter-timeline" href="https://twitter.com/{{ client.twitter }}" data-tweet-limit="5" data-chrome="nofooter noheader noscrollbar" data-aria-polite="assertive" data-cards="hidden" target="_blank"></a>
-                </div>
-            </div>
-            <div class="section-socials__twitch">
-                <div class="head">
-                    <img src="/web/img/twitch.png" alt="twitch">
-                    <h4>Twitch</h4>
-                    <span>
-                            <a href="">{{ client.twitch }}</a>
+            {% if client.twitter|length != 0 %}
+                <div class="section-socials__twitter">
+                    <div class="head">
+                        <img src="/web/img/twitter.png" alt="twitter">
+                        <h4>Twitter</h4>
+                        <span>
+                            <a href="">@{{ client.twitter }}</a>
                         </span>
+                    </div>
+                    <div class="twitter-block content">
+                        <a class="twitter-timeline" href="https://twitter.com/{{ client.twitter }}" data-tweet-limit="5" data-chrome="nofooter noheader noscrollbar" data-aria-polite="assertive" data-cards="hidden" target="_blank"></a>
+                    </div>
                 </div>
-                <div class="content"></div>
-            </div>
+            {% endif %}
+            {% if client.twitch | length != 0 %}
+                <div class="section-socials__twitch">
+                    <div class="head">
+                        <img src="/web/img/twitch.png" alt="twitch">
+                        <h4>Twitch</h4>
+                        <span>
+                                <a href="">{{ client.twitch }}</a>
+                            </span>
+                    </div>
+                    <div class="content"></div>
+                </div>
+            {% endif %}
         </div>
 
         <!-- MODALES CONTACT -->
