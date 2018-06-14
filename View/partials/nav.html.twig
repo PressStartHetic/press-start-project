@@ -4,6 +4,7 @@
       <img src="/web/img/logo-white.png" alt="Logo Press Start">
     </a>
   </div>
+  {% if isAdmin %}
   <ul class="sidenav__list">
     <li class="sidenav__list-item">
       <a href="/">
@@ -25,7 +26,13 @@
         <img src="/web/img/Icons/Solid/user-circle.svg">Utilisateurs
       </a>
     </li>
+    <li class="sidenav__list-item">
+      <a href="/tags/list">
+        <img src="/web/img/Icons/Solid/clipboard.svg">Tags
+      </a>
+    </li>
   </ul>
+  {% endif %}
   <!-- DÉCONNEXION -->
   <div class="sidenav__log-out">
     <img src="/web/img/Icons/Solid/toggle-off.png">
