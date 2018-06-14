@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="90px" viewBox="0 0 96 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>xbox one</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="84" height="78" rx="5"></rect>
+        <filter x="-10.7%" y="-11.5%" width="121.4%" height="123.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M23.9874922,21.0436941 C26.5110924,24.1369558 27.6732018,26.6719493 27.0864505,27.8055756 C26.636418,28.6657644 23.85647,30.3462657 21.8113854,30.9899831 C20.1251875,31.5197683 17.914901,31.7476329 16.0919844,31.5710378 C13.9158776,31.3602631 11.7112878,30.5798269 9.82001171,29.3493581 C8.23065624,28.3125743 7.87176952,27.8853282 7.87176952,27.0365326 C7.87176952,25.3332449 9.74595572,22.3482188 12.9531497,18.9416433 C14.7760664,17.010491 17.3110599,14.7432384 17.590194,14.8059011 C18.1256758,14.92553 22.3924401,19.0840587 23.9874922,21.0436941 Z M13.6595299,11.1087982 C11.9676354,9.57640893 10.3497969,8.03832299 8.73765494,7.4971446 C7.87176952,7.20661726 7.80910676,7.2237071 7.10272656,7.95857038 C5.4393151,9.69034122 4.05503775,12.4987722 3.66766796,14.9312266 C3.36005077,16.8794688 3.32017447,17.4263438 3.42841015,18.3776785 C3.74742057,21.2544688 4.41392447,23.2425873 5.73553906,25.2648855 C6.27671744,26.0965912 6.42482942,26.2503998 6.26532421,25.8288503 C6.0260664,25.2022227 6.24823437,23.6926199 6.8065026,22.183017 C7.62111848,19.9613373 9.87697786,15.7515391 13.6595299,11.1087982 Z M31.410181,14.7261485 C30.4474531,10.1688568 27.5649661,7.30345971 27.1605065,7.30345971 C26.7446536,7.30345971 25.7819258,7.67373965 25.1097253,8.09528913 C23.7824141,8.92129825 22.7741133,9.88402611 21.4468021,11.1031016 C23.8621667,14.1393972 27.2687422,19.0441824 28.4479414,22.6273529 C28.8353112,23.8065522 29.000513,24.9686615 28.8694909,25.6066824 C28.7726484,26.0908946 28.7726484,26.0908946 28.9492435,25.8687266 C29.296737,25.4300873 30.0828698,24.0856863 30.3961836,23.3906993 C30.8177331,22.4678477 31.2506758,21.1006602 31.4557539,20.0467865 C31.7007083,18.7650482 31.6779219,16.0135834 31.410181,14.7261485 Z M10.9650312,5.36661075 C13.6823164,5.22419538 17.2142174,7.33194278 17.4762617,7.38321231 C17.516138,7.38890893 18.0687096,7.1439545 18.7067305,6.8306407 C22.3468672,5.05899356 24.0615482,5.36091413 24.8248945,5.39509382 C21.1847578,3.15632429 16.1261641,2.54678653 11.500513,4.72858992 C10.1675052,5.36091413 10.1333255,5.40648705 10.9650312,5.36661075 Z" id="path-3"></path>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#F7931E" offset="0%"></stop>
+            <stop stop-color="#D4145A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="informations_contact-message-d'erreur" transform="translate(-202.000000, -600.000000)">
+            <g id="informations">
+                <g id="CONSOLES" transform="translate(20.000000, 577.000000)">
+                    <g id="xbox-one" transform="translate(188.000000, 29.000000)">
+                        <g id="background">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#2C2C2C" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                        <text id="Xbox-One" opacity="0.200000018" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" fill="#FFFFFF">
+                            <tspan x="15.962" y="61">Xbox One</tspan>
+                        </text>
+                        <g id="Icons/Brands/xbox" opacity="0.200000018" transform="translate(25.000000, 14.000000)">
+                            <mask id="mask-4" fill="white">
+                                <use xlink:href="#path-3"></use>
+                            </mask>
+                            <use id="xbox" fill="#000000" fill-rule="nonzero" xlink:href="#path-3"></use>
+                            <g id="Orange-pink" mask="url(#mask-4)" fill="url(#linearGradient-5)" fill-rule="evenodd">
+                                <rect id="Rectangle" x="0" y="0" width="35" height="35"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
