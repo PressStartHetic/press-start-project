@@ -109,7 +109,7 @@
       <div class="contactCard__tags">
           {% for tag in tags %}
             {% if client.id == tag.client_id %}
-              <span class="label label--blogger">{{ tag.name }}</span>
+              <span class="label label--{{ tag.name }}">{{ tag.name }}</span>
             {% endif %}
           {% endfor %}
       </div>

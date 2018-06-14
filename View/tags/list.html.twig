@@ -45,16 +45,16 @@
             <!-- TODO: Dyn tag fields -->
             <!-- EXPLICATION TAGS -->
             <div class="tagCard__explain">
-            Personnes reliées au site Gameblog
+              {{ tag.detail }}
             </div>
             <div class="tagCard__uses">
-            Utilisé 8 fois
+            Utilisé {{ tag.count }} fois
             </div>
             <!-- EDIT PICTO -->
               <div class="tagCard__edit">
-                <a href="/tags/{{ tag.id }}/edit">
+                <!-- <a href="/tags/{{ tag.id }}/edit">
                   <img src="/web/img/edit.svg" alt="éditer"/>
-                </a>
+                </a> -->
                 <a href="/tags/delete/{{ tag.id }}">
                   <img src="/web/img/trash-alt.svg" alt="supprimer le contact"/>
                 </a>

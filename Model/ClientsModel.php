@@ -81,33 +81,25 @@ class ClientsModel extends Model
         }
     }
 
-    public function getLast(){
-        $sql = 'SELECT
-                      id,
-                      userId,
-                      firstname,
-                      lastname,
-                      pseudonyme,
-                      email,
-                      mobile_phone,
-                      pro_phone,
-                      city,
-                      postcode,
-                      adress,
-                      consoles,
-                      website,
-                      notes,
-                      facebook,
-                      youtube,
-                      twitch,
-                      twitter,
-                      job
-                    FROM clients
-                    LIMIT 5';
+    public function linkAction($client, $tags)
+    {
+        $sql = 'DELETE FROM clients_tags WHERE client_id = :id';
+        $requete = self::$db->prepare($sql);
+        $requete->bindValue(':id', $client, PDO::PARAM_INT);
+        $requete->execute();
 
-        $requete = self::$db->query($sql);
+        foreach ($tags as $key => $value) {
+          $sql = 'INSERT INTO clients_tags(id, client_id, tag_id) VALUES(NULL,:id,:tag)';
+          $requete = self::$db->prepare($sql);
+          $requete->bindValue(':id', $client, PDO::PARAM_INT);
+          $requete->bindValue(':tag', $value, PDO::PARAM_INT);
+          $requete->execute();
+        }
 
-        return $requete->fetchAll(PDO::FETCH_OBJ);
+
+        if ($requete->errorCode() !== "00000") {
+            throw new \Exception('Arg database');
+        }
     }
 
     /**
