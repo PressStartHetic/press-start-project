@@ -1,0 +1,66 @@
+.add-contact-page {
+	aside {
+		background: none;
+		padding: 0 0 0 0;
+		border-radius: 0;
+	}
+
+	section {
+		background: #0c0c0c;
+		padding: 15px 20px 45px;
+		border-radius: 5px;
+		margin-bottom: 30px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		.checkbox-choice {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+
+            div {
+                margin-right: 20px;
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
+            }
+
+			label {
+				display: block;
+				background-repeat: no-repeat;
+				height: 90px;
+				width: 96px;
+				opacity: 0.5;
+				cursor: pointer;
+			}
+
+			input {
+				display: none;
+
+				&:checked + label {
+					opacity: 1;
+				}
+            }
+            
+            .admin {
+				background-image: url('../../../img/client.png');
+			}
+
+			.client {
+				background-image: url('../../../img/client.png');
+			}
+		}
+    }
+    
+    .profile-actions {
+        input {
+            color: #8FCB48 !important;
+        }
+    }
+}

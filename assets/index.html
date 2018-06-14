@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="./css/style.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300i,400,700,900|Orbitron:400,500,700" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Press Start</title>
+  </head>
+  <body>
+    <!-- NAV CÔTÉ -->
+    <nav class="sidenav">
+      <div class="sidenav__logo-container">
+        <img src="img/logo-white.png" alt="Logo Press Start">
+      </div>
+      <ul class="sidenav__list">
+        <li class="sidenav__list-item">
+          <a href="" title="">
+            <img src="img/Icons/Regular/dashboard.svg">Dashboard
+          </a>
+        </li>
+        <li class="sidenav__list-item">
+          <a href="" title="">
+            <img src="img/Icons/Regular/address-book.svg">Contacts
+          </a>
+        </li>
+        <li class="sidenav__list-item">
+          <a href="" title="">
+            <img src="img/Icons/Solid/clipboard.svg">Tâches
+          </a>
+        </li>
+        <li class="sidenav__list-item">
+          <a href="" title="">
+            <img src="img/Icons/Solid/calendar-alt.svg">Agenda
+          </a>
+        </li>
+        <li class="sidenav__list-item">
+          <a href="" title="">
+            <img src="img/Icons/Solid/user-circle.svg">Mon profil
+          </a>
+        </li>
+      </ul>
+      <!-- DÉCONNEXION -->
+      <div class="sidenav__log-out">
+        <img src="img/Icons/Solid/toggle-off.png">
+        <a href="#">Déconnexion</a>
+      </div>
+    </nav>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header__search-container">
+        <input class="header__search-request" placeholder="Saisissez le nom d'un contact">
+        <img src="img/Icons/Solid/search.svg" class="header__search-loupe">
+      </div>
+      <div class="header__add-container">
+        <img src="img/Icons/Solid/plus.svg">
+      </div>
+      <div class="header_account-profile">
+        <a href="" title="">
+          <img src="img/header-profile.png">
+        </a>
+      </div>
+      <div class="add_card hidden">
+        <ul class="add_card-list">
+          <li>
+            <a href="#">
+              <img src="img/Icons/Regular/address-book.svg">
+              Ajouter un contact
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="img/Icons/Solid/clipboard.svg">
+              Ajouter une tâche
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="img/Icons/Solid/calendar-alt.svg">
+              Ajouter un événement
+            </a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <!-- HOME -->
+    <section class="dashboard">
+      <!-- TITRE ET INFORMATIONS -->
+      <header class="dashboard__header">
+        <h1 class="dashboard__header-title">Dashboard</h1>
+        <div class="dashboard__header-infos">
+          <p class="dashboard__header-paragraph">Bonjour <span>Cyril</span> ! Voici un résumé de ce que vous avez à faire aujourd’hui.</p>
+          <p>Le 14/06/2018</p>
+        </div>
+      </header>
+      <!-- NOUVEAUX CONTACTS -->
+      <div class="dashboard__resume">
+        <div class="dashboard__resume-contact">
+          <p class="dashboard__resume-number">50</p>
+          <p class="dashboard__resume-explain">nouveaux contacts</p>
+        </div>
+        <!-- TÂCHES À EFFECTUER -->
+        <div class="dashboard__resume-tasks">
+          <p class="dashboard__resume-number">10</p>
+          <p class="dashboard__resume-explain">tâches à effectuer</p>
+        </div>
+        <!-- ÉVÉNEMENTS À VENIR -->
+        <div class="dashboard__resume-events">
+          <p class="dashboard__resume-number">3</p>
+          <p class="dashboard__resume-explain">événements à venir</p>
+        </div>
+      </div>
+      <!-- LISTE DES TÂCHES -->
+      <div class="dashboard__infos-container">
+        <div class="dashboard__tasks">
+          <h2>Tâches</h2>
+          <div class="dashboard__contain">
+            <p class="dashboard__todo">
+              à faire
+            </p>
+            <p class="dashboard_comment">Appel Karim DESCHAMPS</p>
+          </div>
+          <div class="dashboard__contain">
+            <p class="dashboard__new">
+              nouveau
+            </p>
+            <p class="dashboard_comment">Mail Thanos</p>
+          </div>
+        </div>
+        <!-- CHIFFRES CLÉS -->
+        <div class="dashboard__numbers">
+          <h2>Chiffres clés</h2>
+          <div class="dashboard__contain-numbers">
+            <img src="img/Icons/Regular/address-book.svg">
+              <p class="dashboard__numbers-text">211
+              <span class="dashboard__numbers-contacts">
+                contacts</span>
+              </p>
+            </div>
+            <div class="dashboard__contain-numbers">
+              <img src="img/Icons/Solid/clipboard.svg">
+              <p class="dashboard__numbers-text">17
+                <span class="dashboard__numbers-contacts">
+                tâches</span>
+              </p>
+            </div>
+            <div class="dashboard__contain-numbers">
+              <img src="img/Icons/Solid/calendar-alt.svg">
+              <p class="dashboard__numbers-text">8
+                <span class="dashboard__numbers-contacts">
+                événements</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dashboard__contact-list">
+        <h3 class="dashboard__contact-title">Les derniers contacts ajoutés</h3>
+        <article class="contactCard">
+          <!-- PROFILE PICTURE -->
+          <div class="contactCard__main-infos">
+              <figure class="contactCard__main-infos__figure">
+                  <img class="contactCard__main-infos__img" src="../img/king-Benzema.jpg" alt="Karim Deschamps">
+                  <img class="is-connected" src="../img/online.png" alt="connecté">
+              </figure>
+              <div>
+                  <!-- CONTACT NAME -->
+                  <h3 class="contactCard__main-infos__name">Karim DESCHAMPS</h3>
+                  <!-- CONTACT TAGS -->
+                  <span class="contactCard__main-tags">Journaliste Jeuxvidéos.com</span>
+              </div>
+          </div>
+          <!-- CONTACT MAIL -->
+          <div class="contactCard__mail">jane.doe@gameblog.fr</div>
+          <!-- CONTACT LOCATION -->
+          <div class="contactCard__location">Paris</div>
+          <!-- CONTACT TAGS -->
+          <div class="contactCard__tags">
+              <span class="label label--blogger">Blogger</span>
+              <span class="label label--independant">Indépendant</span>
+          </div>
+          <!-- EDIT PICTO -->
+          <div class="contactCard__edit">
+              <img src="../img/edit.svg" alt="éditer"/>
+              <img src="../img/trash-alt.svg" alt="supprimer le contact"/>
+          </div>
+      </article>
+
+      <!-- UNE FICHE CONTACT -->
+      <article class="contactCard">
+          <!-- PROFILE PICTURE -->
+          <div class="contactCard__main-infos">
+              <figure class="contactCard__main-infos__figure">
+                  <img class="contactCard__main-infos__img" src="../img/king-Benzema.jpg" alt="Karim Deschamps">
+                  <img class="is-connected" src="../img/online.png" alt="connecté">
+              </figure>
+              <div>
+                  <!-- CONTACT NAME -->
+                  <h3 class="contactCard__main-infos__name">Karim DESCHAMPS</h3>
+                  <!-- CONTACT TAGS -->
+                  <span class="contactCard__main-tags">Journaliste Jeuxvidéos.com</span>
+              </div>
+          </div>
+          <!-- CONTACT MAIL -->
+          <div class="contactCard__mail">jane.doe@gameblog.fr</div>
+          <!-- CONTACT LOCATION -->
+          <div class="contactCard__location">Paris</div>
+          <!-- CONTACT TAGS -->
+          <div class="contactCard__tags">
+              <span class="label label--blogger">Blogger</span>
+              <span class="label label--independant">Indépendant</span>
+          </div>
+          <!-- EDIT PICTO -->
+          <div class="contactCard__edit">
+              <img src="../img/edit.svg" alt="éditer"/>
+              <img src="../img/trash-alt.svg" alt="supprimer le contact"/>
+          </div>
+      </article>
+
+      <!-- UNE FICHE CONTACT -->
+      <article class="contactCard">
+          <!-- PROFILE PICTURE -->
+          <div class="contactCard__main-infos">
+              <figure class="contactCard__main-infos__figure">
+                  <img class="contactCard__main-infos__img" src="../img/king-Benzema.jpg" alt="Karim Deschamps">
+                  <img class="is-connected" src="../img/online.png" alt="connecté">
+              </figure>
+              <div>
+                  <!-- CONTACT NAME -->
+                  <h3 class="contactCard__main-infos__name">Karim DESCHAMPS</h3>
+                  <!-- CONTACT TAGS -->
+                  <span class="contactCard__main-tags">Journaliste Jeuxvidéos.com</span>
+              </div>
+          </div>
+          <!-- CONTACT MAIL -->
+          <div class="contactCard__mail">jane.doe@gameblog.fr</div>
+          <!-- CONTACT LOCATION -->
+          <div class="contactCard__location">Paris</div>
+          <!-- CONTACT TAGS -->
+          <div class="contactCard__tags">
+              <span class="label label--blogger">Blogger</span>
+              <span class="label label--independant">Indépendant</span>
+          </div>
+          <!-- EDIT PICTO -->
+          <div class="contactCard__edit">
+              <img src="../img/edit.svg" alt="éditer"/>
+              <img src="../img/trash-alt.svg" alt="supprimer le contact"/>
+          </div>
+      </article>
+
+      <!-- UNE FICHE CONTACT -->
+      <article class="contactCard">
+          <!-- PROFILE PICTURE -->
+          <div class="contactCard__main-infos">
+              <figure class="contactCard__main-infos__figure">
+                  <img class="contactCard__main-infos__img" src="../img/king-Benzema.jpg" alt="Karim Deschamps">
+                  <img class="is-connected" src="../img/online.png" alt="connecté">
+              </figure>
+              <div>
+                  <!-- CONTACT NAME -->
+                  <h3 class="contactCard__main-infos__name">Karim DESCHAMPS</h3>
+                  <!-- CONTACT TAGS -->
+                  <span class="contactCard__main-tags">Journaliste Jeuxvidéos.com</span>
+              </div>
+          </div>
+          <!-- CONTACT MAIL -->
+          <div class="contactCard__mail">jane.doe@gameblog.fr</div>
+          <!-- CONTACT LOCATION -->
+          <div class="contactCard__location">Paris</div>
+          <!-- CONTACT TAGS -->
+          <div class="contactCard__tags">
+              <span class="label label--blogger">Blogger</span>
+              <span class="label label--independant">Indépendant</span>
+          </div>
+          <!-- EDIT PICTO -->
+          <div class="contactCard__edit">
+              <img src="../img/edit.svg" alt="éditer"/>
+              <img src="../img/trash-alt.svg" alt="supprimer le contact"/>
+          </div>
+      </article>
+
+      <!-- UNE FICHE CONTACT -->
+      <article class="contactCard">
+          <!-- PROFILE PICTURE -->
+          <div class="contactCard__main-infos">
+              <figure class="contactCard__main-infos__figure">
+                  <img class="contactCard__main-infos__img" src="../img/king-Benzema.jpg" alt="Karim Deschamps">
+                  <img class="is-connected" src="../img/online.png" alt="connecté">
+              </figure>
+              <div>
+                  <!-- CONTACT NAME -->
+                  <h3 class="contactCard__main-infos__name">Karim DESCHAMPS</h3>
+                  <!-- CONTACT TAGS -->
+                  <span class="contactCard__main-tags">Journaliste Jeuxvidéos.com</span>
+              </div>
+          </div>
+          <!-- CONTACT MAIL -->
+          <div class="contactCard__mail">jane.doe@gameblog.fr</div>
+          <!-- CONTACT LOCATION -->
+          <div class="contactCard__location">Paris</div>
+          <!-- CONTACT TAGS -->
+          <div class="contactCard__tags">
+              <span class="label label--blogger">Blogger</span>
+              <span class="label label--independant">Indépendant</span>
+          </div>
+          <!-- EDIT PICTO -->
+          <div class="contactCard__edit">
+              <img src="../img/edit.svg" alt="éditer"/>
+              <img src="../img/trash-alt.svg" alt="supprimer le contact"/>
+          </div>
+      </article>
+
+      <!-- UNE FICHE CONTACT -->
+      <article class="contactCard">
+          <!-- PROFILE PICTURE -->
+          <div class="contactCard__main-infos">
+              <figure class="contactCard__main-infos__figure">
+                  <img class="contactCard__main-infos__img" src="../img/king-Benzema.jpg" alt="Karim Deschamps">
+                  <img class="is-connected" src="../img/online.png" alt="connecté">
+              </figure>
+              <div>
+                  <!-- CONTACT NAME -->
+                  <h3 class="contactCard__main-infos__name">Karim DESCHAMPS</h3>
+                  <!-- CONTACT TAGS -->
+                  <span class="contactCard__main-tags">Journaliste Jeuxvidéos.com</span>
+              </div>
+          </div>
+          <!-- CONTACT MAIL -->
+          <div class="contactCard__mail">jane.doe@gameblog.fr</div>
+          <!-- CONTACT LOCATION -->
+          <div class="contactCard__location">Paris</div>
+          <!-- CONTACT TAGS -->
+          <div class="contactCard__tags">
+              <span class="label label--blogger">Blogger</span>
+              <span class="label label--independant">Indépendant</span>
+          </div>
+          <!-- EDIT PICTO -->
+          <div class="contactCard__edit">
+              <img src="../img/edit.svg" alt="éditer"/>
+              <img src="../img/trash-alt.svg" alt="supprimer le contact"/>
+          </div>
+      </article>
+
+      <!-- UNE FICHE CONTACT -->
+      <article class="contactCard">
+          <!-- PROFILE PICTURE -->
+          <div class="contactCard__main-infos">
+              <figure class="contactCard__main-infos__figure">
+                  <img class="contactCard__main-infos__img" src="../img/king-Benzema.jpg" alt="Karim Deschamps">
+                  <img class="is-connected" src="../img/online.png" alt="connecté">
+              </figure>
+              <div>
+                  <!-- CONTACT NAME -->
+                  <h3 class="contactCard__main-infos__name">Karim DESCHAMPS</h3>
+                  <!-- CONTACT TAGS -->
+                  <span class="contactCard__main-tags">Journaliste Jeuxvidéos.com</span>
+              </div>
+          </div>
+          <!-- CONTACT MAIL -->
+          <div class="contactCard__mail">jane.doe@gameblog.fr</div>
+          <!-- CONTACT LOCATION -->
+          <div class="contactCard__location">Paris</div>
+          <!-- CONTACT TAGS -->
+          <div class="contactCard__tags">
+              <span class="label label--blogger">Blogger</span>
+              <span class="label label--independant">Indépendant</span>
+          </div>
+          <!-- EDIT PICTO -->
+          <div class="contactCard__edit">
+              <img src="../img/edit.svg" alt="éditer"/>
+              <img src="../img/trash-alt.svg" alt="supprimer le contact"/>
+          </div>
+      </article>
+      </div>
+    </section>
+    <script src="./js/app.min.js" charset="utf-8"></script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Profil User</title>
+        <link rel="stylesheet" href="../../css/style.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300i,400,700,900|Orbitron:400,500,700" rel="stylesheet">
+    </head>
+    <body>
+        <section class="own-profile">
+
+            <!-- SECTION INFORMATIONS -->
+            <div class="section section-informations">
+                <!-- HEADER -->
+                <div class="own-profile__head">
+                    <!-- BACK TO CONTACT LIST -->
+                    <a href="/">
+                        <img src="../img/back.png" alt="retour arrière">
+                    </a>
+                    <!-- NOM DU CONTACT -->
+                    <h1 class="own-profile__title">Julian Ross</h1>
+                </div>
+                <!-- BLOCS -->
+                <ul class="own-profile__boxes">
+                    <!-- FORMULAIRE -->
+                    <form>
+                        <div class="own-profile__boxes__banner">
+                            <h2>INFORMATIONS</h2>
+                            <img src="../img/valid.svg" alt="modifier le formulaire">
+                        </div>
+                        <div class="own-profile__form__content">
+                            <div class="own-profile__form__content__head">
+                                <!-- PHOTO CONTACT -->
+                                <figure>
+                                    <img src="../img/header-profile.png" alt="Julian Ross"/>
+                                </figure>
+                                <div class="main-infos">
+                                    <div>
+                                        <!-- NOM CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="">NOM</label>
+                                            <input class="input" type="text" placeholder="Saisissez le nom…" value="Ross">
+                                        </div>
+                                        <!-- ADRESSE MAIL CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="">ADRESSE MAIL</label>
+                                            <input class="input" type="text" placeholder="Saisissez le prénom..." value="julian_r@gmail.com">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="own-profile__form__content__main">
+                                <!-- NOM CONTACT -->
+                                <div class="input-ctn">
+                                    <label for="">MOT DE PASSE</label>
+                                    <input class="input" type="password" placeholder="Saisissez le mot de passe..." value="12345">
+                                </div>
+
+                                <!-- NOM CONTACT -->
+                                <div class="input-ctn">
+                                    <label for="">NOUVEAU MOT DE PASSE</label>
+                                    <input class="input" type="mail" placeholder="Saisissez le nouveau mot de passe...">
+                                </div>
+                            </div>
+
+                            <div class="profile-actions">
+                                <input type="submit" class="delete-account open-modal" value="Supprimer ce compte">
+                            </div>
+                        </div>
+                    </form>
+                    <!-- ASIDE BLOCS -->
+                    <aside>
+                        <div class="own-profile__boxes__banner">
+                            <h2>TACHES</h2>
+                        </div>
+                        <!-- NOTES -->
+                        <ul class="aside__content">
+                            <li>
+                                <span class="label todo">A FAIRE</span>
+                                <span>Appel Karim Deschamps</span>
+                            </li>
+                            <li>
+                                <span class="label new">NOUVEAU</span>
+                                <span>Mail Thanos</span>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- MODALES CONTACT -->
+            <div class="modals-ctn">
+                <!-- SUPPRESSION COMPTE -->
+                <form class="modals-ctn__item modals-ctn__item--delete">
+                    <h4>Suppression de compte</h4>
+                    <p>Voulez-vous vraiment supprimer votre compte ? Cette action entraînera la suppression définitive de vos informations.</p>
+                    <div>
+                        <input class="btn btn--validate" type="button" value="Confirmer">
+                        <!-- <input class="btn btn--warning" type="button" value="Annuler"> -->
+                    </div>
+                </form>
+
+                <!-- AJOUT TAG -->
+                <form class="modals-ctn__item modals-ctn__item--add-tag">
+                    <h4>Ajouter un tag</h4>
+                    <input type="text" placeholder="Saisissez le tag recherché…">
+                    <div>
+                        <input class="btn btn--validate" type="button" value="Ajouter le tag">
+                    </div>
+                </form>
+
+            </div>
+        </section>
+
+        <script>
+            var linkToModal = document.querySelector('.delete-account');
+            var modalCtn = document.querySelector('.modals-ctn');
+            var modalItem = document.querySelector('.modals-ctn__item--delete');
+            var body = document.querySelector('body');
+
+            linkToModal.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                modalCtn.classList.add('show');
+                modalItem.classList.add('show');
+            })
+
+            modalItem.addEventListener('click', function (e) {
+                e.stopPropagation();
+            })
+
+            document.querySelector('body').addEventListener('click', function (e) {
+                e.preventDefault();
+
+                modalCtn.classList.remove('show');
+            })
+        </script>
+    </body>
+</html>

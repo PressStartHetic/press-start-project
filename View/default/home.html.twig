@@ -1,5 +1,122 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-  <h1>HOMEPAGE</h1>
+<!-- NAV CÔTÉ -->
+{% include 'partials/nav.html.twig' %}
+<!-- HEADER -->
+{% include 'partials/header.html.twig' %}
+
+<!-- HOME -->
+<section class="dashboard">
+  <!-- TITRE ET INFORMATIONS -->
+  <header class="dashboard__header">
+    <h1 class="dashboard__header-title">Dashboard</h1>
+    <div class="dashboard__header-infos">
+      <p class="dashboard__header-paragraph">Bonjour <span>{{ user.username }}</span> ! Voici un résumé de ce que vous avez à faire aujourd’hui.</p>
+      <p>Le {{ "now"|date("d/m/Y") }}</p>
+    </div>
+  </header>
+  <!-- NOUVEAUX CONTACTS -->
+  <div class="dashboard__resume">
+    <div class="dashboard__resume-contact">
+      <p class="dashboard__resume-number">{{ clients|length }}</p>
+      <p class="dashboard__resume-explain">nouveaux contacts</p>
+    </div>
+    <!-- TÂCHES À EFFECTUER -->
+    <div class="dashboard__resume-tasks">
+      <p class="dashboard__resume-number">10</p>
+      <p class="dashboard__resume-explain">tâches à effectuer</p>
+    </div>
+    <!-- ÉVÉNEMENTS À VENIR -->
+    <div class="dashboard__resume-events">
+      <p class="dashboard__resume-number">3</p>
+      <p class="dashboard__resume-explain">événements à venir</p>
+    </div>
+  </div>
+  <!-- LISTE DES TÂCHES -->
+  <div class="dashboard__infos-container">
+    <div class="dashboard__tasks">
+      <h2>Tâches</h2>
+      <div class="dashboard__contain">
+        <p class="dashboard__todo">
+          à faire
+        </p>
+        <p class="dashboard_comment">Appel Karim DESCHAMPS</p>
+      </div>
+      <div class="dashboard__contain">
+        <p class="dashboard__new">
+          nouveau
+        </p>
+        <p class="dashboard_comment">Mail Thanos</p>
+      </div>
+    </div>
+    <!-- CHIFFRES CLÉS -->
+    <div class="dashboard__numbers">
+      <h2>Chiffres clés</h2>
+      <div class="dashboard__contain-numbers">
+        <img src="/web/img/Icons/Regular/address-book.svg">
+          <p class="dashboard__numbers-text">{{ clients|length }}
+          <span class="dashboard__numbers-contacts">
+            contacts</span>
+          </p>
+        </div>
+        <div class="dashboard__contain-numbers">
+          <img src="/web/img/Icons/Solid/clipboard.svg">
+          <p class="dashboard__numbers-text">17
+            <span class="dashboard__numbers-contacts">
+            tâches</span>
+          </p>
+        </div>
+        <div class="dashboard__contain-numbers">
+          <img src="/web/img/Icons/Solid/calendar-alt.svg">
+          <p class="dashboard__numbers-text">8
+            <span class="dashboard__numbers-contacts">
+            événements</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard__contact-list">
+    <h3 class="dashboard__contact-title">Les derniers contacts ajoutés</h3>
+    {% for client in clients %}
+    <article class="contactCard">
+      <!-- PROFILE PICTURE -->
+      <div class="contactCard__main-infos">
+          <figure class="contactCard__main-infos__figure">
+              <img class="contactCard__main-infos__img" src="/web/img/king-Benzema.jpg" alt="Karim Deschamps">
+              <img class="is-connected" src="/web/img/online.png" alt="connecté">
+          </figure>
+          <div>
+              <!-- CONTACT NAME -->
+              <h3 class="contactCard__main-infos__name">{{ client.firstname }} {{ client.lastname }}</h3>
+              <!-- CONTACT TAGS -->
+              <!-- <span class="contactCard__main-tags">Journaliste Jeuxvidéos.com</span> -->
+          </div>
+      </div>
+      <!-- CONTACT MAIL -->
+      <div class="contactCard__mail">{{ client.email }}</div>
+      <!-- CONTACT LOCATION -->
+      <div class="contactCard__location">{{ client.city }}</div>
+      <!-- CONTACT TAGS -->
+      <div class="contactCard__tags">
+          {% for tag in tags %}
+            {% if client.id == tag.client_id %}
+              <span class="label label--blogger">{{ tag.name }}</span>
+            {% endif %}
+          {% endfor %}
+      </div>
+      <!-- EDIT PICTO -->
+      <div class="contactCard__edit">
+          <a href="/clients/list/{{ client.id }}/edit">
+            <img src="/web/img/edit.svg" alt="éditer"/>
+          </a>
+          <a href="/clients/list/delete/{{ client.id }}">
+            <img src="/web/img/trash-alt.svg" alt="supprimer le contact"/>
+          </a>
+      </div>
+  </article>
+  {% endfor %}
+  </div>
+</section>
 {% endblock %}

@@ -15,8 +15,8 @@ $routes->add('login', new Route('/login', array(
     '_controller' => 'Controller\UsersController::loginAction',
 )));
 
-$routes->add('profile', new Route('/profile', array(
-    '_controller' => 'Controller\UsersController::profileAction',
+$routes->add('profil', new Route('/profil', array(
+    '_controller' => 'Controller\UsersController::profilAction',
 )));
 
 $routes->add('clients_list', new Route('/clients/list', array(
