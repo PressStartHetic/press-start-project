@@ -48,8 +48,11 @@
                     </div>
                   </div>
                   <div>
-                    <span class="label label--blogger">Blogger</span>
-                    <span class="label label--independant">Indépendant</span>
+                    <select class="js-choice" name="tags[]" multiple>
+                      {% for tag in tags %}
+                          <option value="{{ tag.id }}">{{ tag.name }}</option>
+                      {% endfor %}
+                    </select>
                   </div>
                 </div>
               </div>
@@ -142,4 +145,7 @@
     </div>
     </form>
   </section>
+  <script type="text/javascript">
+    var choices = new Choices('.js-choice');
+  </script>
 {% endblock %}

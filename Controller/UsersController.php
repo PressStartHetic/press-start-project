@@ -20,6 +20,7 @@ use \Delight\Auth\NotLoggedInException;
 use \Delight\Auth\Role;
 use Controller\MailController;
 use Model\UsersModel;
+use Model\TagsModel;
 
 class UsersController extends BaseController
 {
@@ -119,6 +120,8 @@ class UsersController extends BaseController
             $clientRepository = new ClientsModel();
             $clientRepository->addClient($client);
 
+            $clientRepository->linkAction((int)$userId, $request->get('tags'), true);
+
 
             return new RedirectResponse('/clients/list');
           }
@@ -133,8 +136,12 @@ class UsersController extends BaseController
           }
         } else {
 
+          $tagModel = new TagsModel();
+          $tags     = $tagModel->getTags();
+
           return self::$twig->render('clients/add.html.twig', array(
-              'isAdmin' => self::$isAdmin
+              'isAdmin' => self::$isAdmin,
+              'tags'    => $tags
           ));
         }
 

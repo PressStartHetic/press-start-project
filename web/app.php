@@ -21,7 +21,7 @@ $argumentResolver = new HttpKernel\Controller\ArgumentResolver();
 try {
     $request->attributes->add($matcher->match($request->getPathInfo()));
     $request->attributes->add(['_router' => $generator]);
-    
+
     $controller = $controllerResolver->getController($request);
     $arguments = $argumentResolver->getArguments($request, $controller);
 
