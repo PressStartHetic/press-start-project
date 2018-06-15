@@ -106,15 +106,18 @@ class TagsModel extends Model
       $sql = 'INSERT INTO
                   tags(
                       id,
-                      name
+                      name,
+                      detail
                   )
                   VALUES(
                     NULL,
-                    :name
+                    :name,
+                    :detail
                     )';
 
       $requete = self::$db->prepare($sql);
       $requete->bindValue(':name', (isset($statement['name']))? $statement['name'] : "" , PDO::PARAM_STR);
+      $requete->bindValue(':detail', (isset($statement['desc']))? $statement['desc'] : "" , PDO::PARAM_STR);
 
       $requete->execute();
 
