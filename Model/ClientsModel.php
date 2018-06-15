@@ -81,24 +81,42 @@ class ClientsModel extends Model
         }
     }
 
-    public function linkAction($client, $tags)
+    public function linkAction($client, $tags, $new = false)
     {
-        $sql = 'DELETE FROM clients_tags WHERE client_id = :id';
-        $requete = self::$db->prepare($sql);
-        $requete->bindValue(':id', $client, PDO::PARAM_INT);
-        $requete->execute();
+        if ($new) {
+          $sql = 'SELECT id FROM clients WHERE userId = :userId';
 
-        foreach ($tags as $key => $value) {
-          $sql = 'INSERT INTO clients_tags(id, client_id, tag_id) VALUES(NULL,:id,:tag)';
+          $requete = self::$db->prepare($sql);
+          $requete->bindValue(':userId', $client, PDO::PARAM_INT);
+          $requete->execute();
+          $id = $requete->fetch(PDO::FETCH_OBJ);
+
+          foreach ($tags as $key => $value) {
+            $sql = 'INSERT INTO clients_tags(id, client_id, tag_id) VALUES(NULL,:id,:tag)';
+            $requete = self::$db->prepare($sql);
+            $requete->bindValue(':id', $id->id, PDO::PARAM_INT);
+            $requete->bindValue(':tag', $value, PDO::PARAM_INT);
+            $requete->execute();
+          }
+
+        } else {
+          $sql = 'DELETE FROM clients_tags WHERE client_id = :id';
           $requete = self::$db->prepare($sql);
           $requete->bindValue(':id', $client, PDO::PARAM_INT);
-          $requete->bindValue(':tag', $value, PDO::PARAM_INT);
           $requete->execute();
-        }
+
+          foreach ($tags as $key => $value) {
+            $sql = 'INSERT INTO clients_tags(id, client_id, tag_id) VALUES(NULL,:id,:tag)';
+            $requete = self::$db->prepare($sql);
+            $requete->bindValue(':id', $client, PDO::PARAM_INT);
+            $requete->bindValue(':tag', $value, PDO::PARAM_INT);
+            $requete->execute();
+          }
 
 
-        if ($requete->errorCode() !== "00000") {
-            throw new \Exception('Arg database');
+          if ($requete->errorCode() !== "00000") {
+              throw new \Exception('Arg database');
+          }
         }
     }
 
@@ -235,6 +253,11 @@ class ClientsModel extends Model
      */
     public function deleteClient($id){
         if(is_int($id)){
+            $sql = 'DELETE FROM clients_tags WHERE client_id = :id';
+            $requete = self::$db->prepare($sql);
+            $requete->bindValue(':id', $id, PDO::PARAM_INT);
+            $requete->execute();
+
             $sql = 'DELETE FROM clients
                     WHERE id = :id';
             $requete = self::$db->prepare($sql);

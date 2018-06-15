@@ -27,26 +27,30 @@ class FrontController extends BaseController
      */
     public function homeAction(Request $request)
     {
-      $data     = new ClientsModel();
-      $data     = $data->getClients();
+      if (self::$auth->isLoggedIn()) {
+        $data     = new ClientsModel();
+        $data     = $data->getClients();
 
-      $TagModel = new TagsModel();
-      $tags     = $TagModel->getTagsByClient();
+        $TagModel = new TagsModel();
+        $tags     = $TagModel->getTagsByClient();
 
-      $user = self::$auth;
+        $user = self::$auth;
 
-      $userId = $user->getUserId();
+        $userId = $user->getUserId();
 
-      if (!self::$isAdmin) {
+        if (!self::$isAdmin) {
 
-          return new RedirectResponse('/users/list/'.$userId);
+            return new RedirectResponse('/users/list/'.$userId);
+        } else {
+            return self::$twig->render('default/home.html.twig',[
+                'clients' => $data,
+                'tags'    => $tags,
+                'user'    => $user,
+                'isAdmin' => self::$isAdmin
+            ]);
+        }
       } else {
-          return self::$twig->render('default/home.html.twig',[
-              'clients' => $data,
-              'tags'    => $tags,
-              'user'    => $user,
-              'isAdmin' => self::$isAdmin
-          ]);
+        return new RedirectResponse('/login');
       }
     }
 }

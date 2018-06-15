@@ -18,6 +18,7 @@ class TagsController extends BaseController
 {
     public function listAction(Request $request)
     {
+      if (self::$auth->isLoggedIn() && self::$isAdmin) {
         $model = new TagsModel();
         $data  = $model->getTags();
 
@@ -25,19 +26,32 @@ class TagsController extends BaseController
             'tags' => $data,
             'isAdmin' => self::$isAdmin
         ]);
+      } else {
+        return new RedirectResponse('/login');
+      }
     }
 
     public function addAction(Request $request)
     {
-      if (count($_POST) > 0) {
-        $tag   = $request->request->all();
-        $model = new TagsModel();
-        $model->addTag($tag);
+      if (self::$auth->isLoggedIn() && self::$isAdmin) {
+        if (count($_POST) > 0) {
+          $tag   = $request->request->all();
+          $model = new TagsModel();
+          $model->addTag($tag);
 
-        $router        = $request->get('_router');
-        $res           = $router->generate('tag_list');
+          $router        = $request->get('_router');
+          $res           = $router->generate('tag_list');
 
-        return new RedirectResponse($res);
+          return new RedirectResponse($res);
+        } else {
+          $router        = $request->get('_router');
+          $res           = $router->generate('tag_list');
+
+          return new RedirectResponse($res);
+        }
+      } else {
+
+        return new RedirectResponse('/login');
       }
     }
 
@@ -45,35 +59,43 @@ class TagsController extends BaseController
     {
       $model = new TagsModel();
       $id    = $request->get('id');
+      if (self::$auth->isLoggedIn() && self::$isAdmin) {
+        if (count($_POST) > 0) {
+          $tag   = $request->request->all();
+          $model->updateTag($tag, $id);
 
-      if (count($_POST) > 0) {
-        $tag   = $request->request->all();
-        $model->updateTag($tag, $id);
+          $router        = $request->get('_router');
+          $res           = $router->generate('tag_list');
+
+          return new RedirectResponse($res);
+        } else {
+
+          $data = $model->getTags($id);
+
+          return self::$twig->render('tags/edit.html.twig',[
+            'tag' => $data
+          ]);
+        }
+      } else {
+
+        return new RedirectResponse('/login');
+      }
+    }
+
+    public function deleteAction(Request $request)
+    {
+      if (self::$auth->isLoggedIn() && self::$isAdmin) {
+        $model         = new TagsModel();
+        $id            = $request->get('id');
+
+        $model->deleteTag((int)$id);
 
         $router        = $request->get('_router');
         $res           = $router->generate('tag_list');
 
         return new RedirectResponse($res);
       } else {
-
-        $data = $model->getTags($id);
-
-        return self::$twig->render('tags/edit.html.twig',[
-          'tag' => $data
-        ]);
+        return new RedirectResponse('/login');
       }
-    }
-
-    public function deleteAction(Request $request)
-    {
-      $model         = new TagsModel();
-      $id            = $request->get('id');
-
-      $model->deleteTag((int)$id);
-
-      $router        = $request->get('_router');
-      $res           = $router->generate('tag_list');
-
-      return new RedirectResponse($res);
     }
 }
