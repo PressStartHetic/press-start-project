@@ -253,6 +253,11 @@ class ClientsModel extends Model
      */
     public function deleteClient($id){
         if(is_int($id)){
+            $sql = 'DELETE FROM clients_tags WHERE client_id = :id';
+            $requete = self::$db->prepare($sql);
+            $requete->bindValue(':id', $id, PDO::PARAM_INT);
+            $requete->execute();
+
             $sql = 'DELETE FROM clients
                     WHERE id = :id';
             $requete = self::$db->prepare($sql);
