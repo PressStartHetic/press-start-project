@@ -337,6 +337,7 @@ class UsersController extends BaseController
 
     public function logout(){
         self::$auth->logOut();
+        
         return new RedirectResponse('/login');
     }
 }
