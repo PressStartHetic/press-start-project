@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+  <div class="form">
+    <section class="form__sign-in">
+      <div class="form__sign-in-opacity"></div>
+      <div class="form__sign-in-form-container">
+        <h3 class="form__subtitle">Connexion</h3>
+        <form method="POST" action="#">
+          <div class="form__sign-in-email">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username">
+          </div>
+          <div class="form__sign-in-password">
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password">
+          </div>
+          <input type="submit" class="form__sign-up-form__submit" value="Se connecter">
+        </form>
+        <a href="#" class="form__sign-in-forget">Mot de passe oublié ?</a>
+      </div>
+    </section>
+  </div>
+{% endblock %}

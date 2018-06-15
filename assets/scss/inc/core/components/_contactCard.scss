@@ -1,0 +1,74 @@
+.contactCard {
+	display: flex;
+    padding: 25px 30px;
+    color: $white;
+    transition: 0.2s ease-out;
+
+	&:nth-of-type(2n + 1) {
+		background: #424242;
+	}
+
+	&:nth-of-type(2n + 2) {
+		background: #0c0c0c;
+    }
+
+    &:hover {
+        background: #F28027;
+        transition: 0.2s ease-out;
+    }
+
+	&__main-infos,
+	&__location,
+    &__mail,
+    &__tags,
+	&__edit {
+		display: flex;
+		align-items: center;
+		width: calc(100% / 5);
+		font-family: $ft-content;
+		font-size: 16px;
+	}
+
+	&__location,
+    &__mail,
+    &__tags {
+		justify-content: center;
+	}
+
+	&__edit {
+        justify-content: flex-end;
+        
+        img {
+			height: 25px;
+            width: 25px;
+            margin-right: 5px;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+
+	&__main-infos {
+        &__figure {
+            position: relative;
+            margin-right: 25px;
+        }
+
+		&__img {
+			height: 60px;
+			width: 60px;
+			border-radius: 100px;
+			object-fit: cover;
+        }
+
+		&__name {
+			margin-bottom: 10px;
+			font-size: 20px;
+
+			a {
+				color: $white;
+			}
+		}
+	}
+}

@@ -1,0 +1,41 @@
+<nav class="sidenav">
+  <div class="sidenav__logo-container">
+    <a href="/">
+      <img src="/web/img/logo-white.png" alt="Logo Press Start">
+    </a>
+  </div>
+  {% if isAdmin %}
+  <ul class="sidenav__list">
+    <li class="sidenav__list-item">
+      <a href="/">
+        <img src="/web/img/Icons/Regular/dashboard.svg">Dashboard
+      </a>
+    </li>
+    <li class="sidenav__list-item">
+      <a href="/clients/list" title="">
+        <img src="/web/img/Icons/Regular/address-book.svg">Contacts
+      </a>
+    </li>
+    <li class="sidenav__list-item">
+      <a href="/tasks">
+        <img src="/web/img/Icons/Solid/clipboard.svg">Tâches
+      </a>
+    </li>
+    <li class="sidenav__list-item">
+      <a href="/users/list">
+        <img src="/web/img/Icons/Solid/user-circle.svg">Utilisateurs
+      </a>
+    </li>
+    <li class="sidenav__list-item">
+      <a href="/tags/list">
+        <img src="/web/img/Icons/Solid/clipboard.svg">Tags
+      </a>
+    </li>
+  </ul>
+  {% endif %}
+  <!-- DÉCONNEXION -->
+  <div class="sidenav__log-out">
+    <img src="/web/img/Icons/Solid/toggle-off.png">
+    <a href=/logout>Déconnexion</a>
+  </div>
+</nav>

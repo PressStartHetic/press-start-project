@@ -1,0 +1,152 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+  <!-- NAV CÔTÉ -->
+    {% include 'partials/nav.html.twig' %}
+    {% include 'partials/header.html.twig' %}
+  <section class="contact-single add-contact-page">
+    <!-- SECTION INFORMATIONS -->
+    <div class="section-contact section-informations">
+      <!-- HEADER -->
+      <div class="contact-single__head">
+        <!-- BACK TO CONTACT LIST -->
+        <a href="/clients/list">
+          <img src="../web/img/back.png" alt="retour arrière">
+        </a>
+        <!-- NOM DU CONTACT -->
+        <h1 class="contact-single__title">Ajouter un contact</h1>
+      </div>
+      <!-- BLOCS -->
+      <form method="post" action="#">
+        <div class="contact-single__boxes">
+          <!-- FORMULAIRE -->
+          <div class="left-box">
+            <div class="contact-single__boxes__banner">
+              <h2>INFORMATIONS</h2>
+            </div>
+            <div class="contact-single__form__content">
+              <div class="contact-single__form__content__head">
+                <!-- PHOTO CONTACT -->
+                <figure>
+                  <img src="../web/img/default-pic.jpg" alt=""/>
+                </figure>
+                <div class="main-infos">
+                  <div>
+                    <!-- NOM CONTACT -->
+                    <div class="input-ctn">
+                      <label for="lastname">NOM</label>
+                      <input class="input" name="lastname" id="lastname" type="text" placeholder="Saisissez le nom…">
+                    </div>
+                    <!-- PRENOM CONTACT -->
+                    <div class="input-ctn">
+                      <label for="firstname">PRENOM</label>
+                      <input class="input" type="text" name="firstname" id="firstname" placeholder="Saisissez le prénom...">
+                    </div>
+                    <!-- POSTE CONTACT -->
+                    <div class="input-ctn">
+                      <label for="job">POSTE</label>
+                      <input class="input" type="text" name="job" id="job" placeholder="Saisissez le poste…">
+                    </div>
+                  </div>
+                  <div>
+                    <select class="js-choice" name="tags[]" multiple>
+                      {% for tag in tags %}
+                          <option value="{{ tag.id }}">{{ tag.name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-single__form__content__main">
+                <div class="input-ctn">
+                  <label for="pseudonyme">PSEUDONYME</label>
+                  <input class="input" type="text" name="pseudonyme" id="pseudonyme" placeholder="Saisissez le pseudonyme..." required>
+                </div>
+                <!-- NOM CONTACT -->
+                <div class="input-ctn">
+                  <label for="email">ADRESSE MAIL</label>
+                  <input class="input" type="email" name="email" id="email" placeholder="Saisissez le mail..." required>
+                </div>
+                <!-- PRENOM CONTACT -->
+                <div class="input-ctn">
+                  <label for="city">VILLE</label>
+                  <input class="input" name="city" id="city" type="text" placeholder="Saisissez la ville...">
+                </div>
+                <!-- POSTE CONTACT -->
+                <div class="input-ctn">
+                  <label for="mobilePhone">TELEPHONE MOBILE</label>
+                  <input class="input" type="tel" name="mobilePhone" id="mobilePhone" placeholder="Saisissez le numéro...">
+                </div>
+                <!-- POSTE CONTACT -->
+                <div class="input-ctn">
+                  <label for="postcode">CODE POSTAL</label>
+                  <input class="input" type="text" name="postcode" id="postcode" placeholder="Saisissez le code postal...">
+                </div>
+                <!-- POSTE CONTACT -->
+                <div class="input-ctn">
+                  <label for="proPhone">TELEPHONE PRO</label>
+                  <input class="input" name="proPhone" id="proPhone" type="tel" placeholder="Saisissez le numéro...">
+                </div>
+                <!-- POSTE CONTACT -->
+                <div class="input-ctn">
+                  <label for="adress">ADRESSE</label>
+                  <input class="input" name="adress" id="adress" type="text" placeholder="Saisissez l'adresse...">
+                </div>
+                <div class="input-ctn">
+                  <label for="twitter">TWITTER</label>
+                  <input class="input" type="text" name="twitter" id="twitter" placeholder="Saisissez l'id twitter...">
+                </div>
+                <!-- POSTE CONTACT -->
+                <div class="input-ctn">
+                  <label for="twitch">TWITCH</label>
+                  <input class="input" type="text" name="twitch" id="twitch" placeholder="Saisissez l'id Twitch...">
+                </div>
+              </div>
+
+
+              <div class="contact-single__form__content__consoles">
+                <!-- contact CONSOLE(S) -->
+                <span>CONSOLES</span>
+                <div>
+                  <input type="checkbox" id="play">
+                  <label for="play" class="play"></label>
+                </div>
+                <div>
+                  <input type="checkbox" id="switch">
+                  <label for="switch" class="switch"></label>
+                </div>
+                <div>
+                  <input type="checkbox" id="xbox">
+                  <label for="xbox" class="xbox"></label>
+                </div>
+                <div>
+                  <input type="checkbox" id="pc">
+                  <label for="pc" class="pc"></label>
+                </div>
+              </div>
+
+              <div class="contact-single__form__content__footer">
+                <!-- POSTE SITE(S) -->
+                <div class="input-ctn">
+                  <label for="website">SITE WEB</label>
+                  <div class="inputs">
+                    <div class="input-wrapper">
+                      <input class="input" type="text" name="website" id="website" placeholder="Saisissez le site...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-actions">
+                <input type="submit" class="add-account" value="Ajouter le contact">
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </form>
+  </section>
+  <script type="text/javascript">
+    var choices = new Choices('.js-choice');
+  </script>
+{% endblock %}

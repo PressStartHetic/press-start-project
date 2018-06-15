@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="28px" viewBox="0 0 24 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons/Solid/clipboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-2.8%" y="-0.4%" width="107.8%" height="101.2%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="2" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <path d="M19.5,6.375 L19.5,20.125 C19.5,21.1605469 18.6605469,22 17.625,22 L6.375,22 C5.33945313,22 4.5,21.1605469 4.5,20.125 L4.5,6.375 C4.5,5.33945313 5.33945313,4.5 6.375,4.5 L9.5,4.5 C9.5,3.12148438 10.6214844,2 12,2 C13.3785156,2 14.5,3.12148438 14.5,4.5 L17.625,4.5 C18.6605469,4.5 19.5,5.33945313 19.5,6.375 Z M12,3.5625 C11.4822266,3.5625 11.0625,3.98222656 11.0625,4.5 C11.0625,5.01777344 11.4822266,5.4375 12,5.4375 C12.5177734,5.4375 12.9375,5.01777344 12.9375,4.5 C12.9375,3.98222656 12.5177734,3.5625 12,3.5625 Z M15.75,8.015625 L15.75,7.234375 C15.75,7.10493326 15.6450667,7 15.515625,7 L8.484375,7 C8.35493326,7 8.25,7.10493326 8.25,7.234375 L8.25,8.015625 C8.25,8.14506674 8.35493326,8.25 8.484375,8.25 L15.515625,8.25 C15.6450667,8.25 15.75,8.14506674 15.75,8.015625 Z" id="path-2"></path>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#F7931E" offset="0%"></stop>
+            <stop stop-color="#D4145A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="nav-droite-hover" transform="translate(-17.000000, -297.000000)">
+            <g id="nav-droite" filter="url(#filter-1)">
+                <g id="tâches" transform="translate(15.000000, 297.000000)">
+                    <g id="Icons/Solid/clipboard">
+                        <mask id="mask-3" fill="white">
+                            <use xlink:href="#path-2"></use>
+                        </mask>
+                        <use id="clipboard" fill="#000000" fill-rule="nonzero" xlink:href="#path-2"></use>
+                        <g id="Orange-pink" mask="url(#mask-3)" fill="url(#linearGradient-4)" fill-rule="evenodd">
+                            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,127 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <!-- NAV CÔTÉ -->
+    {% include 'partials/nav.html.twig' %}
+    {% include 'partials/header.html.twig' %}
+
+    <!--SECTION PAGE LISTE CONTACTS-->
+    <section class="tasks">
+        <!-- HEAD PAGE CONTACTS -->
+        <div class="tasks__head">
+            <div>
+                <!-- TITRE PAGE -->
+                <h1 class="tasks__title">Tâches</h1>
+                <p>Toutes vos tâches sont organisées ici. Vous pouvez en créer de nouvelles, les modifier ou les supprimer.</p>
+            </div>
+            <!-- DATE -->
+            <span>Mardi 12 Juin 2018</span>
+        </div>
+        <!-- FORM AJOUT TACHES -->
+        <div class="tasks__form-container">
+            <h2>Créer une nouvelle tâche</h2>
+            <form action="">
+                <input type="text" class="tasks__input" placeholder="Saisissez le nom d'une nouvelle tâche">
+            </form>
+            <!-- LISTE DES CONTACTS -->
+            <div class="tasks__filter">
+                <button class="tag" data-filter="*">Toutes</button>
+                <button class="tag todo" data-filter=".todo">À faire</button>
+                <button class="tag new" data-filter=".new">Nouveau</button>
+                <button class="tag done" data-filter=".done">Terminé</button>
+            </div>
+            <div class="tasks__list">
+                <!-- UNE FICHE TACHE -->
+                <article class="taskCard grid-sizer todo">
+                    <!-- TITRE TACHE -->
+                    <p class="tag todo">À faire</p>
+                    <h3 class="taskCard__title">Conférence E3</h3>
+                    <!-- TEXT TACHE -->
+                    <div class="taskCard__txt">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae obcaecati ducimus totam id doloribus quas aperiam dolores eveniet illo doloremque, error laborum quia explicabo molestias sequi! Quia, quo dolore?
+                    </div>
+                </article>
+
+                <!-- UNE FICHE TACHE -->
+                <article class="taskCard grid-sizer new">
+                    <p class="tag new">Nouveau</p>
+                    <!-- TITRE TACHE -->
+                    <h3 class="taskCard__title">Conférence E3</h3>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae obcaecati ducimus totam id doloribus quas aperiam dolores eveniet illo doloremque, error laborum quia explicabo molestias sequi! Quia, quo dolore? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, quas laboriosam. Qui, quas ab nulla sapiente voluptatibus, incidunt repudiandae cumque eaque neque blanditiis provident quis nostrum, a voluptatem quia rerum! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat ut sunt facilis omnis dolor natus amet unde, eum nemo? Possimus rem porro, dolorem optio officia magni laudantium cupiditate eum quisquam!
+                </article>
+                <!-- UNE FICHE TACHE -->
+                <article class="taskCard grid-sizer todo">
+                    <p class="tag todo">À faire</p>
+                    <!-- TITRE TACHE -->
+                    <h3 class="taskCard__title">Conférence E3</h3>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae obcaecati ducimus totam id doloribus quas aperiam dolores eveniet illo doloremque, error laborum quia explicabo molestias sequi! Quia, quo dolore?
+                </article>
+
+                <!-- UNE FICHE TACHE -->
+                <article class="taskCard grid-sizer todo">
+                    <p class="tag todo">À faire</p>
+                    <!-- TITRE TACHE -->
+                    <h3 class="taskCard__title">Conférence E3</h3>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae obcaecati ducimus totam id doloribus quas aperiam dolores eveniet illo doloremque, error laborum quia explicabo molestias sequi! Quia, quo dolore?
+                </article>
+
+                <!-- UNE FICHE TACHE -->
+                <article class="taskCard grid-sizer">
+                    <p class="tag done">Terminé</p>
+                    <!-- TITRE TACHE -->
+                    <h3 class="taskCard__title">Conférence E3</h3>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae obcaecati ducimus totam id doloribus quas aperiam dolores eveniet illo doloremque, error laborum quia explicabo molestias sequi! Quia, quo dolore? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt nulla natus asperiores officiis, ipsam exercitationem quae excepturi illo nisi debitis quidem dicta cumque harum itaque rerum mollitia fugit nihil illum.
+                </article>
+
+                <!-- UNE FICHE TACHE -->
+                <article class="taskCard grid-sizer done">
+                    <p class="tag done">Terminé</p>
+                    <!-- TITRE TACHE -->
+                    <h3 class="taskCard__title">Conférence E3</h3>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae obcaecati ducimus totam id doloribus quas aperiam dolores eveniet illo doloremque, error laborum quia explicabo molestias sequi! Quia, quo dolore?
+                </article>
+
+                <!-- UNE FICHE TACHE -->
+                <article class="taskCard grid-sizer done">
+                    <p class="tag done">Terminé</p>
+                    <!-- TITRE TACHE -->
+                    <h3 class="taskCard__title">Conférence E3</h3>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem molestiae obcaecati ducimus totam id doloribus quas aperiam dolores eveniet illo doloremque, error laborum quia explicabo molestias sequi! Quia, quo dolore?
+                </article>
+            </div>
+        </div>
+    </section>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+    <script>
+        var elem = document.querySelector('.tasks__list');
+        var iso = new Isotope(elem, {
+            // options
+            itemSelector: '.taskCard',
+            percentPosition: true,
+            masonry: {
+                // use element for option
+                columnWidth: '.grid-sizer',
+                gutter: 10
+            }
+        });
+
+
+
+        // filter functions
+        var filterFns = {
+
+        };
+
+        // bind filter button click
+        var filtersElem = document.querySelector('.tasks__filter');
+        filtersElem.addEventListener( 'click', function( event ) {
+            if ( !matchesSelector( event.target, 'button' ) ) {
+                return;
+            }
+            var filterValue = event.target.getAttribute('data-filter');
+            filterValue = filterFns[ filterValue ] || filterValue;
+            iso.arrange({ filter: filterValue });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,353 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <!-- NAV CÔTÉ -->
+    {% include 'partials/nav.html.twig' %}
+    <!-- HEADER -->
+    <header class="header header--hasTabs">
+        <!-- BLOCS -->
+        <ul>
+            <li class="tab-item is-active">Informations</li>
+            <li class="tab-item">Réseaux sociaux</li>
+        </ul>
+        <div class="header__search-ctn">
+            <div class="header__search-container">
+                <input class="header__search-request" placeholder="Saisissez le nom d'un contact">
+                <img src="/web/img/Icons/Solid/search.svg" class="header__search-loupe">
+            </div>
+            <div class="header__add-container">
+                <img src="/web/img/Icons/Solid/plus.svg">
+            </div>
+            <div class="header_account-profile">
+                <a href="" title="">
+                    <img src="/web/img/header-profile.png">
+                </a>
+            </div>
+        </div>
+        <div class="add_card hidden">
+            <ul class="add_card-list">
+                <li>
+                    <a href="clients/add">
+                        <img src="/web/img/Icons/Regular/address-book.svg">
+                        Ajouter un contact
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/web/img/Icons/Solid/clipboard.svg">
+                        Ajouter une tâche
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <section class="contact-single">
+        <!-- SECTION INFORMATIONS -->
+        <!-- HEADER -->
+        <div class="contact-single__head">
+            <!-- BACK TO CONTACT LIST -->
+            <a href="/clients/list">
+                <img src="/web/img/back.png" alt="retour arrière">
+            </a>
+            <!-- NOM DU CONTACT -->
+            <h1 class="contact-single__title">{{ client.pseudonyme }}</h1>
+        </div>
+        <form action="/clients/list/{{ client.id }}/edit" method="post">
+            <div class="section-contact section-informations">
+                <div class="contact-single__boxes">
+                    <!-- FORMULAIRE -->
+                    <div class="left-box">
+                        <div class="contact-single__boxes__banner">
+                            <h2>INFORMATIONS</h2>
+                        </div>
+                        <div class="contact-single__form__content">
+                            <div class="contact-single__form__content__head">
+                                <!-- PHOTO CONTACT -->
+                                <figure>
+                                    <img src="/web/img/Maincartoonlink.png" alt="Link"/>
+                                </figure>
+                                <div class="main-infos">
+                                    <div>
+                                        <!-- pseudonyme -->
+                                        <input type="hidden" name="pseudonyme" value="{{ client.pseudonyme }}">
+                                        <!-- NOM CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="lastname">NOM</label>
+                                            <input type="text" class="input" name="lastname" value="{{ client.lastname }}">
+                                        </div>
+                                        <!-- PRENOM CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="firstname">PRENOM</label>
+                                            <input type="text" class="input" name="firstname" value="{{ client.firstname }}">
+                                        </div>
+                                        <!-- POSTE CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="">POSTE</label>
+                                            <input class="input" type="text" placeholder="Saisissez le poste…">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <select class="js-choice" name="tags[]" multiple>
+                                          {% for tag in tags %}
+                                            {% if tag.count > 0  %}
+                                              <option value="{{ tag.id }}" selected>{{ tag.name }}</option>
+                                            {% else %}
+                                              <option value="{{ tag.id }}">{{ tag.name }}</option>
+                                            {% endif %}
+                                          {% endfor %}
+                                        </select>
+                                        <a href="">
+                                            <img class="add-tag" src="/web/img/ajouter-tag.svg" alt="ajouter un tag">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contact-single__form__content__main">
+                                <!-- NOM CONTACT -->
+                                <div class="input-ctn">
+                                    <label for="email">ADRESSE MAIL</label>
+                                    <input class="input" type="email" name="email" value="{{ client.email }}">
+                                </div>
+                                <!-- PRENOM CONTACT -->
+                                <div class="input-ctn">
+                                    <label for="city">VILLE</label>
+                                    <input class="input" type="text"  name="city" value="{{ client.city }}">
+                                </div>
+                                <!-- POSTE CONTACT -->
+                                <div class="input-ctn">
+                                    <label for="mobilePhone">TELEPHONE MOBILE</label>
+                                    <input class="input" type="tel" name="mobilePhone" value="{{ client.mobilePhone }}">
+                                </div>
+                                <!-- POSTE CONTACT -->
+                                <div class="input-ctn">
+                                    <label for="postcode">CODE POSTAL</label>
+                                    <input class="input" type="text"name="postcode" value="{{ client.postcode }}">
+                                </div>
+                                <!-- POSTE CONTACT -->
+                                <div class="input-ctn">
+                                    <label for="proPhone">TELEPHONE PRO</label>
+                                    <input class="input" type="tel" name="proPhone" value="{{ client.proPhone }}">
+                                </div>
+                                <!-- POSTE CONTACT -->
+                                <div class="input-ctn">
+                                    <label for="adress">ADRESSE</label>
+                                    <input class="input" type="text" name="adress" value="{{ client.adress }}">
+                                </div>                                <!-- POSTE CONTACT -->
+                                <div class="input-ctn">
+                                    <label for="twitter">TWITTER</label>
+                                    <input class="input" type="text" name="twitter" id="twitter" value="{{ client.twitter }}">
+                                </div>
+                                <!-- POSTE CONTACT -->
+                                <div class="input-ctn">
+                                    <label for="twitch">TWITCH</label>
+                                    <input class="input" type="text" name="twitch" id="twitch" value="{{ client.twitch }}">
+                                </div>
+                            </div>
+
+                            <div class="contact-single__form__content__consoles">
+                                <!-- contact CONSOLE(S) -->
+                                <span>CONSOLES</span>
+                                <div>
+                                    <input type="checkbox" id="play">
+                                    <label for="play" class="play"></label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="switch">
+                                    <label for="switch" class="switch"></label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="xbox">
+                                    <label for="xbox" class="xbox"></label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="pc">
+                                    <label for="pc" class="pc"></label>
+                                </div>
+                            </div>
+
+                            <div class="contact-single__form__content__footer">
+                                <!-- POSTE SITE(S) -->
+                                <div class="input-ctn">
+                                    <label for="website">SITES WEB</label>
+                                    <div class="inputs">
+                                        <div class="input-wrapper">
+                                            <input class="input" type="text" name="website" value="{{ client.website }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <input type="submit" class="edit-conf open-modal" value="Valider les modifications">
+                                <input type="button" class="delete-account open-modal" value="Supprimer ce compte">
+                                <a href="mailto:{{ client.email }}">Envoyer un mail</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ASIDE BLOCS -->
+                    <aside>
+                        <div class="contact-single__boxes__banner">
+                            <h2>NOTES</h2>
+                        </div>
+                        <!-- NOTES -->
+                        <div class="contact-single__boxes__content">
+                            {% spaceless %}
+                                <textarea name="notes" id="notes" spellcheck="false">
+                                    {{ client.notes }}
+                                </textarea>
+                            {% endspaceless %}
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </form>
+
+        <!-- SECTION SOCIALS -->
+        <div class="section-contact section-socials">
+            {% if client.twitter|length != 0 %}
+                <div class="section-socials__twitter">
+                    <div class="head">
+                        <img src="/web/img/twitter.png" alt="twitter">
+                        <h4>Twitter</h4>
+                        <span>
+                            <a href="">@{{ client.twitter }}</a>
+                        </span>
+                    </div>
+                    <div class="twitter-block content">
+                        <a class="twitter-timeline" href="https://twitter.com/{{ client.twitter }}" data-tweet-limit="5" data-chrome="nofooter noheader noscrollbar" data-aria-polite="assertive" data-cards="hidden" target="_blank"></a>
+                    </div>
+                </div>
+            {% endif %}
+            {% if client.twitch | length != 0 %}
+                <div class="section-socials__twitch">
+                    <div class="head">
+                        <img src="/web/img/twitch.png" alt="twitch">
+                        <h4>Twitch</h4>
+                        <span>
+                                <a href="">{{ client.twitch }}</a>
+                            </span>
+                    </div>
+                    <div class="content"></div>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- MODALES CONTACT -->
+        <div class="modals-ctn">
+            <!-- SUPPRESSION COMPTE -->
+            <form class="modals-ctn__item modals-ctn__item--delete">
+                <h4>Suppression de compte</h4>
+                <p>Voulez-vous vraiment supprimer votre compte ? Cette action entraînera la suppression définitive de vos informations.</p>
+                <div>
+                    <a class="btn btn--validate" href="/clients/delete/{{ client.id }}">
+                        Confirmer
+                    </a>
+                </div>
+            </form>
+        </div>
+    </section>
+    <script>
+        window.twttr = (function (d, s, id) {
+            var js,
+                fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id))
+                return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
+            return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+
+    <script>
+        const userID = "https://api.twitch.tv/helix/users?login={{ client.twitch }}";
+
+        /* FETCH USER ID */
+        fetch(userID, {
+            method: 'GET',
+            headers: {
+                'Client-ID': 'ekg7suvjqbij033yfkb1sjt1aojyew'
+            }
+        })
+            .then((resp) => resp.json())
+        .then(function (results) {
+            let userID = results.data[0].id;
+            /* url to get VIDS */
+            const urlVid = "https://api.twitch.tv/helix/videos?user_id=" + userID;
+
+            /* FETCH VIDS */
+            fetch(urlVid, {
+                method: 'GET',
+                headers: {
+                    'Client-ID': 'ekg7suvjqbij033yfkb1sjt1aojyew'
+                }
+            })
+                .then((resp) => resp.json())
+        .then(function (results) {
+                let resultsList = results.data;
+
+                for (let i = 0; i < 5; i++) {
+                    let elem = resultsList[i];
+                    const elemID = elem.id;
+                    const elemUrl = "https://player.twitch.tv/?autoplay=false&video=v" + elemID;
+
+                    var iframes = document.createElement("iframe");
+                    iframes.setAttribute('src', elemUrl);
+                    iframes.setAttribute('allowFullScreen', '');
+
+                    document.querySelector('.section-socials__twitch .content').appendChild(iframes);
+                }
+            })
+        })
+    </script>
+
+    <script>
+        var linkToModal = document.querySelector('.delete-account');
+        var modalCtn = document.querySelector('.modals-ctn');
+        var modalDelItem = document.querySelector('.modals-ctn__item--delete');
+        var body = document.querySelector('body');
+
+        linkToModal.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            modalCtn.classList.add('show');
+            modalDelItem.classList.add('show');
+        })
+
+        modalDelItem.addEventListener('click', function (e) {
+            e.stopPropagation();
+        })
+
+        document.querySelector('body').addEventListener('click', function (e) {
+
+            modalCtn.classList.remove('show');
+        })
+    </script>
+
+    <script>
+        var tabItem = document.querySelectorAll('.tab-item');
+        var sections = document.querySelectorAll('.section-contact');
+
+        for (let i = 0; i < tabItem.length; i++) {
+            tabItem[i].addEventListener('click', function () {
+                for (var j = 0; j < sections.length; j++) {
+                    tabItem[j].classList.remove('is-active');
+                    sections[j].style.display = 'none';
+                }
+                tabItem[i].classList.add('is-active');
+                sections[i].style.display = 'flex'
+            });
+        }
+    </script>
+    <script type="text/javascript">
+      var choices = new Choices('.js-choice');
+    </script>
+{% endblock %}

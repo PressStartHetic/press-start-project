@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>Client profil</h1>
+        <form method="post">
+            <ul>
+                <li>
+                  <label for="pseudonyme">pseudo:</label>
+                  <input type="text" name="pseudonyme" value="{{ client.pseudonyme }}">
+                </li>
+                <li>
+                  <label for="firstname">prénom:</label>
+                  <input type="text" name="firstname" value="{{ client.firstname }}">
+                </li>
+                <li>
+                  <label for="lastname">nom:</label>
+                  <input type="text" name="lastname" value="{{ client.lastname }}">
+                </li>
+                <li>
+                  <label for="email">mail:</label>
+                  <input type="mail" name="email" value="{{ client.email }}">
+                </li>
+                <li>
+                  <label for="facebook">facebook:</label>
+                  <input type="text" name="facebook" value="{{ client.facebook }}">
+                </li>
+                <li>
+                  <label for="youtube">youtube:</label>
+                  <input type="text" name="youtube" value="{{ client.youtube }}">
+                </li>
+                <li>
+                  <label for="twitter">twitter:</label>
+                  <input type="text" name="twitter" value="{{ client.twitter }}">
+                </li>
+                <li>
+                  <label for="twitch">twitch:</label>
+                  <input type="text" name="twitch" value="{{ client.twitch }}">
+                </li>
+            </ul>
+            <input type="hidden" name="id" value="{{ client.id }}">
+            <input type="submit">
+        </form>
+{% endblock %}

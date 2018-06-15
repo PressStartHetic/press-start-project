@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+  <div class="form">
+    <section class="form__sign-in">
+      <div class="form__sign-in-opacity"></div>
+      <div class="form__sign-in-form-container">
+        <h3 class="form__subtitle">Bienvenue :)
+          <br />
+          <br />Choisissez votre mot de passe</h3>
+        <form method="post" action="#">
+          <div class="form__sign-in-password">
+            <input type="password" name="password" id="password">
+          </div>
+          <input type="hidden" name="token" id="token" value="{{ token }}">
+          <input type="hidden" name="selector" id="selector" value="{{ selector }}">
+          <input type="submit" class="form__sign-up-form__submit" value="Valider">
+        </form>
+      </div>
+    </section>
+  </div>
+{% endblock %}

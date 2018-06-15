@@ -1,0 +1,74 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+
+{% include 'partials/nav.html.twig' %}
+<!-- HEADER -->
+{% include 'partials/header.html.twig' %}
+
+<!--SECTION PAGE LISTE CONTACTS-->
+<section class="tags">
+    <!-- HEAD PAGE CONTACTS -->
+  <div class="tags__head">
+    <div>
+          <!-- TITRE PAGE -->
+        <h1 class="tasks__title">Gestion des tags</h1>
+        <p>Toutes vos tâches sont organisées ici. Vous pouvez en créer de nouvelles, les modifier ou les supprimer.</p>
+    </div>
+    <!-- DATE -->
+    <span>Mardi 12 Juin 2018</span>
+  </div>
+      <!-- FORM AJOUT TACHES -->
+    <div class="tags__container">
+      <div class="tags__container-head">
+        <p><span>{{ tags|length }}</span> tags</p>
+        <div class="tags__search-container">
+          <input class="tags__search-request" placeholder="Saisissez le nom d'un contact">
+          <img src="/web/img/Icons/Solid/search.svg" class="header__search-loupe">
+        </div>
+        <div class="tags__trash">
+          <img src="/web/img/trash-alt.svg">
+        </div>
+      </div>
+      <div class="tags__container-card">
+        <div class="contacts__list">
+          {% for tag in tags %}
+          <!-- UNE FICHE TAG -->
+            <article class="contactCard">
+            <!-- TAG -->
+              <div class="tagCard__main-infos">
+                <button class="independant-tag tag">
+                  {{ tag.name }}
+                </button>
+              </div>
+
+            <!-- TODO: Dyn tag fields -->
+            <!-- EXPLICATION TAGS -->
+            <div class="tagCard__explain">
+              {{ tag.detail }}
+            </div>
+            <div class="tagCard__uses">
+            Utilisé {{ tag.count }} fois
+            </div>
+            <!-- EDIT PICTO -->
+              <div class="tagCard__edit">
+                <!-- <a href="/tags/{{ tag.id }}/edit">
+                  <img src="/web/img/edit.svg" alt="éditer"/>
+                </a> -->
+                <a href="/tags/delete/{{ tag.id }}">
+                  <img src="/web/img/trash-alt.svg" alt="supprimer le contact"/>
+                </a>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+
+    <!-- ADD TAG -->
+    <div class="tags__add-tag">
+      <img src="/web/img/Icons/Solid/plus.svg">
+      <a href="#">Ajouter un tag</a>
+    </div>
+
+</section>
+{% endblock %}

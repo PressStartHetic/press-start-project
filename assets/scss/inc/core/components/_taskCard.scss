@@ -1,0 +1,17 @@
+.taskCard {
+    padding: 25px 30px;
+    background: $dark-bg;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 180px;
+
+    &__title {
+        margin-bottom: 15px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    &__txt {
+        line-height: 1.5;
+    }
+}

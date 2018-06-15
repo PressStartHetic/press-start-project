@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Liste des Tags</title>
+        <link rel="stylesheet" href="../../css/style.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300i,400,700,900|Orbitron:400,500,700" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="sidenav">
+          <div class="sidenav__logo-container">
+            <img src="../img/logo-white.png" alt="Logo Press Start">
+          </div>
+          <ul class="sidenav__list">
+            <li class="sidenav__list-item">
+              <a href="" title="">
+                <img src="../img/Icons/Regular/dashboard.svg">Dashboard
+              </a>
+            </li>
+            <li class="sidenav__list-item">
+              <a href="" title="">
+                <img src="../img/Icons/Regular/address-book.svg">Contacts
+              </a>
+            </li>
+            <li class="sidenav__list-item">
+              <a href="" title="">
+                <img src="../img/Icons/Solid/clipboard.svg">Tâches
+              </a>
+            </li>
+            <li class="sidenav__list-item">
+              <a href="" title="">
+                <img src="../img/Icons/Solid/calendar-alt.svg">Agenda
+              </a>
+            </li>
+            <li class="sidenav__list-item">
+              <a href="" title="">
+                <img src="../img/Icons/Solid/user-circle.svg">Mon profil
+              </a>
+            </li>
+          </ul>
+          <!-- DÉCONNEXION -->
+          <div class="sidenav__log-out">
+            <img src="../img/Icons/Solid/toggle-off.png">
+            <a href="#">Déconnexion</a>
+          </div>
+        </nav>
+        <!-- HEADER -->
+        <header class="header">
+          <div class="header__search-container">
+            <input class="header__search-request" placeholder="Saisissez le nom d'un contact">
+            <img src="../img/Icons/Solid/search.svg" class="header__search-loupe">
+          </div>
+          <div class="header__add-container">
+            <img src="../img/Icons/Solid/plus.svg">
+          </div>
+          <div class="header_account-profile">
+            <a href="" title="">
+              <img src="../img/header-profile.png">
+            </a>
+          </div>
+          <div class="add_card hidden">
+            <ul class="add_card-list">
+              <li>
+                <a href="#">
+                  <img src="../img/Icons/Regular/address-book.svg">
+                  Ajouter un contact
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="../img/Icons/Solid/clipboard.svg">
+                  Ajouter une tâche
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="../img/Icons/Solid/calendar-alt.svg">
+                  Ajouter un événement
+                </a>
+              </li>
+            </ul>
+          </div>
+        </header>
+        <!--SECTION PAGE LISTE CONTACTS-->
+        <section class="tags">
+            <!-- HEAD PAGE CONTACTS -->
+          <div class="tags__head">
+            <div>
+                  <!-- TITRE PAGE -->
+                <h1 class="tasks__title">Gestion des tags</h1>
+                <p>Toutes vos tâches sont organisées ici. Vous pouvez en créer de nouvelles, les modifier ou les supprimer.</p>
+            </div>
+            <!-- DATE -->
+            <span>Mardi 12 Juin 2018</span>
+          </div>
+              <!-- FORM AJOUT TACHES -->
+            <div class="tags__container">
+              <div class="tags__container-head">
+                <p><span>2</span> tags</p>
+                <div class="tags__search-container">
+                  <input class="tags__search-request" placeholder="Saisissez le nom d'un contact">
+                  <img src="../img/Icons/Solid/search.svg" class="header__search-loupe">
+                </div>
+                <div class="tags__trash">
+                  <img src="../img/trash-alt.svg">
+                </div>
+              </div>
+              <div class="tags__container-card">
+                <div class="contacts__list">
+                <!-- UNE FICHE TAG -->
+                  <article class="contactCard">
+                    <!-- TAG -->
+                    <div class="tagCard__main-infos">
+                      <button class="blogger-tag tag">
+                        Blogger
+                      </button>
+                    </div>
+                    <!-- EXPLICATION TAGS -->
+                    <div class="tagCard__explain">
+                      Regroupe tous les bloggers
+                    </div>
+                    <div class="tagCard__uses">
+                      Utilisé 20 fois
+                    </div>
+                    <!-- EDIT PICTO -->
+                    <div class="tagCard__edit">
+                        <img src="../img/edit.svg" alt="éditer"/>
+                        <img src="../img/trash-alt.svg" alt="supprimer le contact"/>
+                    </div>
+                  </article>
+                    
+                  <article class="contactCard">
+                    <!-- TAG -->
+                    <div class="tagCard__main-infos">
+                      <button class="independant-tag tag">
+                        Indépendant
+                      </button>
+                    </div>
+                    <!-- EXPLICATION TAGS -->
+                    <div class="tagCard__explain">
+                      Personnes reliées au site Gameblog
+                    </div>
+                    <div class="tagCard__uses">
+                      Utilisé 8 fois
+                    </div>
+                    <!-- EDIT PICTO -->
+                    <div class="tagCard__edit">
+                        <img src="../img/edit.svg" alt="éditer"/>
+                        <img src="../img/trash-alt.svg" alt="supprimer le contact"/>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <!-- ADD TAG -->
+              <div class="tags__add-tag">
+                <img src="../img/Icons/Solid/plus.svg">
+                <a href="#">Ajouter un tag</a>
+              </div>
+          </section>
+            
+        <script src="../js/app.min.js" charset="utf-8"></script>
+
+    </body>
+</html>

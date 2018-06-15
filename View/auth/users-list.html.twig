@@ -1,0 +1,64 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <!-- NAV CÔTÉ -->
+    {% include 'partials/nav.html.twig' %}
+    {% include 'partials/header.html.twig' %}
+
+    <!--SECTION PAGE LISTE CONTACTS-->
+    <section class="contacts contacts--users">
+        <!-- HEAD PAGE CONTACTS -->
+        <div class="contacts__head">
+            <!-- TITRE PAGE -->
+            <div class="contacts__intro">
+                <h1 class="contacts__title">Utilisateurs</h1>
+                <h2 class="contacts__introTxt">Tous vos utilisateurs sont organisés sur cette page.</h2>
+            </div>
+            <!-- FORM RECHERCHE DES CONTACTS -->
+            <div class="contacts__head__btn">
+                <!-- BOUTON AJOUT -->
+                <a href="/users/add">
+                    <img src="../../web/img/plus.svg" alt="ajouter un contact"/>
+                </a>
+            </div>
+        </div>
+
+        <!-- LISTE DES CONTACTS -->
+        <div class="contacts__list">
+            {% for item in list %}
+                <article class="contactCard">
+                <!-- PROFILE PICTURE -->
+                <div class="contactCard__main-infos">
+                    <figure class="contactCard__main-infos__figure">
+                        <a href="/users/list/{{item.id }}">
+                            <img class="contactCard__main-infos__img" src="../web/img/Maincartoonlink.png" alt="Link">
+                        </a>
+                    </figure>
+                    <div>
+                        <!-- CONTACT NAME -->
+                        <h3 class="contactCard__main-infos__name">
+                            <a href="/users/list/{{item.id }}">
+                                {{ item.username }}
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+                <!-- CONTACT MAIL -->
+                <div class="contactCard__mail">{{ item.email }}</div>
+
+                    <div class="contactCard__edit">
+                            <a href="/users/list/{{item.id }}">
+                                <img src="../web/img/edit.svg" alt="éditer"/>
+                            </a>
+                            {% if isAdmin %}
+                                <a href="/users/delete/{{item.id }}">
+                                    <img class="delete-account" src="../web/img/trash-alt.svg" alt="supprimer le contact"/>
+                                </a>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

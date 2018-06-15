@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="90px" viewBox="0 0 96 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>pc</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="84" height="78" rx="5"></rect>
+        <filter x="-10.7%" y="-11.5%" width="121.4%" height="123.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M4.375,4.73958333 L16.9492188,4.73958333 L16.9492188,16.9645182 L4.375,16.9645182 L4.375,4.73958333 Z M18.0507812,4.73958333 L30.625,4.73958333 L30.625,16.9645182 L18.0507812,16.9645182 L18.0507812,4.73958333 Z M4.375,18.0354818 L16.9492188,18.0354818 L16.9492188,30.2604167 L4.375,30.2604167 L4.375,18.0354818 Z M18.0507812,18.0354818 L30.625,18.0354818 L30.625,30.2604167 L18.0507812,30.2604167 L18.0507812,18.0354818 Z" id="path-3"></path>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#F7931E" offset="0%"></stop>
+            <stop stop-color="#D4145A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="informations_contact-message-d'erreur" transform="translate(-296.000000, -600.000000)">
+            <g id="informations">
+                <g id="CONSOLES" transform="translate(20.000000, 577.000000)">
+                    <g id="pc" transform="translate(282.000000, 29.000000)">
+                        <g id="background">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#2C2C2C" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                        <text id="PC" opacity="0.2" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" fill="#FFFFFF">
+                            <tspan x="34.727" y="61">PC</tspan>
+                        </text>
+                        <g id="Icons/Brands/microsoft" opacity="0.2" transform="translate(25.000000, 14.000000)">
+                            <mask id="mask-4" fill="white">
+                                <use xlink:href="#path-3"></use>
+                            </mask>
+                            <use id="microsoft" fill="#000000" fill-rule="nonzero" xlink:href="#path-3"></use>
+                            <g id="Orange-pink" mask="url(#mask-4)" fill="url(#linearGradient-5)" fill-rule="evenodd">
+                                <rect id="Rectangle" x="0" y="0" width="35" height="35"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

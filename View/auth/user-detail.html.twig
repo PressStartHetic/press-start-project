@@ -1,0 +1,210 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <!-- NAV CÔTÉ -->
+    {% include 'partials/nav.html.twig' %}
+
+    <div class="contact-single-user-ctn">
+        {% if client %}
+            <section class="contact-single">
+                <div class="contact-single__head">
+                    <!-- BACK TO CONTACT LIST -->
+                    <a href="/users/list">
+                        <img src="/web/img/back.png" alt="retour arrière">
+                    </a>
+                    <!-- NOM DU CONTACT -->
+                    <h1 class="contact-single__title">{{ user.username }}</h1>
+                </div>
+                <!-- SECTION INFORMATIONS -->
+                <form>
+                    <div class="section-contact section-informations">
+                        <div class="contact-single__boxes">
+                            <!-- FORMULAIRE -->
+                            <div class="left-box">
+                                <div class="contact-single__boxes__banner">
+                                    <h2>INFORMATIONS CLIENT</h2>
+                                </div>
+                                <div class="contact-single__form__content">
+                                    <div class="contact-single__form__content__head">
+                                        <div class="main-infos">
+                                            <div>
+                                                <!-- NOM CONTACT -->
+                                                <div class="input-ctn">
+                                                    <label for="lastname">NOM</label>
+                                                    <input type="text" class="input" name="lastname" value="{{ client.lastname }}">
+                                                </div>
+                                                <!-- PRENOM CONTACT -->
+                                                <div class="input-ctn">
+                                                    <label for="firstname">PRENOM</label>
+                                                    <input type="text" class="input" name="firstname" value="{{ client.firstname }}">
+                                                </div>
+                                                <!-- POSTE CONTACT -->
+                                                <div class="input-ctn">
+                                                    <label for="job">POSTE</label>
+                                                    <input class="input" type="text" name="job" id="job" value="{{ client.job }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contact-single__form__content__main">
+                                        <!-- NOM CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="email">MAIL DE CONTACT</label>
+                                            <input class="input" type="email" name="email" value="{{ client.email }}">
+                                        </div>
+                                        <!-- PRENOM CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="city">VILLE</label>
+                                            <input class="input" type="text" name="city" value="{{ client.city }}">
+                                        </div>
+                                        <!-- POSTE CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="mobilePhone">TELEPHONE MOBILE</label>
+                                            <input class="input" type="tel" name="mobilePhone" value="{{ client.mobilePhone }}">
+                                        </div>
+                                        <!-- POSTE CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="postcode">CODE POSTAL</label>
+                                            <input class="input" type="text" name="postcode" value="{{ client.postcode }}">
+                                        </div>
+                                        <!-- POSTE CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="proPhone">TELEPHONE PRO</label>
+                                            <input class="input" type="tel" name="proPhone" value="{{ client.proPhone }}">
+                                        </div>
+                                        <!-- POSTE CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="adress">ADRESSE</label>
+                                            <input class="input" type="text" name="adress" value="{{ client.adress }}">
+                                        </div>
+                                        <!-- POSTE CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="twitter">TWITTER</label>
+                                            <input class="input" type="text" name="twitter" id="twitter" value="{{ client.twitter }}">
+                                        </div>
+                                        <!-- POSTE CONTACT -->
+                                        <div class="input-ctn">
+                                            <label for="twitch">TWITCH</label>
+                                            <input class="input" type="text" name="twitch" id="twitch" value="{{ client.twitch }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="contact-single__form__content__footer">
+                                        <!-- POSTE SITE(S) -->
+                                        <div class="input-ctn">
+                                            <label for="website">SITES WEB</label>
+                                            <div class="inputs">
+                                                <div class="input-wrapper">
+                                                    <input class="input" type="text" name="website" value="{{ client.website }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="profile-actions">
+                                        <input type="submit" class="edit-conf open-modal" value="Valider les modifications">
+                                        <input type="button" class="delete-account open-modal" value="Supprimer ce compte">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        {% endif %}
+
+        <section class="contact-single">
+            <!-- SECTION INFORMATIONS -->
+            <!-- HEADER -->
+            <form method="post" action="/users/update/{{ user.id }}">
+                <div class="section-contact section-informations">
+                    <div class="contact-single__boxes">
+                        <!-- FORMULAIRE -->
+                        <div class="left-box">
+                            <div class="contact-single__boxes__banner">
+                                <h2>INFORMATIONS UTILISATEUR</h2>
+                            </div>
+                            <div class="contact-single__form__content">
+                                <div class="contact-single__form__content__head">
+                                    <!-- PHOTO CONTACT -->
+                                    <figure>
+                                        <img src="/web/img/Maincartoonlink.png" alt="Link"/>
+                                    </figure>
+                                    <div class="main-infos">
+                                        <div>
+                                            <!-- NOM CONTACT -->
+                                            <div class="input-ctn">
+                                                <label for="username">USERNAME</label>
+                                                <input type="text" class="input" name="username" value="{{ user.username }}">
+                                            </div>
+                                            <!-- PRENOM CONTACT -->
+                                            <div class="input-ctn">
+                                                <label for="email">EMAIL</label>
+                                                <input type="text" class="input" name="email" value="{{ user.email }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile-actions">
+                                    <input type="submit" class="edit-conf open-modal" value="Valider les modifications">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <form method="post" action="/users/update/password/{{ user.id }}">
+            <h1>Change password</h1>
+            <div>
+                <ul>
+                    <li>
+                        <label for="oldPassword">old password:</label>
+                        <input type="password" name="oldPassword" id="oldPassword"/>
+                    </li>
+                    <li>
+                        <label for="newPassword">new password:</label>
+                        <input type="password" name="newPassword" id="newPassword">
+                    </li>
+                </ul>
+                <input type="submit" value="change password">
+            </div>
+        </form>
+        <section class="contact-single">
+            <form method="post" action="/users/update/password/{{ user.id }}">
+                <div class="section-contact section-informations">
+                    <div class="contact-single__boxes">
+                        <!-- FORMULAIRE -->
+                        <div class="left-box">
+                            <div class="contact-single__boxes__banner">
+                                <h2>MODIFIER LE MOT DE PASSE</h2>
+                            </div>
+                            <div class="contact-single__form__content">
+                                <div class="contact-single__form__content__head">
+                                    <div class="main-infos">
+                                        <div>
+                                            <!-- NOM CONTACT -->
+                                            <div class="input-ctn">
+                                                <label>MOT DE PASSE ACTUEL</label>
+                                                <input type="password" class="input" name="oldPassword" id="oldPassword">
+                                            </div>
+                                            <!-- PRENOM CONTACT -->
+                                            <div class="input-ctn">
+                                                <label for="email">NOUVEAU MOT DE PASSE</label>
+                                                <input type="text" class="input" name="newPassword" id="newPassword">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile-actions">
+                                    <input type="submit" class="edit-conf open-modal" value="Valider les modifications">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+{% endblock %}

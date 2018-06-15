@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="90px" viewBox="0 0 96 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>playstation4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="84" height="78" rx="5"></rect>
+        <filter x="-10.7%" y="-11.5%" width="121.4%" height="123.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M31.8251923,23.5523682 C31.253028,24.2803955 29.8605929,24.7982178 29.8605929,24.7982178 L19.4755583,28.5716553 L19.4755583,25.7877197 L27.1162298,23.0294189 C27.9820713,22.7166748 28.1187831,22.2706299 27.409907,22.03479 C26.7060943,21.7989502 25.4301174,21.8656006 24.5642759,22.1834717 L19.4755583,24.00354 L19.4755583,21.1119385 C20.6502672,20.7120361 21.86042,20.4146729 23.3085525,20.2506104 C25.3794834,20.0198975 27.9111837,20.2813721 29.9011001,21.0452881 C32.1391231,21.7630615 32.3922932,22.8243408 31.8251923,23.5523682 Z M20.4629214,18.8099365 L20.4629214,11.6834717 C20.4629214,10.8477783 20.3110194,10.0787354 19.5363191,9.85827637 C18.9439012,9.66345215 18.574273,10.22229 18.574273,11.0579834 L18.574273,28.8946533 L13.8248032,27.3668213 L13.8248032,6.10534668 C15.8451001,6.48474121 18.7869358,7.38195801 20.3667168,7.92028809 C24.3921202,9.31994629 25.754175,11.0631104 25.754175,14.9852295 C25.754175,18.8048096 23.4250107,20.2557373 20.4629214,18.8099365 Z M5.10562742,25.4954834 C2.80684355,24.8392334 2.42202511,23.4703369 3.47014903,22.6859131 C4.43725854,21.9578857 6.08792713,21.4093018 6.08792713,21.4093018 L12.8982009,18.9586182 L12.8982009,21.7528076 L7.99682915,23.5267334 C7.13098765,23.8394775 6.99933923,24.2855225 7.70315192,24.5213623 C8.4069646,24.7572021 9.68294154,24.6905518 10.548783,24.3726807 L12.8982009,23.5062256 L12.8982009,26.0081787 C10.2854862,26.4849854 7.76391272,26.3824463 5.10562742,25.4954834 Z" id="path-3"></path>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#F7931E" offset="0%"></stop>
+            <stop stop-color="#D4145A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="informations_contact-message-d'erreur" transform="translate(-14.000000, -600.000000)">
+            <g id="informations">
+                <g id="CONSOLES" transform="translate(20.000000, 577.000000)">
+                    <g id="playstation4" transform="translate(0.000000, 29.000000)">
+                        <g id="background">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#2C2C2C" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                        <text id="Playstation-4" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold" fill="#FFFFFF">
+                            <tspan x="7" y="61">Playstation 4</tspan>
+                        </text>
+                        <g id="Icons/Brands/playstation" transform="translate(25.000000, 14.000000)">
+                            <mask id="mask-4" fill="white">
+                                <use xlink:href="#path-3"></use>
+                            </mask>
+                            <use id="playstation" fill="#000000" fill-rule="nonzero" xlink:href="#path-3"></use>
+                            <g id="Orange-pink" mask="url(#mask-4)" fill="url(#linearGradient-5)" fill-rule="evenodd">
+                                <rect id="Rectangle" x="0" y="0" width="35" height="35"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
